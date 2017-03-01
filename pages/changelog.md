@@ -6,10 +6,19 @@ layout: two-column
 
 # Changelog
 
+## March 1st, 2017
+
+- Added delete messages API. [Learn More](https://docs.smooch.io/rest/#delete-messages)
+- Added delete user profile API. [Learn More](https://docs.smooch.io/rest/#delete-user-profile)
+
 ## February 20th, 2017
 
 - Added new [`conversation:start` event](https://docs.smooch.io/rest/#webhook-triggers) in the webhooks for when a user opts in to start a conversation.
 - Improved Facebook Messenger linking support in Web Messenger [3.13.0](https://github.com/smooch/smooch-js/releases/tag/3.13.0)
+
+## February 17th, 2017
+
+- Android SDK [4.3.0](https://github.com/smooch/smooch-android/releases/tag/4.3.0) & Web Messenger [3.12.0](https://github.com/smooch/smooch-js/releases/tag/3.12.0) bring support for location sharing and improved user experience while a message is being sent.
 
 ## February 14th, 2017
 

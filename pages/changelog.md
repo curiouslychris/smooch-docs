@@ -6,6 +6,11 @@ layout: two-column
 
 # Changelog
 
+## March 1st, 2017
+
+- Added delete messages API. [Learn More](https://docs.smooch.io/rest/#delete-messages)
+- Added delete user profile API. [Learn More](https://docs.smooch.io/rest/#delete-user-profile)
+
 ## February 20th, 2017
 
 - Added new [`conversation:start` event](https://docs.smooch.io/rest/#webhook-triggers) in the webhooks for when a user opts in to start a conversation.

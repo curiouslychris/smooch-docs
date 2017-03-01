@@ -2646,6 +2646,31 @@ Upload an image and post it to the conversation. Images are uploaded using the `
 | **source**<br/><span class='req'>required</span>    | The image data.            |
 | **role**<br/><span class='req'>required</span>      | The role of the individual posting the message. Can be either `appUser` or `appMaker`. |
 
+## Delete Messages
+
+> Request:
+
+```shell
+curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+     -X DELETE \
+     -H 'authorization: Bearer your-jwt'
+```
+```js
+smooch.appUsers.deleteMessages('c7f6e6d6c3a637261bd9656f').then(() => {
+    // async code
+});
+```
+
+> Response:
+
+```
+200 OK
+```
+
+<api>`DELETE /v1/appusers/{smoochId|userId}/messages`</api>
+
+Clears the message history for a user, permanently deleting all messages, but leaving any connections to Messaging Channels and Business Systems intact. These connections allow for the conversation to continue in the future, while still being associated to the same appUser.
+
 # Persistent Menus
 
 Smooch provides a /v1/menu/ API to set persistent menus on messaging channels that support custom menus in their chat UIs ([Facebook Messenger](http://docs.smooch.io/javascript/#facebook-messenger) and [WeChat](http://docs.smooch.io/javascript/#wechat)). Menus are configured on a per app basis (not per user).

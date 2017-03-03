@@ -996,6 +996,9 @@ The structure of the JSON payload differs based on the trigger of the webhook. O
 | `avatarUrl` <span class="opt">optional</span> | String      | The URL for an image of the appMaker.                                                                                   |
 | `type`                                        | String      | `"text"`, `"image"`, `"carousel"`, or `"list"`.                                                                                                 |
 | `actions`                                     | Array       | An array of JSON objects representing the actions associated with the message. See the [action schema](#action-schema) below for details. |
+| `mediaUrl` <span class="opt">optional</span> | String | The URL for media, such as an image, attached to the message. |
+| `mediaType` <span class="opt">optional</span> | String | The MIME type for any media attached in the mediaUrl. |
+
 
 ### error schema
 

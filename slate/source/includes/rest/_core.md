@@ -32,6 +32,7 @@ Smooch uses standard HTTP status codes to communicate errors
 | **200** | OK - Everything went as planned. |
 | **400** | Bad Request - Something in your header or request body was malformed. |
 | **401** | Unauthorized - Necessary credentials were either missing or invalid. |
+| **402** | Payment Required - The action is not available on your payment plan, or you have exceeded usage limits for your current plan. |
 | **403** | Forbidden - Your credentials are valid but you don't have access to the requested resource. |
 | **404** | Not Found - The object you're requesting doesn't exist. |
 | **409** | Conflict - You might be trying to update the same resource concurrently. |

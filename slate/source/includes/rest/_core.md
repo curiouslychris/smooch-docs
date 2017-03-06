@@ -2349,7 +2349,7 @@ Only [carousel](#carousel-message) and [list](#list-message) messages currently 
 | **actions**<br/><span class='req'>required</span>     | Array of [action buttons](#action-buttons). At least 1 is required, a maximum of 3 are allowed. `link` and `postback` and `share` actions are supported. |
 | **description**<br/><span class='opt'>optional</span> | The text description, or subtitle. |
 | **mediaUrl**<br/><span class='opt'>optional</span>    | The image URL to be shown in the carousel/list item. |
-| **size**<br/><span class='opt'>optional</span>        | The size of the image to be shown in the carousel/list item (Only top item of Facebook Messenger carousel supportted). Choose from `compact` and `large` |
+| **size**<br/><span class='opt'>optional</span>        | The size of the image to be shown in the carousel/list item (Only top item of Facebook Messenger carousel supported). Choose from `compact` and `large` |
 | **mediaType**<br/><span class='opt'>optional</span>   | If a `mediaUrl` was specified, the media type is defined here, for example `image/jpeg`. If `mediaType` is not specified, the media type will be resolved with the `mediaUrl`. |
 
 ## Action Buttons

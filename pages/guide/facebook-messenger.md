@@ -50,11 +50,11 @@ The default currency is automatically selected when using the [button syntax](ht
 
 ### Carousel
 
-Messenger offers full support for carousels which allows you to send a set of horizontally scrollable items that combines text, image and action buttons. 
+Messenger offers full support for carousels which allows you to send a set of horizontally scrollable items that combines text, image and action buttons.
 
 ![Carousel example](http://blog.smooch.io/content/images/2016/08/carousel_demo.gif)
 
-You can send carousels containing up to 10 items via the [Post Message API](https://docs.smooch.io/rest/#carousel-message). Note that reply and location buttons are not allowed in a carousel. 
+You can send carousels containing up to 10 items via the [Post Message API](https://docs.smooch.io/rest/#carousel-message). Note that reply and location buttons are not allowed in a carousel.
 
 ### List
 
@@ -72,4 +72,4 @@ List messages can also append 1 action button at the bottom of the list. For exa
 
 ![Facebook Messenger Persistent Menu](/images/messenger_menu.png)
 
-It's possible to configure a menu of 1-5 buttons on the Messenger UI by calling [the Smooch REST API](https://docs.smooch.io/rest/#persistent-menus). Menus are configured per app, not per user. Menu items can be [link](structured-messages/#link-buttons) or [postback](structured-messages/#postback-buttons) type actions.
+It's possible to configure a menu of 1-5 buttons on the Messenger UI by calling [the Smooch REST API](https://docs.smooch.io/rest/#persistent-menus). Menus are configured per app, not per user. Menu items can be [link](/guide/structured-messages/#link-buttons) or [postback](/guide/structured-messages/#postback-buttons) type actions.

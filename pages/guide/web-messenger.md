@@ -8,7 +8,7 @@ layout: two-column
 
 The Web Messenger is a highly customizable messaging widget that can be added to any Web page. Smooch offers a [hosted version](https://app.smooch.io/integrations/web) of the widget. It's also possible to self-host the widget and fork it to change the appearance, branding, and/or functionality of the widget to suit your needs.
 
-The Smooch Web Messenger is unique in that it allows you to seamlessly move the conversation beyond the browser session to a persistent channel like SMS, Facebook Messenger, or any of our other [OTT channels](/guide/ott-messengers/).
+The Smooch Web Messenger is unique in that it allows you to seamlessly move the conversation beyond the browser session to a persistent channel like SMS, Facebook Messenger, or any of our other [OTT channels](/guide/intro-to-channels/).
 
 ## Reference
 
@@ -309,7 +309,7 @@ For complete control over the styling of the widget, you can use CSS to override
 ```
 
 <aside class="warning">
-If you use CSS customizations, we strongly suggest you add Smooch to your site through <a href="#npm-and-browserify">npm</a> or through <a href="#bower">bower</a>. The version we have on <a href="#script-tag-method">CDN</a> has our latest updates. Any new changes we push may break your CSS customizations.
+If you use CSS customizations, we strongly suggest you add Smooch to your site through <a href="/guide/web-messenger/#npm-and-browserify">npm</a> or through <a href="/guide/web-messenger/#bower">bower</a>. The version we have on <a href="/guide/web-messenger/#script-tag-method">CDN</a> has our latest updates. Any new changes we push may break your CSS customizations.
 </aside>
 
 ### Sound notification

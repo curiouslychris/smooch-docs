@@ -12,9 +12,9 @@ layout: two-column
 
 ## Adding Smooch to your app
 
-The Smooch library is distributed in both AAR and JAR format. If you are using Android Studio, follow the instructions for [installation of the AAR package](#android-studio-with-gradle).
+The Smooch library is distributed in both AAR and JAR format. If you are using Android Studio, follow the instructions for [installation of the AAR package](/guide/native-android-sdk/#android-studio-with-gradle).
 
-<aside class="notice">The minimum supported SDK version is API level **15**, and your app must be compiled with at least API version **21**. If your app needs to support earlier versions of Android, you may still try to integrate, but it is untested and we cannot guarantee compatibility.
+<aside class="notice">The minimum supported SDK version is API level <b>15</b>, and your app must be compiled with at least API version <b>25</b>. If your app needs to support earlier versions of Android, you may still try to integrate, but it is untested and we cannot guarantee compatibility.
 </aside>
 
 ### Android Studio with Gradle
@@ -37,11 +37,11 @@ compile 'io.smooch:core:latest.release'
 compile 'io.smooch:ui:latest.release'
 ```
 
-Sync the Gradle project then add the necessary code to [initialize Smooch in your app](#initialize-smooch-in-your-app).
+Sync the Gradle project then add the necessary code to [initialize Smooch in your app](/guide/native-android-sdk/#initialize-smooch-in-your-app).
 
 <aside class="notice">
     Smooch uses a FileProvider to store photos.
-    If your application has a FileProvider specified in the manifest, <a href="#replacing-the-smooch-fileprovider">follow these instructions</a>
+    If your application has a FileProvider specified in the manifest, <a href="/guide/native-android-sdk/#replacing-the-smooch-fileprovider">follow these instructions</a>
 </aside>
 
 ### Initialize Smooch in your app
@@ -105,7 +105,7 @@ Find a suitable place in your app's interface to invoke Smooch and use the code 
 ConversationActivity.show(this);
 ```
 
-You should also take the time to [configure the push notifications setup](#configuring-push-notifications).
+You should also take the time to [configure the push notifications setup](/guide/native-android-sdk/#configuring-push-notifications).
 
 ### Replacing the Smooch FileProvider
 <aside class="notice">
@@ -178,7 +178,7 @@ Note: If your app has its own token registration, you need to trigger Smooch pus
 ### Step 4. Test it out!
 
 <aside class="warning">
-You can't receive push notifications in the Android simulator, you must use a physical device.
+To test push notifications in the Android emulator, you must use a system image with Google APIs.
 </aside>
 
 1. Kill and restart your app.
@@ -195,7 +195,7 @@ You'll receive a notification on the phone!
 
 ## Localization
 
-Every string you see in Smooch can be [customized](#strings-customization) and localized. Smooch provides a few languages out of the box, but [adding new languages](#adding-more-languages) is easy to do. When localizing strings, Smooch looks for values in the strings.xml in your app first then in the Smooch ui bundle, enabling you to customize any strings and add support for other languages.
+Every string you see in Smooch can be [customized](/guide/native-android-sdk/#strings-customization) and localized. Smooch provides a few languages out of the box, but [adding new languages](/guide/native-android-sdk/#adding-more-languages) is easy to do. When localizing strings, Smooch looks for values in the strings.xml in your app first then in the Smooch ui bundle, enabling you to customize any strings and add support for other languages.
 
 ### Adding more languages
 

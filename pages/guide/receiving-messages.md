@@ -10,7 +10,7 @@ Smooch's architecture is centered on the concept of a *conversation*. A conversa
 
 This design makes it really easy for you to take advantage of all of the context present in communication with your appUser. When the appUser sends you a message, the message and its associated metadata is written to the conversation and sent to your business systems.
 
-In addition to receiving these messages from within [Smooch's business integrations](/guide/configuring-business-systems/), your software can receive the messages via a webhook.
+In addition to receiving these messages from within [Smooch's business integrations](/guide/business-systems/), your software can receive the messages via a webhook.
 
 ## Message Webhooks
 
@@ -87,7 +87,7 @@ Once the webhook is configured, the target URL will start receiving notification
 
 #### Configuring Via API
 
-Every *app* you create on Smooch needs to have webhooks individually enabled for it. If you're using [managed accounts](/guide/managed-accounts/) or simply want to have your software be in control over Smooch's configuration, we've made it easy to use our API to configure webhooks for each app you've created.
+Every *app* you create on Smooch needs to have webhooks individually enabled for it. If you're using [managed accounts](/guide/intro-to-managed-accounts/) or simply want to have your software be in control over Smooch's configuration, we've made it easy to use our API to configure webhooks for each app you've created.
 
 To create a webhook using the Smooch API simply call the webhooks.create() function:
 

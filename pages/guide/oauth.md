@@ -14,7 +14,7 @@ Below, we'll lead you through the process of implementing an OAuth flow with Smo
 
 ## Becoming a partner
 
-You'll need to become a partner in order to implement OAuth with Smooch. See [this guide](becoming-an-integration-partner/) for more information on becoming a partner.
+You'll need to become a partner in order to implement OAuth with Smooch. See [this guide](/guide/becoming-an-integration-partner/) for more information on becoming a partner.
 
 Once you become a partner you'll be provided with a client ID and secret. You'll also need to provide Smooch with a redirect URL that Smooch can redirect the app owner to once they authorize your integration.
 

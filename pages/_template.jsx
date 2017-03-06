@@ -10,28 +10,6 @@ export default class extends Component {
         children: PropTypes.any
     };
 
-    scrollToHash = () => {
-        const {location} = this.props;
-        const {hash} = location;
-
-        if (hash) {
-            const hashNode = document.querySelector(hash);
-            if (hashNode) {
-                setTimeout(() => {
-                    hashNode.scrollIntoView();
-                });
-            }
-        }
-    };
-
-    componentDidMount() {
-        this.scrollToHash();
-    }
-
-    componentDidUpdate() {
-        this.scrollToHash();
-    }
-
     render() {
 
         const htmlAttributes = {

@@ -38,4 +38,4 @@ When you reply from any of the configured backend channels, Telegram users will 
 
 When used with Telegram, action buttons work as expected. A button with type `link` will bring the user to a web page, while postback buttons will trigger any Smooch webhook listening to the `postback` trigger.
 
-Payment requests with the [Stripe integration](#stripe) will turn into link buttons which bring the user to a checkout page where payment information can be entered.
+Payment requests with the [Stripe integration](/guide/stripe-payments/) will turn into link buttons which bring the user to a checkout page where payment information can be entered.

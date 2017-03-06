@@ -6,6 +6,10 @@ layout: two-column
 
 # Changelog
 
+## March 6th, 2017
+
+- Added channel targeting API. [Learn More](https://docs.smooch.io/rest/#channel-targeting)
+
 ## March 1st, 2017
 
 - Added delete messages API. [Learn More](https://docs.smooch.io/rest/#delete-messages)

@@ -12,7 +12,7 @@ layout: two-column
 
 ## Adding Smooch to your app
 
-There are two ways to install the Smooch SDK. Our recommended way to install Smooch is through [CocoaPods](#cocoapods-method). We support Carthage too and you can also go the [manual route](#manual-method--carthage) and drop the SDK into your Xcode project.
+There are two ways to install the Smooch SDK. Our recommended way to install Smooch is through [CocoaPods](/guide/native-ios-sdk/#cocoapods-method). We support Carthage too and you can also go the [manual route](/guide/native-ios-sdk/#manual-method-carthage) and drop the SDK into your Xcode project.
 
 We've documented both methods for adding Smooch to your app. Read on and follow your preferred way of adding the SDK to your project.
 
@@ -61,7 +61,7 @@ Remember — when you use CocoaPods to manage your app's dependencies, you have 
  * SystemConfiguration.framework
  * UIKit.framework
 1. Add the `-licucore` option to your app's `Other Linker Flags` build setting.
-1. You're now ready to [initialize Smooch in your app](#import-the-smooch-header-file).
+1. You're now ready to [initialize Smooch in your app](/guide/native-ios-sdk/#import-the-smooch-header-file).
 
 ### Import the Smooch header file
 
@@ -245,7 +245,7 @@ To enable this behaviour, sample code and configuration instructions can be foun
 
 ## Localization
 
-Every string you see in Smooch can be [customized](#strings-customization) and localized. Smooch provides a few languages out of the box, but [adding new languages](#adding-more-languages) is easy to do. When localizing strings, Smooch looks for SmoochLocalizable.strings in your app bundle first then in the Smooch bundle, enabling you to customize any strings and add support for other languages.
+Every string you see in Smooch can be [customized](/guide/native-ios-sdk/#strings-customization) and localized. Smooch provides a few languages out of the box, but [adding new languages](/guide/native-ios-sdk/#adding-more-languages) is easy to do. When localizing strings, Smooch looks for SmoochLocalizable.strings in your app bundle first then in the Smooch bundle, enabling you to customize any strings and add support for other languages.
 
 ### Enabling Localization in your app
 

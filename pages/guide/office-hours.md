@@ -26,5 +26,5 @@ The Office Hours add-on can also be set to reply to specific messaging channels 
 
 <aside class="notice">There are a few exceptions that will prevent the message from being dispatched: if it's already been dispatched on that day, within the last 12 hours, or if you've messaged the user in the last 15 minutes.
   <br/>
-  To prevent conflicts, when an office hours message is sent the <a href="automated-messages/">Auto-response whisper</a> will not trigger.
+  To prevent conflicts, when an office hours message is sent the <a href="/guide/automated-messages/">Auto-response whisper</a> will not trigger.
 </aside>

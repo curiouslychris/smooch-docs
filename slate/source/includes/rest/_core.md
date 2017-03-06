@@ -32,6 +32,7 @@ Smooch uses standard HTTP status codes to communicate errors
 | **200** | OK - Everything went as planned. |
 | **400** | Bad Request - Something in your header or request body was malformed. |
 | **401** | Unauthorized - Necessary credentials were either missing or invalid. |
+| **402** | Payment Required - The action is not available on your payment plan, or you have exceeded usage limits for your current plan. |
 | **403** | Forbidden - Your credentials are valid but you don't have access to the requested resource. |
 | **404** | Not Found - The object you're requesting doesn't exist. |
 | **409** | Conflict - You might be trying to update the same resource concurrently. |
@@ -1819,6 +1820,7 @@ For messages originating from an app maker, a `jwt` credential with `app` level 
 | **name**<br/><span class='opt'>optional</span>       | The display name of the message author. Messages with role `appUser` will default to a friendly name based on the user's `givenName` and `surname`. Messages with role `appMaker` have no default name. |
 | **email**<br/><span class='opt'>optional</span>      | The email address of the message author. This field is typically used to identify an app maker in order to render the avatar in the app user client. If the email of the Smooch account is used, the configured profile avatar will be used. Otherwise, any [gravatar](http://gravatar.com) matching the specified email will be used as the message avatar. |
 | **avatarUrl**<br/><span class='opt'>optional</span>  | The URL of the desired message avatar image. This field will override any avatar chosen via the `email` parameter. |
+| **destination**<br/><span class='opt'>optional</span>| The channel where you want your message delivered to. This only works for messages with role `appMaker`. See [Channel Targeting](#channel-targeting) for more information. |
 | **metadata**<br/><span class='opt'>optional</span>   | Flat JSON object containing any custom properties associated with the message. If you are developing your own messaging client you can use this field to render custom message types. |
 | **payload**<br/><span class='opt'>optional</span>    | The payload of a `reply` action, if applicable |
 
@@ -2648,6 +2650,17 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 <aside class="notice">
 Share Buttons are currently only supported in Facebook Messenger carousels.
 </aside>
+
+## Channel Targeting
+
+A business can choose which channel to deliver a message to. To do this, include a `destination` object in the message payload and provide one of the following:
+
+| **Arguments**                |                            |
+|------------------------------|----------------------------|
+| **integrationId**<br/><span class='req'>optional</span>   | The integration id. See [List Integrations](#list-integrations) |
+| **integrationType**<br/><span class='req'>optional</span> | The integration type. See [List Integrations](#list-integrations) |
+
+Note that for this to work, the user needs to have a client linked to the targeted channel.
 
 ## Upload Image
 

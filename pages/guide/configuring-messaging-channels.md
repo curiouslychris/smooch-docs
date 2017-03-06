@@ -43,7 +43,7 @@ The auth token and account SID are available via the Twilio Console, as seen her
 
 ![Twilio Console](/images/sms_twilio_console.png)
 
-The phone number SID can be acquired from the settings page for the phone number, in the Twilio console, or via the [Twilio REST API](https://www.twilio.com/guide/api/rest/incoming-phone-numbers).
+The phone number SID can be acquired from the settings page for the phone number, in the Twilio console, or via the [Twilio REST API](https://www.twilio.com/docs/api/rest/incoming-phone-numbers).
 
 Phone numbers may either be pre-existing numbers from 3rd parties who give you access, or numbers provisioned to your own account.
 
@@ -108,7 +108,7 @@ You'll need a LINE business account and messaging API channel.
 
 To create a business account you first need to create a LINE account through a [mobile app](http://line.me/en-US/download).
 
-If you already have a LINE business account, login to [LINE business section](https://business.line.me) then skip to [Creating a LINE Messaging API Channel](#creating-a-line-messaging-api-channel).
+If you already have a LINE business account, login to [LINE business section](https://business.line.me) then skip to [Creating a LINE Messaging API Channel](/guide/line/#creating-a-line-messaging-api-channel).
 
 After having signed up with your phone number, you will need to activate email registration and create a LINE business account.
 

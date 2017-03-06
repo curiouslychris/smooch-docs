@@ -22,12 +22,12 @@ Each time a user's actions trigger a webhook event, the [webhook payload](http:/
 The app user can be extended to contain whatever custom properties you require under the `properties` property.
 
 Custom properties can be added to a user:
-1. via the [REST API](http://docs.smooch.io/rest/#update)
+1. via the [REST API](http://docs.smooch.io/rest/#update-app-user)
 2. at initialization time with the mobile and Web SDKs
 
 In addition to custom properties, there are a number of predefined properties such as `givenName`, `surname`, and `email` that can also be set via the SDKs, or REST API.
 
-To add properties via the REST API call the PUT Update [endpoint](http://docs.smooch.io/rest/#update):
+To add properties via the REST API call the PUT Update [endpoint](http://docs.smooch.io/rest/#update-app-user):
 
 ```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \

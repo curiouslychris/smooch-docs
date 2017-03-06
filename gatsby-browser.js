@@ -1,5 +1,6 @@
 import 'autotrack/lib/plugins/url-change-tracker';
 import { browserHistory } from 'react-router';
+import { anchorate } from 'anchorate';
 
 const REDIRECTS = {
     '/javascript': '/guide/web-messenger/',
@@ -15,4 +16,8 @@ export const onRouteUpdate = ({pathname}) => {
             browserHistory.push(redirect);
         }
     }
+};
+
+export const onRouteChange = () => {
+  anchorate();
 };

@@ -32,7 +32,7 @@ If you want multiple team members to respond to your Smooch requests, you can sp
 
 ### Connecting to your CRM through Email
 
-In addition to Smooch's built-in business systems like [Slack](https://app.smooch.io/integrations/slack) and [Zendesk](https://app.smooch.io/integrations/zendesk), Smooch's Marketplace of integrations like [Front](https://app.smooch.io/integrations/front), and the [REST API](api-quickstart/), it's possible to use Email to connect Smooch to your CRM.
+In addition to Smooch's built-in business systems like [Slack](https://app.smooch.io/integrations/slack) and [Zendesk](https://app.smooch.io/integrations/zendesk), Smooch's Marketplace of integrations like [Front](https://app.smooch.io/integrations/front), and the [REST API](/guide/api-quickstart/), it's possible to use Email to connect Smooch to your CRM.
 
 To connect Smooch to your CRM via Email:
 
@@ -114,7 +114,7 @@ This will send you to a Slack page where you will choose which slack team you wa
 
 When users send you messages, Smooch posts them to Slack. If it's a new conversation, a notification will appear in your dispatch channel in Slack. Smooch will choose `#general` as your dispatch channel by default, and you can change this if you wish. The dispatch notification contains a link to a channel associated to the specific user that sent you the message.
 
-By default, Smooch will generate random channel names for users who start conversations. If you want the channel names to be relevant, you must add a [first name, last name or email to the user](managing-user-information/).
+By default, Smooch will generate random channel names for users who start conversations. If you want the channel names to be relevant, you must add a [first name, last name or email to the user](/guide/managing-user-information/).
 
 ### Talking to the User
 
@@ -130,7 +130,7 @@ When you're ready to send a message to the user, simply use Smooch's slash comma
 
 You'll get a notification in the channel confirming that the message was received.
 
-If you want to consult any [user data](managing-user-information/) that you've associated with the user in order to aid the help process, simply use the command below:
+If you want to consult any [user data](/guide/managing-user-information/) that you've associated with the user in order to aid the help process, simply use the command below:
 
 ```
 /sk !profile
@@ -146,7 +146,7 @@ Configuring Smooch to communicate with Zendesk is easy. Go to the Zendesk [integ
 
 ![zendesk](/images/zendesk_integration.png)
 
-In order to maintain all your interactions with an app user under a single Zendesk End-user profile, it's important to <a href="#user-data">set the email</a> of your user in your app's Smooch integration.
+In order to maintain all your interactions with an app user under a single Zendesk End-user profile, it's important to <a href="/guide/managing-user-information/">set the email</a> of your user in your app's Smooch integration.
 
 #### Working with Zendesk email signatures
 
@@ -161,11 +161,11 @@ During the configuration process any existing triggers in your Zendesk settings 
 
 It's suggested that you don't modify the targets and triggers that Smooch configures for you on Zendesk. However, if you do, and anything ever goes wrong, it's easy to fix. Just return to your app settings on the Smooch admin page and in the Zendesk settings click "Remove Integration." Re-adding the integration will remove previously configured Smooch targets and triggers and refresh your configuration.
 
-Note: Smooch only ever configures one target and trigger per a Zendesk subdomain. In the event that multiple apps, or even mutliple Smooch accounts are authorized for a Zendesk subdomain, the triggers and targets will not be removed until all Smooch apps have had the Zendesk integration removed.
+Note: Smooch only ever configures one target and trigger per a Zendesk subdomain. In the event that multiple apps, or even multiple Smooch accounts are authorized for a Zendesk subdomain, the triggers and targets will not be removed until all Smooch apps have had the Zendesk integration removed.
 
 ### Rate Limiting
 Zendesk has a [global rate limit](https://help.zendesk.com/hc/en-us/articles/229137167-Best-practices-for-avoiding-rate-limiting). Additionally, they only allow 15 comments to be made on each individual ticket (regardless of whether the comment is an agent or app user) within a 10 minute period.
 
-In the event that a conversation surpasses the rate limit, the agent will recieve a message in the Zendesk UI saying as much, and preventing the ticket from being updated for a certain period of time, usually around 6 minutes. Your app user's messages will be queued up and sent after the time period specified by Zendesk.
+In the event that a conversation surpasses the rate limit, the agent will receive a message in the Zendesk UI saying as much, and preventing the ticket from being updated for a certain period of time, usually around 6 minutes. Your app user's messages will be queued up and sent after the time period specified by Zendesk.
 
 To reduce the likelihood of you bumping up against the rate limit, Smooch batches together all messages sent from the app user within a 5 second period into a single comment.

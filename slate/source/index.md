@@ -11,9 +11,25 @@ toc_footers:
   - <br/>
   - <a href='/guide/'>Back to Docs</a>
 
-includes:
+includes:   
     - --Core
-    - rest/core
+    - rest/core/introduction
+    - rest/core/authorization
+    - rest/core/authentication
+    - rest/core/webhooks/webhooks
+    - rest/core/webhooks/manage_webhooks
+    - rest/core/webhooks/message_events
+    - rest/core/webhooks/postback_events
+    - rest/core/webhooks/conversation_events
+    - rest/core/webhooks/merge_events
+    - rest/core/webhooks/delivery_events
+    - rest/core/webhooks/payment_events
+    - rest/core/webhooks/securing_a_webhook
+    - rest/core/webhooks/retry_policy
+    - rest/core/init
+    - rest/core/app_users
+    - rest/core/conversations
+    - rest/core/persistent_menus
     - --Managed accounts
     - rest/managed
     - --Smooch Connect

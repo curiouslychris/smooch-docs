@@ -17,6 +17,26 @@ All of the existing core APIs such as `/v1/appusers` and `/v1/webhooks` are acce
 
 Endpoints used for provisioning Smooch apps.
 
+## Schema
+
+The schema describes the fields you can expect to be associated with an app.
+
+### app schema
+
+| Field | Type   | Description                                                                                    |
+|-------|--------|------------------------------------------------------------------------------------------------|
+| **_id**  | String | A canonical ID that can be used to reference the Smooch app that the event is associated with. |
+| **appToken**  | String | A public token that can be used to initialize Smooch's mobile and Web SDKs and authorize API calls on behalf of appUsers who haven't been secured by JWT. |
+| **name**  | String | the friendly name of the app. |
+
+### truncated app schema
+
+A truncated version of the app sent with webhook payloads.
+
+| Field | Type   | Description                                                                                    |
+|-------|--------|------------------------------------------------------------------------------------------------|
+| **_id**  | String | A canonical ID that can be used to reference the Smooch app that the event is associated with. |
+
 ## Create App
 
 > Request:

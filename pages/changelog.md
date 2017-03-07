@@ -6,6 +6,11 @@ layout: two-column
 
 # Changelog
 
+## March 7th, 2017
+
+- Credit card numbers in message text are now automatically obfuscated, and will only display the last 4 digits (ex: `************4242`)
+- Added revoke OAuth access API. [Learn More](https://docs.smooch.io/rest/#revoke-access)
+
 ## March 6th, 2017
 
 - Added channel targeting API. [Learn More](https://docs.smooch.io/rest/#channel-targeting)

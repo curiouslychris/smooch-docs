@@ -6,17 +6,16 @@ import Sidebar from './Sidebar';
 export default class extends Component {
     render() {
         const {section} = this.props;
-        return <Grid>
+        return <Grid fluid>
                    <Row>
                        <Col xsHidden
                             sm={ 4 }
-                            md={3}>
+                            lg={ 3 }>
                        <Sidebar section={ section } />
                        </Col>
                        <Col xs={ 12 }
                             sm={ 8 }
-                            mdOffset={ 1 }
-                            md={ 7 }
+                            lg={ 9 }
                             className='content'>
                        { this.props.children }
                        </Col>

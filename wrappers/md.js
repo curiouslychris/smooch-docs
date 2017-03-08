@@ -6,6 +6,11 @@ import TwoColumnLayout from '../components/TwoColumnLayout';
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
 import catchLinks from '../lib/catch-links';
 
+const openImageHandler = (e) => {
+    const {src} = e.target;
+    window.open(src);
+};
+
 export default class extends Component {
     static contextTypes = {
         router: PropTypes.object.isRequired
@@ -23,12 +28,22 @@ export default class extends Component {
         });
     };
 
+    catchImageClicks = () => {
+        const node = this._contentNode;
+        const imgNodes = node.querySelectorAll('img');
+        // remove it first to make sure it's not bound multiple times
+        imgNodes.forEach((n) => n.removeEventListener('click', openImageHandler));
+        imgNodes.forEach((n) => n.addEventListener('click', openImageHandler));
+    };
+
     componentDidMount() {
         this.catchContentLinks();
+        this.catchImageClicks();
     }
 
     componentDidUpdate() {
         this.catchContentLinks();
+        this.catchImageClicks();
     }
 
     render() {

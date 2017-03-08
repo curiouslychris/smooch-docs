@@ -23,7 +23,7 @@ export default class extends Component {
 
         const hasActiveLink = links.some(([_, href]) => currentPath === href); // eslint-disable-line no-unused-vars
 
-        const navItems = links.map(([label, href, isInternal, classNames=[]] , index) => {
+        const navItems = links.map(([label, href, isInternal, classNames=[]], index) => {
             if (isInternal) {
                 let isActive = currentPath === href;
 
@@ -51,7 +51,7 @@ export default class extends Component {
         const docsNavStructure = generateNavStructure(this.props.section);
 
         docsNavStructure.forEach((section, i) => {
-            const subitems = section.pages.filter((p) => p).map(({path, title, internal} , j) => {
+            const subitems = section.pages.filter((p) => p).map(({path, title, internal}, j) => {
                 return internal ?
                     <LinkContainer to={ path }
                                    key={ 7.1 + i + 0.1 * j }>
@@ -79,7 +79,8 @@ export default class extends Component {
         });
 
 
-        return <Navbar className='navbar-site'>
+        return <Navbar className='navbar-site'
+                       fluid>
                    <Navbar.Header>
                        <Navbar.Brand>
                            <a href='https://smooch.io'><img src={ require('images/smooch_logo.svg') }

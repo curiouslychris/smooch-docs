@@ -1,27 +1,4 @@
-# Introduction
-
-Smooch has a rapidly growing partner ecosystem which helps you unlock messaging in your product or service and lets customers find you alongside complementary partners. If you're interested in becoming a partner, tell us what you're building with Smooch using our [partner application](https://smooch.io/partners/) and we'll provision you with everything you'll need to build your end of the OAuth flow using Smooch Connect. In the meantime the OAuth endpoints detailed below can be tested by impersonating Shoplifter, a partnership we built for testing purposes.
-
-# Add to Smooch Button
-
-```html
-<a href="https://app.smooch.io/oauth/authorize?client_id=shoplifter&response_type=code"><img alt="Add to Smooch" height="40" width="165" src="https://cdn.smooch.io/images/add_to_smooch.png" srcset="https://cdn.smooch.io/images/add_to_smooch.png 1x, https://cdn.smooch.io/images/add_to_smooch@2x.png 2x"/></a>
-```
-
-This HTML template can be used to place an "Add to Smooch" button on your website.
-
-<p class="add-to-smooch-button">
-    <a href="https://app.smooch.io/oauth/authorize?client_id=shoplifter&response_type=code"><img alt="Add to Smooch" height="40" width="165" src="https://cdn.smooch.io/images/add_to_smooch.png" srcset="https://cdn.smooch.io/images/add_to_smooch.png 1x, https://cdn.smooch.io/images/add_to_smooch@2x.png 2x"/></a>
-</p>
-
-# Sample Application
-
-An open source sample application implementing Smooch Connect has been created to help demonstrate how to get it working. Give [Shoplifter](https://shoplifter.herokuapp.com/) a try.
-
-The source code is available [here](https://github.com/smooch/shoplifter).
-
 # OAuth Endpoints
-
 ## Authorize
 
 > Request:

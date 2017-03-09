@@ -1,0 +1,3 @@
+# Introduction
+
+Smooch has a rapidly growing partner ecosystem which helps you unlock messaging in your product or service and lets customers find you alongside complementary partners. If you're interested in becoming a partner, tell us what you're building with Smooch using our [partner application](https://smooch.io/partners/) and we'll provision you with everything you'll need to build your end of the OAuth flow using Smooch Connect. In the meantime the OAuth endpoints detailed below can be tested by impersonating Shoplifter, a partnership we built for testing purposes.

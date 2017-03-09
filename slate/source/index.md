@@ -16,7 +16,16 @@ includes:
     - rest/core/introduction
     - rest/core/authorization
     - rest/core/authentication
-    - rest/core/webhooks
+    - rest/core/webhooks/webhooks
+    - rest/core/webhooks/create_webhook
+    - rest/core/webhooks/list_webhooks
+    - rest/core/webhooks/get_webhook
+    - rest/core/webhooks/update_webhook
+    - rest/core/webhooks/delete_webhook
+    - rest/core/webhooks/webhook_triggers
+    - rest/core/webhooks/webhooks_payload
+    - rest/core/webhooks/securing_a_webhook
+    - rest/core/webhooks/retry_policy
     - rest/core/init
     - rest/core/app_user
     - rest/core/conversations

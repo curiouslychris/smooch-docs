@@ -492,6 +492,19 @@ Carousel messages are a horizontally scrollable set of items that may each conta
 | **Arguments**                |                       |
 |------------------------------|-----------------------|
 | **items**<br/><span class='req'>required*</span>     | Array of [message items](#message-items). The array is limited to 10 items. |
+| **displaySettings**<br/><span class='opt'>optional</span> | Settings to adjust the carousel layout. See [Display Settings](#display-settings). |
+
+#### Display Settings
+
+A business can modify a carousel message layout by including an optional `displaySettings` object. Supported settings are:
+
+| **Arguments**                |                       |
+|------------------------------|-----------------------|
+| **imageAspectRatio**<br/><span class='opt'>optional</span> | Specifies how to display all carousel images. Valid values are `horizontal` (default) and `square`.|
+
+<aside class="notice">
+Display settings are currently only supported in Facebook Messenger carousels.
+</aside>
 
 #### Channel Support
 

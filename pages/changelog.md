@@ -6,6 +6,12 @@ layout: two-column
 
 # Changelog
 
+## March 9th, 2017
+
+- Added support for changing display settings for carousel messages. [Learn more](https://docs.smooch.io/rest/#display-settings)
+- Increased the limit of quick replies before truncation to 11 on Facebook Messenger
+- Increased the limit at which Facebook Messenger messages are divided into smaller ones to 640
+
 ## March 7th, 2017
 
 - Credit card numbers in message text are now automatically obfuscated, and will only display the last 4 digits (ex: `************4242`)

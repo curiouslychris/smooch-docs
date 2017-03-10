@@ -5,6 +5,12 @@ import Page from '../components/Page';
 import TwoColumnLayout from '../components/TwoColumnLayout';
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
 import catchLinks from '../lib/catch-links';
+import { IsOrHasAncestorNode } from '../utils/dom';
+
+// Containers where images shouldn't be openable in a new tab
+const IMAGE_CLICK_BLACKLIST = [
+    '.logo-row'
+];
 
 const openImageHandler = (e) => {
     const {src} = e.target;
@@ -31,9 +37,23 @@ export default class extends Component {
     catchImageClicks = () => {
         const node = this._contentNode;
         const imgNodes = node.querySelectorAll('img');
+
+        const blacklistedNodes = node.querySelectorAll(IMAGE_CLICK_BLACKLIST.join(', '));
+
         // remove it first to make sure it's not bound multiple times
         imgNodes.forEach((n) => n.removeEventListener('click', openImageHandler));
-        imgNodes.forEach((n) => n.addEventListener('click', openImageHandler));
+
+        for (const node of imgNodes) {
+            // a valid node is a node that is not in the blacklist
+            // and doesn't have an ancestor in the blacklist
+            const isValidNode = !blacklistedNodes.some((blacklistedNode) => {
+                    return IsOrHasAncestorNode(node, blacklistedNode);
+            });
+
+            if (isValidNode) {
+                node.addEventListener('click', openImageHandler);
+            }
+        }
     };
 
     componentDidMount() {

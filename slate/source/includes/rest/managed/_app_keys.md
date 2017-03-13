@@ -14,7 +14,11 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.apps.keys.create('55c8d9758590aa1900b9b9f6', {
+    name: 'key1'
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -50,7 +54,9 @@ Creates a secret key for the specified app. The response body will include a sec
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.apps.keys.list('55c8d9758590aa1900b9b9f6').then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -89,7 +95,9 @@ Lists all secret keys for a given app.
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.apps.keys.get('55c8d9758590aa1900b9b9f6', 'app_5723a347f82ba0516cb4ea34').then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -122,7 +130,9 @@ Returns a secret key.
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.apps.keys.delete('55c8d9758590aa1900b9b9f6', 'app_5723a347f82ba0516cb4ea34').then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -148,7 +158,9 @@ Removes a secret key.
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.apps.keys.getJwt('55c8d9758590aa1900b9b9f6', 'app_5723a347f82ba0516cb4ea34').then((response) => {
+    // async code
+});
 ```
 
 > Response:

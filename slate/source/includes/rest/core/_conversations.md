@@ -90,8 +90,14 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/conversation/act
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
+
 ```js
-// This endpoint is not currently wrapped in a JavaScript lib
+smooch.appUsers.typingActivity('c7f6e6d6c3a637261bd9656f', {
+    role: 'appMaker',
+    type: 'typing:start'
+}).then(() => {
+    // async code
+});
 ```
 
 > Response:

@@ -23,7 +23,14 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'messenger',
+    pageAccessToken: 'your_access_token',
+    appId: 'your_fb_app_id',
+    appSecret: 'your_fb_app_secret'
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -69,7 +76,14 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'twilio',
+    accountSid: 'ACa1b4c65ee0722712fab89867cb14eac7',
+    authToken: '160c024303f53049e1e060fd67ca6aefc',
+    phoneNumberSid: 'PN0674df0ecee0c9819bca0ff0bc0a159e'
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -112,7 +126,12 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'telegram',
+    token: '192033615:AAEuee2FS2JYKWfDlTulfygjaIGJi4s'
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -150,7 +169,13 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'line',
+    channelAccessToken: 'jZak8gGEYxfy1gIxk869os...',
+    channelSecret: 'b85cff984b26eac4297917abd365c4d6'
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -195,7 +220,12 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'viber',
+    token: 'df5f8c5233399561-926...'
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -233,7 +263,13 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'wechat',
+    appId: 'ACa1b4c65ee0722712fab89867cb14eac7',
+    appSecret: '160c024303f53049e1e060fd67ca6aefc'
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -276,7 +312,11 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'frontendEmail'
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -315,7 +355,12 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'apn',
+    certificate: 'HjkUD4rWvZj7wSDzA8Hu2hd7ICs274Z=='
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -369,7 +414,13 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'fcm',
+    serverKey: 'AAAA_hSf4g2J2Q3zDh2DbvSh27dhKlm2',
+    senderId: '1429457686312'
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -409,7 +460,9 @@ If you would like to continue using your legacy GCM `serverKey` you can also obt
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.list('55c8d9758590aa1900b9b9f6').then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -469,7 +522,9 @@ Lists all integrations for a given app.
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.get('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc02').then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -504,7 +559,9 @@ Return the specified integration.
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.integrations.delete('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc02').then((response) => {
+    // async code
+});
 ```
 
 > Response:

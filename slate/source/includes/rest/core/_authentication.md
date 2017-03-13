@@ -53,7 +53,7 @@ var smooch = new SmoochCore({
 var smooch = new SmoochCore({
     keyId: 'your-key-id',
     secret: 'your-secret',
-    scope: 'appUser', // app or appUser
+    scope: 'appUser', // account, app, or appUser
     userId: 'some-id' // not necessary if scope === 'app'
 });
 ```

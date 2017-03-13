@@ -14,7 +14,11 @@ curl https://api.smooch.io/v1/apps \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.apps.create({
+    name: 'My App'
+}).then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -50,7 +54,9 @@ Creates a new app. The response body will include the appToken, which can be use
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.apps.list().then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -92,7 +98,9 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6 \
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.apps.get('55c8d9758590aa1900b9b9f6').then((response) => {
+    // async code
+});
 ```
 
 > Response:
@@ -125,7 +133,9 @@ Fetches an individual app.
 ```
 
 ```javascript
-// These endpoints are not currently wrapped in a JavaScript lib
+smooch.apps.delete('55c8d9758590aa1900b9b9f6').then((response) => {
+    // async code
+});
 ```
 
 > Response:

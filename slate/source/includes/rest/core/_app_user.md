@@ -1,9 +1,10 @@
 # App User
+
 The app user object represents an end user using your app. The app user document contains basic profile information such as `givenName`, `surname`, and `email`, as well as any custom user properties you choose to configure.
 
 The `/v1/appusers` path gives you APIs that can be used to update the user's properties, retrieve conversation history, post a message, and track app user events.
 
-### userId
+## userId
 
 App users may be created with an optional `userId` parameter. This is a unique identifier that is chosen by the API consumer and it can be used to synchronize a single conversation across multiple clients. To understand how this works, see the section covering [users on multiple clients](/guide/multi-client-users).
 
@@ -142,7 +143,7 @@ Update an app user's basic profile information and specify custom profile data v
 | **surname**<br/><span class='opt'>optional</span>    | The user's surname (last name). |
 | **email**<br/><span class='opt'>optional</span>      | The user's email address. |
 | **signedUpAt**<br/><span class='opt'>optional</span> | The date at which the user signed up. Must be ISO 8601 time format (`YYYY-MM-DDThh:mm:ss.sssZ`) |
-| **properties**<br/><span class='opt'>optional</span> | A flat JSON object containing custom defined user properties. |
+| **properties**<br/><span class='opt'>optional</span> | A flat object containing custom defined user properties. |
 
 ## Delete User Profile
 
@@ -351,7 +352,7 @@ smooch.appUsers.create('steveb@channel5.com', {
 | **surname**<br/><span class='opt'>optional</span>    | The user's surname (last name). |
 | **email**<br/><span class='opt'>optional</span>      | The user's email address. |
 | **signedUpAt**<br/><span class='opt'>optional</span> | The date at which the user signed up. Must be ISO 8601 time format (`YYYY-MM-DDThh:mm:ss.sssZ`) |
-| **properties**<br/><span class='opt'>optional</span> | A flat JSON object containing custom defined user properties. |
+| **properties**<br/><span class='opt'>optional</span> | A flat object containing custom defined user properties. |
 
 In the vast majority of cases app users will be created from the device or browser registered using the [init API](#init). In some cases however it might be necessary to pre-create an app user object before that user runs your app for the first time. This API facilitates this scenario. A `userId` must be specified so that a future `init` call made from a device can use the same `userId` to link the device to the pre-created app user.
 
@@ -501,3 +502,51 @@ smooch.appUsers.unlinkChannel('steveb@channel5.com', 'twilio')
 <api>`DELETE /v1/appusers/{smoochId|userId}/channels/{channel}`</api>
 
 Removes the specified channel from the appUser's clients.
+
+## Schema
+
+### App user schema
+
+The appUser schema describes the appUser data sent in webhook payloads, and in GET appUser responses.
+
+| Field                                         | Description                                                                                                               |
+|-----------------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------|
+| **_id**  | A canonical ID that can be used to retrieve the appUser.                                                                  |
+| **userId** <span class="opt">optional</span>| An optional ID that if specified can also be used to retreive the appUser.                                                |
+| **properties**  | A flat object of optional properties set by the app maker.                                                           |
+| **signedUpAt**  | A datetime string with the format **yyyy-mm-ddThh:mm:ssZ** representing the moment an appUser was created.                |
+| **clients**  | An array of objects representing the clients associated with the appUser. See the [client schema](#client-schema) below for details. |
+| **pendingClients**  | As clients, but containing linked clients which have not been confirmed yet (i.e. Twilio SMS)                             |
+| **devices**  | Identical to the clients array, but **deprecated**.                                                                |
+| **conversationStarted**  | A boolean representing of whether a message has been sent or not.                                                         |
+| **credentialRequired**  | A boolean representing whether the appUser is secured by a JSON Web Token or not.                                         |
+| **email** <span class="opt">optional</span>| An optional email address.                                                                                                |
+| **givenName** <span class="opt">optional</span>| An optional given name.                                                                                                   |
+| **surname** <span class="opt">optional</span>| An optional surname.                                                                                                      |
+
+### Truncated app user schema
+
+The truncated appUser is a partial selection of properties from the appUser model. The truncated appUser is provided in the payloads of certain webhooks.
+
+
+| Field | Description                                              |
+|-------|--------|----------------------------------------------------------|
+| **_id**  | A canonical ID that can be used to retrieve the appUser. |
+| **userId** <span class="opt">optional</span>| An optional ID that if specified can also be used to retrieve the appUser.                                                |
+| **conversationStarted** <span class="opt">optional</span>| A boolean representing of whether a message has been sent or not.                                                         |
+
+### Client schema
+
+Client specific info
+
+| Field                                          | Description                                                                                                                                    |
+|------------------------------------------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| **active**  | If active is `false` then the appUser is not logged in to the client and signifies that the appUser will not receive APN or FCM notifications. This pertains to the SDKs. |
+| **platform**  | Includes one of `"web"`, `"ios"`, `"android"`, `"messenger"`, `"viber"`, `"telegram"`, `"wechat"`, `"line"`, `"twilio"`, and `"frontendEmail"`, `"other"`, or any number of other platforms. |
+| **id**  | A unique identifier for a device if on Web, iOS, or Android, or a client on other channels. |
+| **displayName** <span class="opt">optional</span> | The appUser's display name as provided by the client. |
+| **avatarUrl** <span class="opt">optional</span> | The URI for an appUser's avatar, as provided by the client. |
+| **info** <span class="opt">optional</span>| A flat Object with raw properties that vary for each client platform. All keys are optionals and not guaranteed to be available.                  |
+| **appVersion** <span class="opt">optional</span>| For the SDK in a native app, signifies the version of the app. |
+| **lastSeen**  | A datetime string with the format **yyyy-mm-ddThh:mm:ssZ** representing the last time the appUser sent a message, or launched a client like Web, Android, or iOS.  |
+| **linkedAt** <span class="opt">optional</span>|             | If the channel was linked to a pre-existing appUser, a timestamp signifying when the linking occurred. Formatted as **yyyy-mm-ddThh:mm:ssZ** |

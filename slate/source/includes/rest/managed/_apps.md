@@ -1,5 +1,6 @@
 # Apps
-Endpoints used for provisioning Smooch apps.
+
+App schema and endpoints used for provisioning Smooch apps.
 
 ## Create App
 
@@ -150,3 +151,23 @@ smooch.apps.delete('55c8d9758590aa1900b9b9f6').then((response) => {
 <api>`DELETE /v1/apps/{appId}`</api>
 
 Removes the specified app, including all its enabled integrations.
+
+## Schema
+
+### App schema
+
+The schema describes the fields you can expect to be associated with an app.
+
+| Field | Description                                                                                    |
+|-------|--------|------------------------------------------------------------------------------------------------|
+| **_id**  | A canonical ID that can be used to reference the Smooch app that the event is associated with. |
+| **appToken**  | A public token that can be used to initialize Smooch's mobile and Web SDKs and authorize API calls on behalf of appUsers who haven't been secured by JWT. |
+| **name**  | the friendly name of the app. |
+
+### Truncated app schema
+
+A truncated version of the app sent with webhook payloads.
+
+| Field | Description                                                                                    |
+|-------|--------|------------------------------------------------------------------------------------------------|
+| **_id**  | A canonical ID that can be used to reference the Smooch app that the event is associated with. |

@@ -1,4 +1,5 @@
 # Conversations
+
 When the first message is sent to an app user or received from an app user, a conversation is automatically created for them. The conversation and messages for a given app user can be retrieved and created by way of the `/v1/appusers/` API.
 
 ## Get Messages
@@ -215,7 +216,7 @@ For messages originating from an app maker, a `jwt` credential with `app` level 
 | **email**<br/><span class='opt'>optional</span>      | The email address of the message author. This field is typically used to identify an app maker in order to render the avatar in the app user client. If the email of the Smooch account is used, the configured profile avatar will be used. Otherwise, any [gravatar](http://gravatar.com) matching the specified email will be used as the message avatar. |
 | **avatarUrl**<br/><span class='opt'>optional</span>  | The URL of the desired message avatar image. This field will override any avatar chosen via the `email` parameter. |
 | **destination**<br/><span class='opt'>optional</span>| The channel where you want your message delivered to. This only works for messages with role `appMaker`. See [Channel Targeting](#channel-targeting) for more information. |
-| **metadata**<br/><span class='opt'>optional</span>   | Flat JSON object containing any custom properties associated with the message. If you are developing your own messaging client you can use this field to render custom message types. |
+| **metadata**<br/><span class='opt'>optional</span>   | Flat object containing any custom properties associated with the message. If you are developing your own messaging client you can use this field to render custom message types. |
 | **payload**<br/><span class='opt'>optional</span>    | The payload of a `reply` action, if applicable |
 
 <aside class="notice">
@@ -760,6 +761,7 @@ Only [carousel](#carousel-message) and [list](#list-message) messages currently 
 | **mediaType**<br/><span class='opt'>optional</span>   | If a `mediaUrl` was specified, the media type is defined here, for example `image/jpeg`. If `mediaType` is not specified, the media type will be resolved with the `mediaUrl`. |
 
 ## Action Buttons
+
 Actions buttons can be sent through the [post message API](#post-message) by including them in the message payload.
 
 There are 4 types of supported actions : **link**, **buy**, **postback**, and **reply**. Type must be specified by providing a `type` argument in the action object.
@@ -803,7 +805,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 | **type**<br/><span class='req'>required</span>     | `link` |
 | **uri**<br/><span class='req'>required</span>      | The action URI. This is the link that will be used in the clients when clicking the button. |
 | **default**<br/><span class='opt'>optional</span>  | Flag indicating the message action is the default for a [message item](#message-items) in Facebook Messenger. |
-| **metadata**<br/><span class='opt'>optional</span> | Flat JSON object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span> | Flat object containing any custom properties associated with the action. |
 
 <aside class="notice">
     Action buttons sent to LINE must have `http` or `https` protocol or the message will not be delivered.
@@ -844,7 +846,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 | **type**<br/><span class='req'>required</span>      | `buy` |
 | **amount**<br/><span class='req'>required</span>    | The amount being charged. It needs to be specified in cents and is an integer (9.99$ -> 999).|
 | **currency**<br/><span class='opt'>optional</span>  | The currency of the amount being charged (USD, CAD, etc.). If not specified, it would use the default one set in your account. [See supported currencies](https://support.stripe.com/questions/which-currencies-does-stripe-support). |
-| **metadata**<br/><span class='opt'>optional</span>  | Flat JSON object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. |
 
 <aside class="notice">
 The <a href="/javascript/#stripe">Stripe integration</a> must be configured and active in order to accept buy buttons.
@@ -884,7 +886,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 | **text**<br/><span class='req'>required</span>      | The button text. |
 | **type**<br/><span class='req'>required</span>      | `postback` |
 | **payload**<br/><span class='req'>required</span>    | A string payload to help you identify the action context. You can also use metadata for more complex needs. |
-| **metadata**<br/><span class='opt'>optional</span>  | Flat JSON object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. |
 
 <aside class="notice">
 See how to handle postback with <a href="#webhook-triggers">webhook triggers</a>.
@@ -948,7 +950,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 | **type**<br/><span class='req'>required</span>      | `reply` |
 | **payload**<br/><span class='req'>required</span>   | A string payload to help you identify the action context. Used when posting the reply. You can also use metadata for more complex needs. |
 | **iconUrl**<br/><span class='opt'>optional</span>   | An icon to render next to the reply option (Facebook Messenger and Web Messenger only) |
-| **metadata**<br/><span class='opt'>optional</span>  | Flat JSON object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. |
 
 <aside class="notice">
 `reply` type actions can be sent either alone or with [location request](#location-request) actions. If an action of a different type is included in the message, it will be rejected.
@@ -996,7 +998,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 |------------------------------|----------------------------|
 | **text**<br/><span class='req'>required</span>      | The button text. |
 | **type**<br/><span class='req'>required</span>      | `locationRequest`|
-| **metadata**<br/><span class='opt'>optional</span> | Flat JSON object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span> | Flat object containing any custom properties associated with the action. |
 
 <aside class="notice">
 `locationRequest` type actions can be sent either alone or with [reply](#reply) actions. If an action of a different type is included in the message, it will be rejected.
@@ -1052,7 +1054,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 |  **Arguments**                |                  |
 |------------------------------|----------------------------|
 | **type**<br/><span class='req'>required</span>      | `share` |
-| **metadata**<br/><span class='opt'>optional</span>  | Flat JSON object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. |
 
 <aside class="notice">
 Share Buttons are currently only supported in Facebook Messenger carousels.
@@ -1155,3 +1157,60 @@ smooch.appUsers.deleteMessages('c7f6e6d6c3a637261bd9656f').then(() => {
 <api>`DELETE /v1/appusers/{smoochId|userId}/messages`</api>
 
 Clears the message history for a user, permanently deleting all messages, but leaving any connections to Messaging Channels and Business Systems intact. These connections allow for the conversation to continue in the future, while still being associated to the same appUser.
+
+## Schema
+
+### Message schema
+
+This table represents the fields you can expect to receive in a webhook payload's message, or in the response to a GET Messages API call.
+
+| Field                                         | Description                                                                                                             |
+|-----------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------|
+| **_id**  | The unique ID for the message.                                                                |
+| **text**  | The message text.                                                                                                       |
+| **role**  | The role of the message sender. `"appUser"`, `"appMaker"`, or `"whisper"`.                                                      |
+| **authorId**  | The appUser's _id if the message `role` is `"appUser"`, otherwise, a hash based on the appMaker's email address.        |
+| **name** <span class="opt">optional</span>| The appUser's friendly name, or an optionally provided appMaker name.                                                   |
+| **received**  | A unix timestamp given in seconds, describing when Smooch received the message.                                         |
+| **source**  | A nested object describing the source of the message. See the [source schema](#sourcedestination-schema) below for details.                   |
+| **avatarUrl** <span class="opt">optional</span>| The URL for an image of the appMaker.                                                                                   |
+| **type**  | `"text"`, `"image"`, `"carousel"`, `"location"`, or `"list"`.                                                                                                 |
+| **actions** <span class="opt">optional</span> | An array of objects representing the actions associated with the message. See the [action schema](#action-schema) below for details. |
+| **mediaUrl** <span class="opt">optional</span>| The URL for media, such as an image, attached to the message. |
+| **mediaType** <span class="opt">optional</span>| The MIME type for any media attached in the mediaUrl. |
+| **coordinates** <span class="opt">optional</span>| A nested object describing the coordinates sent by an appUser. Only present in a `"location"` type message. See the [coordinates schema](#coordinates-schema) below for details. |
+
+### Source/Destination schema
+
+Data representing the source or destination of a message, whether an appUser or appMaker message.
+
+| Field                                  | Description                                                                                                                                                                                            |
+|----------------------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **type**  | An identifier for the channel from which a message originated. May include one of `"web"`, `"ios"`, `"android"`, `"messenger"`, `"viber"`, `"telegram"`, `"wechat"`, `"line"`, `"twilio"`, `"frontendEmail"`, `"api"`, or any number of other channels. |
+| **id** <span class="opt">optional</span>| An identifier used by Smooch for internal purposes. |
+
+### Coordinates schema
+
+Data representing a location sent by the appUser.
+
+| Field                                  | Description                                                                                                                                                                                            |
+|----------------------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **_id** | The unique ID of the coordinates item. |
+| **lat** | Global latitude. |
+| **long** | Global longitude. |
+
+
+### Action schema
+
+This table represents the fields you can expect to receive nested inside postback or message data, in a webhook payload, or in the response to a GET Messages API call.
+
+| Field      | Description                                                                                               |
+|------------|--------|-----------------------------------------------------------------------------------------------------------|
+| **_id**  | A canonical ID.                                                                                           |
+| **type**  | `"link"`, `"reply"`, `"postback"`, `"share"`, `"location"`, or `"buy"`.                                                        |
+| **uri** <span class="opt">optional</span>| The URI for a link type button, a checkout page for buy type buttons. May also be an empty string.                                 |
+| **text** <span class="opt">optional</span>| The button text.                                                                                          |
+| **payload** <span class="opt">optional</span>| The payload of an action button like a postback button.                                          |
+| **amount** <span class="opt">optional</span>| An integer representing an amount of money in hundredths of a dollar (or equivalent in other currencies). |
+| **currency** <span class="opt">optional</span>| An ISO 4217 standard currency code in lowercase.                                                          |
+| **state** <span class="opt">optional</span>| The value "offered", or "paid" sent with a buy action type. |

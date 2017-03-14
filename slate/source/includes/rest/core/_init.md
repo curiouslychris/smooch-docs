@@ -102,7 +102,7 @@ If a `userId` is used when calling `/v1/init`, then clients and app users may ha
 
 ## Device Info
 
-The `device` object may also accept a flat `info` JSON object. Device information reported here will be rendered alongside app user information inside any app maker channels configured with Smooch. The `platform` and `appVersion` fields are special in that they can be used as audience targeting criteria for whispers.
+The `device` object may also accept a flat `info` object. Device information reported here will be rendered alongside app user information inside any app maker channels configured with Smooch. The `platform` and `appVersion` fields are special in that they can be used as audience targeting criteria for whispers.
 
 | Field                     | Example                   | Relevant Platforms |
 |---------------------------|---------------------------|--------------------|

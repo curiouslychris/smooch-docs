@@ -6,7 +6,7 @@ Welcome to the Smooch API. The API allows you to craft entirely unique messaging
 
 The Smooch API is designed according to [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) principles.
 
-The API accepts JSON in request bodies and requires that the `content-type: application/json` header be specified for all such requests. The API will always respond with a JSON object. Depending on context, resources may be returned as single objects or as arrays of objects, nested within the response object.
+The API accepts JSON in request bodies and requires that the `content-type: application/json` header be specified for all such requests. The API will always respond with a object. Depending on context, resources may be returned as single objects or as arrays of objects, nested within the response object.
 
 The API also facilitates [cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) so that it can be called from a web application.
 

@@ -29,8 +29,8 @@ The payload for when a user reads a conversation.
 | **trigger** | `"conversation:read"`, or `"conversation:start"`                                                                                                                       |
 | **app** | A nested object representing the Smooch app associated with the event. See the [truncated app schema](#truncated-app-schema) below for details.                          |
 | **source** | A nested object representing the source of the event. See the [source schema](#sourcedestination-schema) below for details. |
-| **appUser** | A nested object representing the [appUser](#appuser-schema) (for "conversation:read" events, a [truncated appUser](#truncated-appuser-schema) is provided). |
-| **timestamp** | A unix timestamp given in seconds, describing when Smooch received the message. |
+| **appUser** | A nested object representing the [appUser](#app-user-schema) (for "conversation:read" events, a [truncated appUser](#truncated-app-user-schema) is provided). |
+| **timestamp** | A unix timestamp given in seconds, describing when Smooch received the event. |
 
 ### Trigger - `conversation:start`
 

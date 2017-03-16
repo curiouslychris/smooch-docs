@@ -48,7 +48,7 @@ The payload for a [text message](#text-message).
 | **trigger** | `"message:appUser"`, or `"message:appMaker"`                                                                 |
 | **app** | A nested object representing the Smooch app associated with the event. See the [truncated app schema](#truncated-app-schema) below for details.       |
 | **messages** | An array of objects representing the messages associated with the event. See the [message schema](#message-schema) below for details. |
-| **appUser** | A nested object representing the appUser associated with the event. See the [appUser schema](#appuser-schema) below for details.      |
+| **appUser** | A nested object representing the appUser associated with the event. See the [appUser schema](#app-user-schema) below for details.      |
 
 ### Trigger - `message:appUser` (image)
 
@@ -233,8 +233,7 @@ The payload for a [list message](#list-message).
             "type": "location",
             "coordinates": {
                 "lat": 45.5261583,
-                "long": -73.595346,
-                "_id": "5887c22356c66904009ad603"
+                "long": -73.595346
             },
             "role": "appUser",
             "_id": "5887c22356c66904009ad602",
@@ -260,4 +259,4 @@ The payload for a [list message](#list-message).
 }
 ```
 
-The payload for when a user sends their location.
+The payload for a [location message](#location-message).

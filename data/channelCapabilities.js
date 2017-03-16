@@ -94,6 +94,7 @@ export const CAPABILITIES = {
     },
     locationRequest: {
         name: 'Location Request',
+        link: '/guide/structured-messages/#location-request-buttons',
         send: true
     }
 };

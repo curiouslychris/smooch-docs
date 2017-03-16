@@ -30,5 +30,5 @@ The payload for when two users are merged into one.
 |-------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **trigger**  | `"merge:appUser"`                                                                                                                                                 |
 | **app**  | A nested object representing the Smooch app associated with the event. See the [truncated app schema](#truncated-app-schema) below for details.                                               |
-| **surviving**  | A nested object with the **truncated appUser** that now represents the merged appUser objects. See the [truncated appUser schema](#truncated-appuser-schema) below for details.         |
-| **discarded**  | An array of objects with the **truncated appUsers** that were unified into `surviving` appUser object. See the [truncated appUser schema](#truncated-appuser-schema) below for details. |
+| **surviving**  | A nested object with the **truncated appUser** that now represents the merged appUser objects. See the [truncated appUser schema](#truncated-app-user-schema) below for details.         |
+| **discarded**  | An array of objects with the **truncated appUsers** that were unified into `surviving` appUser object. See the [truncated appUser schema](#truncated-app-user-schema) below for details. |

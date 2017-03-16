@@ -64,7 +64,7 @@ Postbacks originating from a [persistent menu](#persistent-menus) do not have me
 | **trigger**  | `"postback"`                                                                                                                |
 | **app**  | A nested object representing the Smooch app associated with the event. See the [truncated app schema](#truncated-app-schema) below for details.         |
 | **postbacks**  | An array of objects representing the postbacks associated with the event. See the [postback schema](#postback-schema) below for details. |
-| **appUser**  | A nested object representing the appUser associated with the event. See the [appUser schema](#appuser-schema) below for details. |
+| **appUser**  | A nested object representing the appUser associated with the event. See the [appUser schema](#app-user-schema) below for details. |
 
 #### Postback schema
 

@@ -45,7 +45,7 @@ The payload for when the delivery of a message was successful.
 | **trigger** | `"delivery:success"` or `"delivery:failure"`                                                                                                        |
 | **app** | A nested object representing the Smooch app associated with the event. See the [truncated app schema](#truncated-app-schema) below for details.         |
 | **messages** | An array of objects representing the messages associated with the event. See the [message schema](#message-schema) below for details.   |
-| **appUser** | A nested object representing the **truncated appUser** associated with the event. See the [appUser schema](#truncated-appuser-schema) below for details.        |
+| **appUser** | A nested object representing the **truncated appUser** associated with the event. See the [appUser schema](#truncated-app-user-schema) below for details.        |
 | **destination** | A nested object representing the destination of the message. See the [destination schema](#sourcedestination-schema) below for details.                |
 | **timestamp** | A unix timestamp given in seconds, describing when Smooch received the message.                                             |
 | **error**  <span class="opt">optional</span> | A nested object (present in `"delivery:failure"` event) representing the error associated with the delivery failure. See the [error schema](#error-schema) below for details. |

@@ -73,8 +73,8 @@ Smooch is committed to supporting the most messaging channels on the market with
         <span class='channel-name'>Twilio</span>
     </div>
     <div class='logo-container'>
-        <img src='/images/channel-icons/icon-email.png' srcset='/images/channel-icons/icon-email.png 1x, /images/channel-icons/icon-email@2x.png 2x' />
-        <span class='channel-name'>Email</span>
+        <img src='/images/channel-icons/icon-mailgun.png' srcset='/images/channel-icons/icon-mailgun.png 1x, /images/channel-icons/icon-mailgun@2x.png 2x' />
+        <span class='channel-name'>Mailgun</span>
     </div>
 </div>
 

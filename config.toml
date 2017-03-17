@@ -88,7 +88,7 @@ pages = [
     "/guide/viber/",
     "/guide/wechat/",
     "/guide/sms/",
-    "/guide/email/",
+    "/guide/mailgun/",
     "/guide/web-messenger/",
     "/guide/native-ios-sdk/",
     "/guide/native-android-sdk/",

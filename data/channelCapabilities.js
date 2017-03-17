@@ -509,8 +509,8 @@ const channelData = {
         }
     },
     email: {
-        icon: require('../images/channel-icons/frontendEmail.svg'),
-        name: 'Email',
+        icon: require('../images/channel-icons/mailgun.svg'),
+        name: 'Mailgun',
         capabilities: {
             text: {
                 send: SUPPORT_LEVEL.FULL,

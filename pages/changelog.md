@@ -6,6 +6,11 @@ layout: two-column
 
 # Changelog
 
+## March 17th, 2017
+
+- [Mailgun](https://app.smooch.io/integrations/mailgun) is now a customer channel available on Smooch
+- Added menu targeting API and submenu support. [Learn More](https://docs.smooch.io/rest/#persistent-menus)
+
 ## March 9th, 2017
 
 - Added support for changing display settings for carousel messages. [Learn more](https://docs.smooch.io/rest/#display-settings)

@@ -299,14 +299,14 @@ In their [WeChat dashboard](https://mp.weixin.qq.com/), the customer must set th
 | **appSecret**<br/><span class='req'>required</span> | WeChat App Secret. |
 | **encodingAesKey**<br/><span class='opt'>optional</span> | AES Encoding Key. |
 
-## Email
+## Mailgun
 
 > Request:
 
 ```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
-     -d '{"type": "frontendEmail"}' \
+     -d '{"type": "mailgun", "apiKey": "key-f265hj32f0sd897lqd2j5keb96784043", "domain": "sandbox123.mailgun.org",  "incomingAddress": "mytestemail@sandbox123.mailgun.org"}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-account-token'
 ```
@@ -326,21 +326,25 @@ smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
 ```
 ```json
 {
-    "integration": {
-        "_id": "5735ddfd48011972d621dc0a",
-        "type": "frontendEmail",
-        "shortId": "tki1106",
-        "smoochAddress": "app.tki1106@mail.smooch.io"
-    }
+	"integration": {
+		"type": "mailgun",
+		"domain": "sandbox123.mailgun.org",
+		"incomingAddress": "mytestemail@sandbox123.mailgun.org",
+		"_id": "58adf047b90af0f747cff1d2"
+	}
 }
 ```
 
-To configure an Email integration, simply call the Create Integration endpoint with the type argument _frontendEmail_.
+To configure a Mailgun integration, visit the [API Keys tab](https://app.mailgun.com/app/account/security) in the settings page of the Mailgun dashboard and copy your active API key. Call the Create Integration endpoint with your API Key, a domain you have configured in Mailgun, and the incoming address you would like to use.
 
-| **Arguments**             |   |
-|---------------------------|---|
-| **type**<br/><span class='req'>required</span> | The integration type: _frontendEmail_. |
-| **fromAddress**<br/><span class='opt'>optional</span> | Email will display as coming from this address. |
+| **Arguments**                                             |                                                                                                        |
+|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **type**<br/><span class='req'>required</span>            | The integration type: _mailgun_.                                                                       |
+| **apiKey**<br/><span class='req'>required</span>          | The public API key of your Mailgun account.                                                            |
+| **domain**<br/><span class='req'>required</span>          | The domain used to relay email. This domain must be configured and verified in your Mailgun account.   |
+| **incomingAddress**<br/><span class='req'>required</span> | Smooch will receive all emails sent to this address. It will also be used as the *Reply-To* address.   |
+
+***Note:*** The `incomingAddress` must have the same domain as the one specified in the `domain` parameter.
 
 ## Apple Push Notification
 

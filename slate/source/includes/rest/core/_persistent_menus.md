@@ -25,7 +25,6 @@ smooch.menu.get()
 ```json
 {
     "menu": {
-        "name": "My Awesome Menu",
         "items": [
             {
                 "type": "link",
@@ -61,7 +60,6 @@ curl https://api.smooch.io/v1/menu \
 ```
 ```js
 smooch.menu.configure({
-    name: 'My Awesome Menu',
     items: [{
         type: 'link',
         text: 'Smooch',
@@ -81,7 +79,6 @@ smooch.menu.configure({
 ```json
 {
     "menu": {
-        "name": "My Awesome Menu",
         "items": [{
             "type": "link",
             "text": "Smooch",
@@ -94,7 +91,7 @@ smooch.menu.configure({
 
 <api>`PUT /v1/menu`</api>
 
-Configure the specified app's menu. See [menu configuration][#menu-configuration] for possible options.
+Configure the specified app's menu. See [menu configuration](#menu-configuration) for possible options.
 
 ## Delete App Menu
 
@@ -151,7 +148,6 @@ curl https://api.smooch.io/v1/integrations/:integrationId/menu \
 ```json
 {
     "menu": {
-        "name": "My Awesome Menu",
         "items": [
             {
                 "type": "link",
@@ -197,7 +193,6 @@ curl https://api.smooch.io/v1/integrations/:integrationId/menu \
 ```json
 {
     "menu": {
-        "name": "My Awesome Menu",
         "items": [{
             "type": "link",
             "text": "Smooch",
@@ -210,7 +205,7 @@ curl https://api.smooch.io/v1/integrations/:integrationId/menu \
 
 <api>`POST /v1/integrations/:integrationId/menu`</api>
 
-Create the specified integration's menu, overriding the app menu if configured. See [menu configuration][#menu-configuration] for possible options.
+Create the specified integration's menu, overriding the app menu if configured. See [menu configuration](#menu-configuration) for possible options.
 
 ## Update Integration Menu
 
@@ -235,7 +230,6 @@ curl https://api.smooch.io/v1/integrations/:integrationId/menu \
 ```json
 {
     "menu": {
-        "name": "My Awesome Menu",
         "items": [{
             "type": "link",
             "text": "Smooch",
@@ -248,7 +242,7 @@ curl https://api.smooch.io/v1/integrations/:integrationId/menu \
 
 <api>`PUT /v1/integrations/:integrationId/menu`</api>
 
-Create the specified integration's menu, overriding the app menu if configured. See [menu configuration][#menu-configuration] for possible options.
+Create the specified integration's menu, overriding the app menu if configured. See [menu configuration](#menu-configuration) for possible options.
 
 ## Delete Integration Menu
 
@@ -299,7 +293,7 @@ Menus contain 1 to 3 menu items at its first level of hierarchy. Submenus contai
 | **Arguments**               |   |
 |-----------------------------|---|
 | **type**<br/><span class='req'>required</span> | Can either be [link](/javascript/#links), [postback](/javascript/#postbacks), which correspond to Smooch's [link and postback actions](/javascript/#action-buttons), or submenu for nested menus. |
-| **text**<br/><span class='opt'>required</span> | The button text of the menu item. |
+| **text**<br/><span class='req'>required</span> | The button text of the menu item. |
 | **uri**<br/><span class='opt'>optional</span> | A valid address, like http://smooch.io. Required for a `link` type item. |
 | **postback**<br/><span class='opt'>optional</span> | A payload for a postback. Required for a `postback` type item.|
 | **items**<br/><span class='opt'>optional</span> | An array of menu items for a submenu. Required for a `submenu` type item.|

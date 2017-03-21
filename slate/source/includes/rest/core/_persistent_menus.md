@@ -137,7 +137,10 @@ curl https://api.smooch.io/v1/integrations/:integrationId/menu \
      -H 'authorization: Bearer your-jwt'
 ```
 ```js
-// This endpoint is not currently wrapped in a JavaScript lib
+smooch.integrations.menu.get('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc02')
+.then(() => {
+    // async code
+});
 ```
 
 > Response:
@@ -182,7 +185,15 @@ curl https://api.smooch.io/v1/integrations/:integrationId/menu \
      -H 'authorization: Bearer your-jwt'
 ```
 ```js
-// This endpoint is not currently wrapped in a JavaScript lib
+smooch.integrations.menu.create('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc02', {
+    items: [{
+        type: 'link',
+        text: 'Smooch',
+        uri: 'http://smooch.io'
+    }]
+}).then(() => {
+    // async code
+});
 ```
 
 > Response:
@@ -219,7 +230,15 @@ curl https://api.smooch.io/v1/integrations/:integrationId/menu \
      -H 'authorization: Bearer your-jwt'
 ```
 ```js
-// This endpoint is not currently wrapped in a JavaScript lib
+smooch.integrations.menu.update('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc02', {
+    items: [{
+        type: 'link',
+        text: 'Smooch',
+        uri: 'http://smooch.io'
+    }]
+}).then(() => {
+    // async code
+});
 ```
 
 > Response:
@@ -255,7 +274,10 @@ curl https://api.smooch.io/v1/integrations/:integrationId/menu \
      -H 'authorization: Bearer your-jwt'
 ```
 ```js
-// This endpoint is not currently wrapped in a JavaScript lib
+smooch.integrations.menu.delete('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc02')
+.then(() => {
+    // async code
+});
 ```
 
 > Response:

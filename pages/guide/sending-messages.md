@@ -14,7 +14,7 @@ Alternatively, you can use the Smooch API to send messages from within your own 
 
 ## Sending Text Messages with the API
 
-In order to send a message to a user, you'll need the user's ID. Typically, you'll obtain this from the [webhook that delivers a user's message to your software](/guide/receiving-messages/), in some cases you can obtain this ID by [manually creating](/guide/creating-users/) users.
+In order to send a message to a user, you'll need the user's ID. Typically, you'll obtain this from the [webhook that delivers a user's message to your software](/guide/receiving-messages/), alternatively you can obtain this ID by [manually creating](/guide/creating-users/) users or by copying it from the dashboard log tab.
 
 
 With the user ID in hand, you can easily send a simple text message:
@@ -34,6 +34,37 @@ smooch.appUsers.sendMessage('APP_USER_ID', {
 In the code above, `text` contains the message payload, while `name` and `email` are optionally used to identify the "sender" of the message that should be displayed to the user receiving the message. Smooch uses the email parameter to look up and provide an avatar for the message sender using [gravatar](http://gravatar.com), if one is available.
 
 To learn more about the various parameters of this API, read its [reference documentation](http://docs.smooch.io/rest/#post-message).
+
+## Automatic message delivery
+
+When responding to users that have multiple channels linked, either via the [Linking API](/rest/#link-app-user-to-channel) or the [Web Messenger](/guide/web-messenger/#user-linking), Smooch uses the following channel targeting logic to ensure delivery of messages:
+
+ - First, send the message to the preferred channel. The preferred channel is the last channel used by the user. 
+ - If the message is left unread for 5 minutes and the preferred channel was not push-capable, send the message to the second-best channel. This means the second most recently used channel that is push-capable.
+ - Finally, send the message to all channels that support receiving messages without a notification (currently all SDKs & Facebook messenger)
+
+ Here's a visual representation of the automatic message delivery logic:
+
+ ![Built-in delivery logic](/images/delivery.png)
+
+ ## Targeting a specific channel
+
+Using the Smooch API, you can also bypass the [automatic delivery logic](/guide/sending-messages/#automatic-message-delivery) and [target a channel](https://docs.smooch.io/rest/?javascript#channel-targeting) specifically. Note that for this to work, the user needs to have a client linked to the targeted channel.
+
+```javascript
+smooch.appUsers.sendMessage('APP_USER_ID', {
+    type: 'text',
+    text: 'Hey Messenger user',
+    role: 'appMaker',
+    name: 'Business Man',
+    email: 'boss@business.com',
+    destination: {
+        integrationType: 'messenger'
+    }
+}).then(() => {
+    // async code
+});
+```
 
 ## Sending Typing Activity with the API
 

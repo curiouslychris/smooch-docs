@@ -6,6 +6,10 @@ layout: two-column
 
 # Changelog
 
+## March 30th, 2017
+
+- Added support for Messenger webview height, and Messenger Extensions (with fallback URL) in `link` actions. [Learn More](https://docs.smooch.io/rest/#extra-channel-options-schema)
+
 ## March 17th, 2017
 
 - [Mailgun](https://app.smooch.io/integrations/mailgun) is now a customer channel available on Smooch

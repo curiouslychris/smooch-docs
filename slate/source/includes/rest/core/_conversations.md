@@ -751,9 +751,32 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 | **uri**<br/><span class='req'>required</span>      | The action URI. This is the link that will be used in the clients when clicking the button. |
 | **default**<br/><span class='opt'>optional</span>  | Flag indicating the message action is the default for a [message item](#message-items) in Facebook Messenger. |
 | **metadata**<br/><span class='opt'>optional</span> | Flat object containing any custom properties associated with the action. |
+| **extraChannelOptions**<br/><span class='opt'>optional</span> | Extra options to pass directly to the channel API. See [Extra Channel Options](#extra-channel-options-schema) |
 
 <aside class="notice">
     Action buttons sent to LINE must have `http` or `https` protocol or the message will not be delivered.
+</aside>
+
+##### Extra Channel Options Schema
+
+For features that are not yet supported natively by the Smooch platform, or are specific to a certain channel implementation, the `Extra Channel Options` Schema allows the caller to specify certain parameters that will be passed directly to the channel API.
+
+Extra channel options exist for the following channels:
+
+|        **Arguments**         |                            |
+|------------------------------|----------------------------|
+| **messenger**<br/><span class='opt'>optional</span>     | An object conforming to the [Messenger Extra Channel Options Schema](#messenger-extra-channel-options-schema)  |
+
+##### Messenger Extra Channel Options Schema
+
+|        **Arguments**         |                            |
+|------------------------------|----------------------------|
+| **webview_height_ratio**<br/><span class='opt'>optional</span>     | Controls the webview height in a `link` type action. Possible values are `compact`, `tall`, and `full`. [More Info](https://developers.facebook.com/docs/messenger-platform/send-api-reference/url-button)  |
+| **messenger_extensions**<br/><span class='opt'>optional</span>     | For `link` type actions, a boolean value indicating whether the URL should be loaded with Messenger Extensions enabled. Default value is `false`. [More Info](https://developers.facebook.com/docs/messenger-platform/send-api-reference/url-button)  |
+| **fallback_url**<br/><span class='opt'>optional</span>     | If `messenger_extensions` is `true`, the URL to use on clients that don't support Messenger Extensions. [More Info](https://developers.facebook.com/docs/messenger-platform/send-api-reference/url-button)  |
+
+<aside class="notice">
+    When using Messenger Extensions, make sure to [whitelist your domain](https://developers.facebook.com/docs/messenger-platform/webview/extensions) with Facebook, otherwise the message will result in a delivery failure.
 </aside>
 
 #### Buy

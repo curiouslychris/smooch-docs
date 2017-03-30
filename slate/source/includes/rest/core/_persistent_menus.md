@@ -199,7 +199,7 @@ smooch.integrations.menu.create('55c8d9758590aa1900b9b9f6', '5735dded48011972d62
 > Response:
 
 ```
-201 OK
+201 CREATED
 ```
 ```json
 {

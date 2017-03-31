@@ -1,6 +1,10 @@
 # Persistent Menus
 Smooch provides an API to set persistent menus on messaging channels that support custom menus in their chat UIs ([Facebook Messenger](https://docs.smooch.io/guide/facebook-messenger/) and [WeChat](https://docs.smooch.io/guide/wechat/)). Menus can be configured on a per app basis and on a per integration basis.
 
+<aside class="warning">
+Note that menu content is cached on Facebook Messenger. Seeing your changes while testing might require deleting the conversation in your Messenger client.
+</aside>
+
 ## Get App Menu
 
 > Request:
@@ -314,7 +318,7 @@ Menus contain 1 to 3 menu items at its first level of hierarchy. Submenus contai
 
 | **Arguments**               |   |
 |-----------------------------|---|
-| **type**<br/><span class='req'>required</span> | Can either be [link](/javascript/#links), [postback](/javascript/#postbacks), which correspond to Smooch's [link and postback actions](/javascript/#action-buttons), or submenu for nested menus. |
+| **type**<br/><span class='req'>required</span> | Can either be `link`, `postback`, which correspond to Smooch's [link and postback actions](/javascript/#action-buttons), or `submenu` for nested menus. |
 | **text**<br/><span class='req'>required</span> | The button text of the menu item. |
 | **uri**<br/><span class='opt'>optional</span> | A valid address, like http://smooch.io. Required for a `link` type item. |
 | **postback**<br/><span class='opt'>optional</span> | A payload for a postback. Required for a `postback` type item.|

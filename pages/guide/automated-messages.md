@@ -22,6 +22,7 @@ To help get you started, we've built in 5 basic templates and also allow you to 
 
  You can start from any of these templates and customize it to meet your needs. You can also create a custom Whisper from scratch and go beyond these templates. You can use Whispers to ask for reviews from your most engaged users at the right time, you can notify users of older versions of your app about new versions, and more.
 
+<aside class="notice">Apps are limited to having 10 whispers configured at a time.</aside>
 <aside class="notice">To prevent conflicts, when an <a href="office-hours/">Office Hours</a> message is sent the `Auto-response` whisper will not trigger.</aside>
 
 ## How Whispers work

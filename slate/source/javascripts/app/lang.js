@@ -14,8 +14,11 @@ License for the specific language governing permissions and limitations
 under the License.
 */
 (function(global) {
+    var iosLanguages = ['swift', 'objective_c'];
+    var androidLanguages = ['java'];
+    var webLanguages = ['javascript'];
     var restLanguages = ['shell', 'javascript'];
-    var languages = [].concat(restLanguages);
+    var languages = [].concat(iosLanguages, androidLanguages, webLanguages, restLanguages);
 
     global.setupLanguages = setupLanguages;
     global.activateLanguage = activateLanguage;
@@ -23,7 +26,25 @@ under the License.
     global.getLanguages = getLanguages;
 
     function getPlatform() {
-        return 'rest'
+        var pathname = window.location.pathname;
+
+        if (pathname.indexOf('/ios') === 0) {
+            return 'ios'
+        }
+
+        if (pathname.indexOf('/android') === 0) {
+            return 'android'
+        }
+
+        if (pathname.indexOf('/javascript') === 0) {
+            return 'javascript'
+        }
+
+        if (pathname.indexOf('/rest') === 0) {
+            return 'rest'
+        }
+
+        return 'unknown';
     }
 
     function getLanguages() {
@@ -40,7 +61,7 @@ under the License.
                 return restLanguages;
         }
 
-        return restLanguages;
+        return iosLanguages;
     }
 
     function activateLanguage(language) {
@@ -95,24 +116,19 @@ under the License.
             // no language selected, so use the default
             activateLanguage(getLanguages()[0]);
         }
-
-        $('.lang-selector a[data-language-name=\'' + 'ruby' + '\']').attr('href','https://github.com/smooch/smooch-ruby').attr('target','_blank').addClass('external');
-        $('.lang-selector a[data-language-name=\'' + 'python' + '\']').attr('href','https://github.com/smooch/smooch-python').attr('target','_blank').addClass('external');
-        $('.lang-selector a[data-language-name=\'' + 'java' + '\']').attr('href','https://github.com/smooch/smooch-java').attr('target','_blank').addClass('external');
     }
 
     // if we click on a language tab, activate that language
     $(function() {
         $('.lang-selector a').on('click', function() {
             var language = $(this).data('language-name');
-            if (language != "ruby" && language != "python" && language != "java"){
-                pushURL(language);
-                activateLanguage(language);
-                return false;
-            }
+            pushURL(language);
+            activateLanguage(language);
+            return false;
         });
         window.onpopstate = function(event) {
             activateLanguage(window.location.search.substr(1));
         };
     });
+
 })(window);

@@ -24,16 +24,15 @@
   .page-wrapper {
     .dark-box {
       display:block;
-      background-color: #373352;
+      background-color: #f3f5f6;
     }
   }
 }
 
 .tocify-wrapper {
+  background-image: linear-gradient(#3d3551,#433b56 50%,#504662);
+
   .tocify-focus {
-    background-color: #8063bb;
-    a{
-      color:#fff;
-    }
+    background-color: transparent;
   }
 }

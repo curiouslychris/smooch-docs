@@ -5,11 +5,11 @@ title: Smooch API Reference
 language_tabs:
   - shell
   - javascript
-  - ruby
-  - python
-  - java
 
 toc_footers:
+  - <a href='https://smooch.io/'>Sign up for Smooch, it's free</a>
+  - <br/>
+  - <a href='/guide/'>Back to Docs</a>
 
 includes:
     - --Core

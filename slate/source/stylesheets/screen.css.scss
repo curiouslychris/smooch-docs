@@ -31,17 +31,16 @@ html, body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   @extend %default-font;
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
 }
 
-a{
-  color:$violet;
-  font-weight:400;
-  letter-spacing:-0.02em;
+p, ul li:not(.tocify-item) {
+  a {
+    color: #912d8d;
+  }
 }
 
 p img {
@@ -92,30 +91,7 @@ p img {
   background-color: $nav-bg;
   font-size: 13px;
   font-weight: bold;
-  &::-webkit-scrollbar {
-      width: 16px;
-  }
-   
-  /* Track */
-  &::-webkit-scrollbar-track {
-      background-color:#f6f7fc;
-      -webkit-border-radius: 10px;
-      border-radius: 10px;
-      background-clip: padding-box;
-      border: 4px solid rgba(0, 0, 0, 0);
-  }
-   
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-      -webkit-border-radius: 10px;
-      border-radius: 10px;
-      background: #d7dbe5; 
-      border: 4px solid rgba(0, 0, 0, 0);
-      background-clip: padding-box;
-  }
-  &::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(255,0,0,0.4); 
-  }
+
   // language selector for mobile devices
   .lang-selector {
     a {
@@ -170,8 +146,7 @@ p img {
     @include transition-duration(180ms);
     @include transition-timing-function(ease-in-out);
     &.visible {
-      max-height: 30%;
-      height:auto;
+      height: 30%;
       margin-bottom: 1em;
     }
 
@@ -232,7 +207,7 @@ p img {
     background-color: $nav-subitem-bg;
     font-weight: 500;
     .tocify-item>a {
-      padding-left: $nav-padding;
+      padding-left: $nav-padding + $nav-indent;
       font-size: 12px;
     }
 
@@ -331,7 +306,7 @@ p img {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    //border-bottom: 5px solid $lang-select-active-bg;
+    border-bottom: 5px solid $lang-select-active-bg;
   }
 }
 
@@ -342,13 +317,10 @@ p img {
   a {
     display: block;
     float:left;
-    text-transform:capitalize;
-    letter-spacing:normal;
     color: $lang-select-text;
     text-decoration: none;
-    padding: 16px 28px;
+    padding: 0 10px;
     line-height: 30px;
-    font-weight:400;
 
     &:active {
       background-color: $lang-select-pressed-bg;
@@ -410,7 +382,7 @@ p img {
     padding-bottom: 0.5em;
     border-bottom: 1px solid #ccc;
     margin-bottom: $h1-margin-bottom;
-    margin-top: 2.2em;
+    margin-top: 2em;
     border-top: 1px solid #ddd;
     @include background-image(
       linear-gradient(top, #fff, #f9f9f9)
@@ -425,7 +397,7 @@ p img {
   h2 {
     @extend %header-font;
     font-size: 20px;
-    margin-top: 4.4em;
+    margin-top: 4em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
@@ -471,7 +443,7 @@ p img {
 
     th {
       padding: 5px 10px;
-      border-bottom: 1px solid #e4e8eb;
+      border-bottom: 1px solid #ccc;
       vertical-align: bottom;
     }
 
@@ -480,7 +452,7 @@ p img {
     }
 
     tr:last-child {
-      border-bottom: 1px solid #e4e8eb;
+      border-bottom: 1px solid #ccc;
     }
 
     tr:nth-child(odd)>td {
@@ -488,7 +460,7 @@ p img {
     }
 
     tr:nth-child(even)>td {
-      background-color: #f6f7fc;
+      background-color: lighten($main-bg,2.4%);
     }
   }
 

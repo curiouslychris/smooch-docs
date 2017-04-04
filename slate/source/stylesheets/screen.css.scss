@@ -31,16 +31,17 @@ html, body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   @extend %default-font;
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
 }
 
-p, ul li:not(.tocify-item) {
-  a {
-    color: #912d8d;
-  }
+a{
+  color:$violet;
+  font-weight:400;
+  letter-spacing:-0.02em;
 }
 
 p img {
@@ -146,7 +147,8 @@ p img {
     @include transition-duration(180ms);
     @include transition-timing-function(ease-in-out);
     &.visible {
-      height: 30%;
+      max-height: 30%;
+      height:auto;
       margin-bottom: 1em;
     }
 
@@ -207,7 +209,7 @@ p img {
     background-color: $nav-subitem-bg;
     font-weight: 500;
     .tocify-item>a {
-      padding-left: $nav-padding + $nav-indent;
+      padding-left: $nav-padding;
       font-size: 12px;
     }
 
@@ -317,10 +319,13 @@ p img {
   a {
     display: block;
     float:left;
+    text-transform:capitalize;
+    letter-spacing:normal;
     color: $lang-select-text;
     text-decoration: none;
-    padding: 0 10px;
+    padding: 16px 28px;
     line-height: 30px;
+    font-weight:400;
 
     &:active {
       background-color: $lang-select-pressed-bg;
@@ -382,7 +387,7 @@ p img {
     padding-bottom: 0.5em;
     border-bottom: 1px solid #ccc;
     margin-bottom: $h1-margin-bottom;
-    margin-top: 2em;
+    margin-top: 2.4em;
     border-top: 1px solid #ddd;
     @include background-image(
       linear-gradient(top, #fff, #f9f9f9)
@@ -397,7 +402,7 @@ p img {
   h2 {
     @extend %header-font;
     font-size: 20px;
-    margin-top: 4em;
+    margin-top: 4.4em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
@@ -443,7 +448,7 @@ p img {
 
     th {
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #e4e8eb;
       vertical-align: bottom;
     }
 
@@ -452,7 +457,7 @@ p img {
     }
 
     tr:last-child {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #e4e8eb;
     }
 
     tr:nth-child(odd)>td {

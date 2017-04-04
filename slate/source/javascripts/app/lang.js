@@ -17,7 +17,7 @@ under the License.
     var iosLanguages = ['swift', 'objective_c'];
     var androidLanguages = ['java'];
     var webLanguages = ['javascript'];
-    var restLanguages = ['shell', 'javascript'];
+    var restLanguages = ['Shell', 'Javascript'];
     var languages = [].concat(iosLanguages, androidLanguages, webLanguages, restLanguages);
 
     global.setupLanguages = setupLanguages;
@@ -94,6 +94,7 @@ under the License.
         if (hash) {
             hash = hash.replace(/^#+/, '');
         }
+        console.log(hash);
         history.pushState({}, '', '?' + language + '#' + hash);
 
         // save language as next default
@@ -116,19 +117,25 @@ under the License.
             // no language selected, so use the default
             activateLanguage(getLanguages()[0]);
         }
+
+        $('.lang-selector a[data-language-name=\'' + 'ruby' + '\']').attr('href','https://github.com/smooch/smooch-ruby').attr('target','_blank');
+        $('.lang-selector a[data-language-name=\'' + 'python' + '\']').attr('href','https://github.com/smooch/smooch-python').attr('target','_blank');
+        $('.lang-selector a[data-language-name=\'' + 'java' + '\']').attr('href','https://github.com/smooch/smooch-java').attr('target','_blank');
     }
 
     // if we click on a language tab, activate that language
     $(function() {
         $('.lang-selector a').on('click', function() {
             var language = $(this).data('language-name');
-            pushURL(language);
-            activateLanguage(language);
-            return false;
+            console.log(language);
+            if (language != "ruby" && language != "python" && language != "java"){
+                pushURL(language);
+                activateLanguage(language);
+                return false;
+            }
         });
         window.onpopstate = function(event) {
             activateLanguage(window.location.search.substr(1));
         };
     });
-
 })(window);

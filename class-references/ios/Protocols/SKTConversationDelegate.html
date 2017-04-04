@@ -74,11 +74,17 @@
 		
 		<option value="//api/name/conversation:shouldShowForAction:">- conversation:shouldShowForAction:</option>
 		
+		<option value="//api/name/conversation:shouldShowForAction:withInfo:">- conversation:shouldShowForAction:withInfo:</option>
+		
 		<option value="//api/name/conversation:shouldShowInAppNotificationForMessage:">- conversation:shouldShowInAppNotificationForMessage:</option>
 		
 		<option value="//api/name/conversation:unreadCountDidChange:">- conversation:unreadCountDidChange:</option>
 		
 		<option value="//api/name/conversation:willDismissViewController:">- conversation:willDismissViewController:</option>
+		
+		<option value="//api/name/conversation:willDisplayMessage:">- conversation:willDisplayMessage:</option>
+		
+		<option value="//api/name/conversation:willSendMessage:">- conversation:willSendMessage:</option>
 		
 		<option value="//api/name/conversation:willShowViewController:">- conversation:willShowViewController:</option>
 		
@@ -287,7 +293,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Asks the delegate if the conversation should show for the given action.</p>
+				<p>Asks the delegate if the conversation should show for the given action. (<b class="deprecated">Deprecated:</b><span class="deprecated"> Use conversation:shouldShowForAction:info instead</span>)</p>
 			</div>
 			
 		    
@@ -341,6 +347,190 @@
 					
 				</ul>
 			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SKTConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/conversation:shouldShowForAction:withInfo:" title="conversation:shouldShowForAction:withInfo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversation:shouldShowForAction:withInfo:">&ndash;&nbsp;conversation:shouldShowForAction:withInfo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Asks the delegate if the conversation should show for the given action.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)conversation:(SKTConversation *)<em>conversation</em> shouldShowForAction:(SKTAction)<em>action</em> withInfo:(nullable NSDictionary *)<em>info</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversation</code></th>
+						<td><p>The conversation object.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>info</code></th>
+						<td><p>An instance of NSDictionary with a <code>message</code> object with the latest SKTMessage represented as an NSDictionary</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>The action the user has taken.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES to allow default handling. NO to suppress the conversation screen, and perform custom handling.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the user performs an action that causes the conversation screen to show. Return NO to cancel the display of the conversation screen and perform your own handling of the action.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Constants/SKTAction.html">SKTAction</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SKTConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/conversation:willSendMessage:" title="conversation:willSendMessage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversation:willSendMessage:">&ndash;&nbsp;conversation:willSendMessage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Gives the delegate the option to modify a message before it is sent</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (SKTMessage *)conversation:(SKTConversation *)<em>conversation</em> willSendMessage:(SKTMessage *)<em>message</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>the message to be sent</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a message is about to be sent to give the delegate the option of modify or decorate its content (i.e. add metadata) before sending to Smooch</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SKTConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/conversation:willDisplayMessage:" title="conversation:willDisplayMessage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversation:willDisplayMessage:">&ndash;&nbsp;conversation:willDisplayMessage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Gives the delegate the option to modify a message before it is displayed. If nil is returned the message will be hidden</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable SKTMessage *)conversation:(SKTConversation *)<em>conversation</em> willDisplayMessage:(SKTMessage *)<em>message</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>the message to be displayed. If nil, the message won&rsquo;t get displayed</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a message is about to be displayed to the user to give the delegate the option of modifying its content before display or hide it</p>
+			</div>
+			
+
+			
+
 			
 
 			
@@ -794,7 +984,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Smooch. All rights reserved. Updated: 2017-02-28</p>
+						<p class="copyright">Copyright &copy; 2017 Smooch. All rights reserved. Updated: 2017-04-04</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

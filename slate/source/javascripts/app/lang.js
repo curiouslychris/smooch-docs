@@ -58,10 +58,8 @@ under the License.
 
         if (window.location.hash && $(window.location.hash).get(0)) {
             // scroll to the new location of the position
-            console.log('activateLanagueg' + window.location.hash);
             $(window.location.hash).get(0).scrollIntoView(true);
         } else {
-            console.log('else2');
             history.pushState('', document.title, window.location.pathname);
         }
     }
@@ -75,7 +73,6 @@ under the License.
         if (hash) {
             hash = hash.replace(/^#+/, '');
         }
-        console.log('hash=' + hash);
         history.pushState({}, '', '?' + language + '#' + hash);
 
         // save language as next default
@@ -108,7 +105,6 @@ under the License.
     $(function() {
         $('.lang-selector a').on('click', function() {
             var language = $(this).data('language-name');
-            console.log(language);
             if (language != "ruby" && language != "python" && language != "java"){
                 pushURL(language);
                 activateLanguage(language);

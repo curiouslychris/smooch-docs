@@ -319,7 +319,6 @@
                 hash = window.location.hash.substring(1),
                 elem = self.element.find("li[data-unique='" + hash + "']");
 
-                console.log('active=' + window.location.hash.substring(1));
             if(hash.length) {
 
                 // Removes highlighting from all of the list item's
@@ -556,7 +555,6 @@
                 }
 
                 if(self.options.history) {
-                    console.log('click =' + $(this).attr("data-unique"));
                     window.location.hash = $(this).attr("data-unique");
                 }
 
@@ -711,7 +709,6 @@
                         });
 
                         anchorText = $(self.cachedAnchors[closestAnchorIdx]).attr("data-unique");
-                        console.log('closestanchor=' + anchorText);
 
                         // Stores the list item HTML element that corresponds to the currently traversed anchor tag
                         elem = $('li[data-unique="' + anchorText + '"]');
@@ -747,7 +744,6 @@
                             if(window.location.hash !== "#" + anchorText && anchorText !== undefined) {
                                 if(history.replaceState) {
                                     history.replaceState({}, "", "#" + anchorText);
-                                    console.log('notelse=' + anchorText);
                                 // provide a fallback
                                 } else {
                                     scrollV = document.body.scrollTop;
@@ -755,7 +751,6 @@
                                     location.hash = "#" + anchorText;
                                     document.body.scrollTop = scrollV;
                                     document.body.scrollLeft = scrollH;
-                                    console.log('else');
                                 }
 
                             }
@@ -787,11 +782,9 @@
             var anchors = $(self.options.context).find("div[data-unique]");
             anchors.each(function(idx) {
                 var distance = (($(this).next().length ? $(this).next() : $(this)).offset().top - self.options.highlightOffset);
-                console.log('distance=' + distance);
                 self.cachedHeights[idx] = distance;
             });
             self.cachedAnchors = anchors;
-            console.log('cachedHeights');
         },
 
         // Show

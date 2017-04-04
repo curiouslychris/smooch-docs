@@ -14,11 +14,8 @@ License for the specific language governing permissions and limitations
 under the License.
 */
 (function(global) {
-    var iosLanguages = ['swift', 'objective_c'];
-    var androidLanguages = ['java'];
-    var webLanguages = ['javascript'];
-    var restLanguages = ['Shell', 'Javascript'];
-    var languages = [].concat(iosLanguages, androidLanguages, webLanguages, restLanguages);
+    var restLanguages = ['shell', 'javascript'];
+    var languages = [].concat(restLanguages);
 
     global.setupLanguages = setupLanguages;
     global.activateLanguage = activateLanguage;
@@ -26,25 +23,7 @@ under the License.
     global.getLanguages = getLanguages;
 
     function getPlatform() {
-        var pathname = window.location.pathname;
-
-        if (pathname.indexOf('/ios') === 0) {
-            return 'ios'
-        }
-
-        if (pathname.indexOf('/android') === 0) {
-            return 'android'
-        }
-
-        if (pathname.indexOf('/javascript') === 0) {
-            return 'javascript'
-        }
-
-        if (pathname.indexOf('/rest') === 0) {
-            return 'rest'
-        }
-
-        return 'unknown';
+        return 'rest'
     }
 
     function getLanguages() {
@@ -61,7 +40,7 @@ under the License.
                 return restLanguages;
         }
 
-        return iosLanguages;
+        return restLanguages;
     }
 
     function activateLanguage(language) {
@@ -79,8 +58,10 @@ under the License.
 
         if (window.location.hash && $(window.location.hash).get(0)) {
             // scroll to the new location of the position
+            console.log('activateLanagueg' + window.location.hash);
             $(window.location.hash).get(0).scrollIntoView(true);
         } else {
+            console.log('else2');
             history.pushState('', document.title, window.location.pathname);
         }
     }
@@ -94,7 +75,7 @@ under the License.
         if (hash) {
             hash = hash.replace(/^#+/, '');
         }
-        console.log(hash);
+        console.log('hash=' + hash);
         history.pushState({}, '', '?' + language + '#' + hash);
 
         // save language as next default
@@ -118,9 +99,9 @@ under the License.
             activateLanguage(getLanguages()[0]);
         }
 
-        $('.lang-selector a[data-language-name=\'' + 'ruby' + '\']').attr('href','https://github.com/smooch/smooch-ruby').attr('target','_blank');
-        $('.lang-selector a[data-language-name=\'' + 'python' + '\']').attr('href','https://github.com/smooch/smooch-python').attr('target','_blank');
-        $('.lang-selector a[data-language-name=\'' + 'java' + '\']').attr('href','https://github.com/smooch/smooch-java').attr('target','_blank');
+        $('.lang-selector a[data-language-name=\'' + 'ruby' + '\']').attr('href','https://github.com/smooch/smooch-ruby').attr('target','_blank').addClass('external');
+        $('.lang-selector a[data-language-name=\'' + 'python' + '\']').attr('href','https://github.com/smooch/smooch-python').attr('target','_blank').addClass('external');
+        $('.lang-selector a[data-language-name=\'' + 'java' + '\']').attr('href','https://github.com/smooch/smooch-java').attr('target','_blank').addClass('external');
     }
 
     // if we click on a language tab, activate that language

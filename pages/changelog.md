@@ -6,6 +6,12 @@ layout: two-column
 
 # Changelog
 
+## April 7th, 2017
+
+- Released [Ruby API library](https://github.com/smooch/smooch-ruby) for the Smooch API. Available as a [RubyGem](https://rubygems.org/gems/smooch-api/).
+- Released [Python API library](https://github.com/smooch/smooch-python) for the Smooch API. Available as a [Pip package](https://pypi.org/project/smooch/).
+- Released [Java API library](https://github.com/smooch/smooch-java) for the Smooch API. Available via [Maven](https://docs.smooch.io/guide/api-libraries/#java) or [Gradle](https://docs.smooch.io/guide/api-libraries/#java).
+
 ## April 4th, 2017
 
 - Added delegate methods to allow on-the-fly customization of message display and sending in iOS SDK [5.6.0](https://github.com/smooch/smooch-ios/releases/tag/5.6.0)

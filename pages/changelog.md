@@ -6,6 +6,14 @@ layout: two-column
 
 # Changelog
 
+## April 4th, 2017
+
+- Added delegate methods to allow on-the-fly customization of message display and sending in iOS SDK [5.6.0](https://github.com/smooch/smooch-ios/releases/tag/5.6.0)
+
+## April 3rd, 2017
+
+- Added delegate methods to allow on-the-fly customization of message display and sending in Android SDK [4.5.0](https://github.com/smooch/smooch-android/releases/tag/4.5.0)
+
 ## March 30th, 2017
 
 - Added support for Messenger webview height, and Messenger Extensions (with fallback URL) in `link` actions. [Learn More](https://docs.smooch.io/rest/#extra-channel-options-schema)

@@ -72,4 +72,4 @@ List messages can also append 1 action button at the bottom of the list. For exa
 
 ![Facebook Messenger Persistent Menu](/images/messenger_menu.png)
 
-It's possible to configure a menu of 1-5 buttons on the Messenger UI by calling [the Smooch REST API](https://docs.smooch.io/rest/#persistent-menus). Menus are configured per app, not per user. Menu items can be [link](/guide/structured-messages/#link-buttons) or [postback](/guide/structured-messages/#postback-buttons) type actions.
+It's possible to configure a menu on the Messenger UI by calling [the Smooch REST API](https://docs.smooch.io/rest/#persistent-menus). Messenger allows up to three levels of menu hierarchy and they can contain 1 to 3 menu items at its first level and 1 to 5 menu items for submenus. Menus are configured per app or per integration, not per user. Menu items can be [link](/guide/structured-messages/#link-buttons), [postback](/guide/structured-messages/#postback-buttons) or [submenu](https://docs.smooch.io/rest/#menu-items) type actions.

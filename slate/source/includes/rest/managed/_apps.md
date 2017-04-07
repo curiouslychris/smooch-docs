@@ -6,7 +6,7 @@ App schema and endpoints used for provisioning Smooch apps.
 
 > Request:
 
-```shell
+```curl
 curl https://api.smooch.io/v1/apps \
      -X POST \
      -d '{"name": "My App"}' \
@@ -49,7 +49,7 @@ Creates a new app. The response body will include the appToken, which can be use
 
 > Request:
 
-```shell
+```curl
   curl https://api.smooch.io/v1/apps \
        -H 'authorization: Bearer your-account-token'
 ```
@@ -93,7 +93,7 @@ Lists all apps configured. This API is paginated. It returns a max of 25 apps by
 
 > Request:
 
-```shell
+```curl
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6 \
      -H 'authorization: Bearer your-account-token'
 ```
@@ -127,7 +127,7 @@ Fetches an individual app.
 
 > Request:
 
-```shell
+```curl
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6 \
        -X DELETE \
        -H 'authorization: Bearer your-account-token'

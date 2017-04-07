@@ -316,9 +316,7 @@
         _setActiveElement: function(pageload) {
 
             var self = this,
-
                 hash = window.location.hash.substring(1),
-
                 elem = self.element.find("li[data-unique='" + hash + "']");
 
             if(hash.length) {
@@ -557,9 +555,7 @@
                 }
 
                 if(self.options.history) {
-
                     window.location.hash = $(this).attr("data-unique");
-
                 }
 
                 // Removes highlighting from all of the list item's
@@ -745,9 +741,7 @@
                         if(self.options.scrollHistory) {
 
                             // IF STATEMENT ADDED BY ROBERT
-
                             if(window.location.hash !== "#" + anchorText && anchorText !== undefined) {
-
                                 if(history.replaceState) {
                                     history.replaceState({}, "", "#" + anchorText);
                                 // provide a fallback

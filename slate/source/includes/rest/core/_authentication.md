@@ -15,7 +15,7 @@ Some APIs accept either of the two authentication methods while others require a
 ## App Token
 
 
-```shell
+```curl
 # Calling GET /v1/appusers using an app token
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
@@ -37,7 +37,7 @@ Specifying an `appToken` alone is sufficient to call any of the app user facing 
 ## JWT
 
 
-```shell
+```curl
 # Calling GET /v1/appusers using a jwt
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
      -H 'authorization: Bearer your-jwt'

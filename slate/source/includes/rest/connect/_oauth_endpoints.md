@@ -3,7 +3,7 @@
 
 > Request:
 
-```shell
+```curl
 curl https://app.smooch.io/oauth/authorize?client_id=shoplifter&response_type=code
 ```
 ```js
@@ -47,7 +47,7 @@ A successful response is delivered via a 302 redirect to the redirect URI config
 
 > Request:
 
-```shell
+```curl
 curl -X POST https://api.smooch.io/oauth/token \
      -d code=your_code \
      -d grant_type=authorization_code \
@@ -92,7 +92,7 @@ The scope of an issued access token is `integration` scope. This allows API call
 
 > Request:
 
-```shell
+```curl
 curl -X DELETE https://api.smooch.io/oauth/authorization \
      -H 'authorization: Bearer your-token'
 ```

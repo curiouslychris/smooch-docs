@@ -46,7 +46,7 @@ As soon as you "Confirm and Save", you'll be able to inspect the messages you're
 
 ## Authorization
 
-To send an answer back, we'll need to call the Smooch REST API. Smooch provides the [smooch-core package for Node.js](https://www.npmjs.com/package/smooch-core) (available via npm).
+To send an answer back, we'll need to call the Smooch REST API. Smooch provides the [smooch-core package for Node.js](https://www.npmjs.com/package/smooch-core) (available via npm). Ruby, Python & Java [API libraries](/guide/api-libraries/) are also available.
 
 The smooch-core package will handle creating an app scope JWT and authenticating calls to the REST API.
 
@@ -96,7 +96,7 @@ Great! Now, whenever someone sends a message to your Facebook page from a Facebo
 
 ## Next steps
 
-- If you're writing JavaScript, use [smooch-core](https://www.npmjs.com/package/smooch-core), a helpful little npm package that wraps calls to Smooch APIs.
+- If you're writing in JavaScript, Ruby, Python or Java, use [our API libraries](/guide/api-libraries/), which are helpful packages that wraps calls to Smooch APIs.
 
 - Now that you've had a taste of Smooch, it's time to deep dive into our reference documentation to explore the possibilities. [You can find it here](https://docs.smooch.io/rest/).
 

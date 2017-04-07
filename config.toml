@@ -108,9 +108,9 @@ pages = [
 name = "References"
 pages = [
     "API Reference__https://docs.smooch.io/rest/",
+    "/guide/api-libraries/",
     "/faq/",
     "/changelog/",
-    "Webhook Payload Spec__http://docs.smooch.io/rest/#webhooks-payload",
     "/guide/security/",
     "/guide/sending-images-and-buttons-shorthand/"
 ]

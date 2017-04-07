@@ -18,14 +18,14 @@ Businesses can use the Smooch Conversation Cloud to connect their favourite busi
 
 ## What can you do with Smooch?
 
-If you're building software, you can use Smooch to quickly add conversational capabilities to your product and enhance its feature set:
+If you're building software, you can use the [Smooch API](https://docs.smooch.io/rest/) to add conversational features to your product and enhance its feature set:
 
  * Helpdesk software can go beyond traditional e-mail ticket management and instantly add support for all popular messaging channels
  * Live chat software can offer businesses the abilitiy to converse with their customers using their preferred channel.
  * Social Media Management software can provide 1:1 messaging capabilities that help social media teams care for their customers
  * Bot platforms can focus on building smart conversational logic and AI without having to worry about managing messaging, conversation and user identity functionality
 
-If you're a business, you can use Smooch to quickly add messaging to the tools you're already using:
+If you're a business, you can use Smooch [built-in integrations](https://docs.smooch.io/guide/business-systems/) to chat with customers from your existing tools:
 
  * Engage customers in conversation across a variety of messaging channels and manage these contacts through your [favourite business system](https://smooch.io/integrations/)
  * Keep multiple stakeholders in the loop by ensuring that messages sent from a customer to your business are mirrored across the different tools in use in your business.

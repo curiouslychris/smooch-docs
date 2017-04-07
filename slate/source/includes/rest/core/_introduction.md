@@ -10,6 +10,10 @@ The API accepts JSON in request bodies and requires that the `content-type: appl
 
 The API also facilitates [cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) so that it can be called from a web application.
 
+## API Libraries
+
+Smooch provides official API libraries for [Javascript](https://github.com/smooch/smooch-core-js), [Ruby](https://github.com/smooch/smooch-ruby), [Python](https://github.com/smooch/smooch-python) and [Java](https://github.com/smooch/smooch-java). Those helpful libraries wraps calls to this API.
+
 ## Errors
 
 ```

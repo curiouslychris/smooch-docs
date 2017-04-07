@@ -32,7 +32,7 @@ The source code is available [here](https://github.com/smooch/shoplifter).
 
 > Request:
 
-```curl
+```shell
 curl https://app.smooch.io/oauth/authorize?client_id=shoplifter&response_type=code
 ```
 ```js
@@ -76,7 +76,7 @@ A successful response is delivered via a 302 redirect to the redirect URI config
 
 > Request:
 
-```curl
+```shell
 curl -X POST https://api.smooch.io/oauth/token \
      -d code=your_code \
      -d grant_type=authorization_code \

@@ -13,7 +13,7 @@ The Create Integration endpoint currently allows you to provision apps with fron
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{ "type": "messenger", "pageAccessToken": "your_access_token", "appId": "your_fb_app_id", "appSecret": "your_fb_app_secret"
@@ -67,7 +67,7 @@ In order to integrate a Facebook Messenger app you must acquire a Page Access To
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "twilio", "accountSid": "ACa1b4c65ee0722712fab89867cb14eac7", "authToken": "160c024303f53049e1e060fd67ca6aefc", "phoneNumberSid": "PN0674df0ecee0c9819bca0ff0bc0a159e"}' \
@@ -117,7 +117,7 @@ To configure a Twilio integration, acquire the required information from the use
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "telegram", "token": "192033615:AAEuee2FS2JYKWfDlTulfygjaIGJi4s"}' \
@@ -160,7 +160,7 @@ To configure a Telegram integration, acquire the required information from the u
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "line", "channelAccessToken": "jZak8gGEYxfy1gIxk869osf2SuT6o11rtLqZQnAx9TiKE7eFXwgnnL58dtwOd1ON9e11GPTDfq+b4hson3dvvYAnAaAnbXYjj1rCUIzgxAa4xVZwGqyS+2rzpswZnGhAuMBWQxCMsF9dwztolUr01wdB04t89/1O/w1cDnyilFU=", "channelSecret": "b85cff984b26eac4297917abd365c4d6"' \
@@ -211,7 +211,7 @@ Once you've acquired all the required information and the callback url has been 
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "viber", "token": "df5f8c5233399561-92636b0c5ba30da9-16d4928fc004a72d"}' \
@@ -254,7 +254,7 @@ To configure a Viber integration, acquire the Viber Public Account token from th
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "wechat", "appId": "ACa1b4c65ee0722712fab89867cb14eac7", "appSecret": "160c024303f53049e1e060fd67ca6aefc"}' \
@@ -303,7 +303,7 @@ In their [WeChat dashboard](https://mp.weixin.qq.com/), the customer must set th
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "mailgun", "apiKey": "key-f265hj32f0sd897lqd2j5keb96784043", "domain": "sandbox123.mailgun.org",  "incomingAddress": "mytestemail@sandbox123.mailgun.org"}' \
@@ -350,7 +350,7 @@ To configure a Mailgun integration, visit the [API Keys tab](https://app.mailgun
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "apn", "certificate": "HjkUD4rWvZj7wSDzA8Hu2hd7ICs274Z=="}' \
@@ -409,7 +409,7 @@ fs.readFile('path/to/your/certificate.p12', function(err, data) {
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "fcm", "serverKey": "AAAA_hSf4g2J2Q3zDh2DbvSh27dhKlm2", "senderId": "1429457686312"}' \
@@ -458,7 +458,7 @@ If you would like to continue using your legacy GCM `serverKey` you can also obt
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
        -H 'authorization: Bearer your-account-token'
 ```
@@ -520,7 +520,7 @@ Lists all integrations for a given app.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations/5735dded48011972d621dc02 \
        -H 'authorization: Bearer your-account-token'
 ```
@@ -556,7 +556,7 @@ Return the specified integration.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations/5735dded48011972d621dc02 \
        -X DELETE \
        -H 'authorization: Bearer your-account-token'

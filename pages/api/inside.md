@@ -26,7 +26,7 @@ All of the existing app management APIs such as /v1/appusers and /v1/webhooks wi
 
 > Create a webhook:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/webhooks \
     -d '{"target": "http://example.com/callback"}' \
     -H 'authorization: Bearer your-appmaker-token'
@@ -38,7 +38,7 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/webhooks \
 
 > Fetch a conversation:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/appusers/c7f6e6d6c3a637261bd9656f/conversation \
     -H 'authorization: Bearer your-appmaker-token'
 ```
@@ -55,7 +55,7 @@ Endpoints used for provisioning Smooch apps.
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps \
      -X POST \
      -d '{"name": "My App"}' \
@@ -94,7 +94,7 @@ Creates a new app. The response body will include the appToken, which can be use
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps \
        -H 'authorization: Bearer your-appmaker-token'
 ```
@@ -136,7 +136,7 @@ Lists all apps configured. This API is paginated. It returns a max of 25 apps by
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6 \
      -H 'authorization: Bearer your-appmaker-token'
 ```
@@ -168,7 +168,7 @@ Fetches an individual app.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6 \
        -X DELETE \
        -H 'authorization: Bearer your-appmaker-token'
@@ -199,7 +199,7 @@ This set of endpoints is used to provision and revoke secret keys for a Smooch a
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys \
      -X POST \
      -d '{"name": "key1"}' \
@@ -238,7 +238,7 @@ Creates a secret key for the specified app. The response body will include a sec
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys \
        -H 'authorization: Bearer your-appmaker-token'
 ```
@@ -277,7 +277,7 @@ Lists all secret keys for a given app.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys/app_5723a347f82ba0516cb4ea34 \
        -H 'authorization: Bearer your-appmaker-token'
 ```
@@ -309,7 +309,7 @@ Returns a secret key.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys/app_5723a347f82ba0516cb4ea34 \
        -X DELETE \
        -H 'authorization: Bearer your-appmaker-token'
@@ -336,7 +336,7 @@ Removes a secret key.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys/app_5723a347f82ba0516cb4ea34/jwt \
        -H 'authorization: Bearer your-appmaker-token'
 ```
@@ -376,7 +376,7 @@ The Create Integration endpoint currently allows you to provision apps with fron
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{ "type": "messenger", "pageAccessToken": "your_access_token", "appId": "your_fb_app_id", "appSecret": "your_fb_app_secret"
@@ -423,7 +423,7 @@ In order to integrate a Facebook Messenger app you must acquire a Page Access To
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "twilio", "accountSid": "ACa1b4c65ee0722712fab89867cb14eac7", "authToken": "160c024303f53049e1e060fd67ca6aefc", "phoneNumberSid": "PN0674df0ecee0c9819bca0ff0bc0a159e"}' \
@@ -466,7 +466,7 @@ To configure a Twilio integration, acquire the required information from the use
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "telegram", "token": "192033615:AAEuee2FS2JYKWfDlTulfygjaIGJi4s"}' \
@@ -504,7 +504,7 @@ To configure a Telegram integration, acquire the required information from the u
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "line", "channelAccessToken": "jZak8gGEYxfy1gIxk869osf2SuT6o11rtLqZQnAx9TiKE7eFXwgnnL58dtwOd1ON9e11GPTDfq+b4hson3dvvYAnAaAnbXYjj1rCUIzgxAa4xVZwGqyS+2rzpswZnGhAuMBWQxCMsF9dwztolUr01wdB04t89/1O/w1cDnyilFU=", "channelSecret": "b85cff984b26eac4297917abd365c4d6"' \
@@ -549,7 +549,7 @@ Once you've acquired all the required information and the callback url has been 
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "viber", "token": "df5f8c5233399561-92636b0c5ba30da9-16d4928fc004a72d"}' \
@@ -587,7 +587,7 @@ To configure a Viber integration, acquire the Viber Public Account token from th
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "wechat", "appId": "ACa1b4c65ee0722712fab89867cb14eac7", "appSecret": "160c024303f53049e1e060fd67ca6aefc"}' \
@@ -630,7 +630,7 @@ In their [WeChat dashboard](https://mp.weixin.qq.com/), the customer must set th
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
      -X POST \
      -d '{"type": "frontendEmail"}' \
@@ -669,7 +669,7 @@ To configure an Email integration, simply call the Create Integration endpoint w
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
        -H 'authorization: Bearer your-appmaker-token'
 ```
@@ -730,7 +730,7 @@ Lists all integrations for a given app.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations/5735dded48011972d621dc02 \
        -H 'authorization: Bearer your-appmaker-token'
 ```
@@ -765,7 +765,7 @@ Return the specified integration.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations/5735dded48011972d621dc02 \
        -X DELETE \
        -H 'authorization: Bearer your-appmaker-token'

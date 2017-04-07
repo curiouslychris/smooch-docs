@@ -1,7 +1,7 @@
 # Init
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/init \
      -X POST \
      -d '{"device": {"id": "03f70682b7f5b21536a3674f38b3e220", "platform": "ios", "appVersion": "1.0"}, "userId": "bob@example.com"}' \

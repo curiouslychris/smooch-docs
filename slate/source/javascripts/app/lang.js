@@ -96,6 +96,7 @@ under the License.
             activateLanguage(getLanguages()[0]);
         }
 
+        $('.lang-selector a[data-language-name=\'' + 'shell' + '\']').html('curl');
         $('.lang-selector a[data-language-name=\'' + 'ruby' + '\']').attr('href','https://github.com/smooch/smooch-ruby').attr('target','_blank').addClass('external');
         $('.lang-selector a[data-language-name=\'' + 'python' + '\']').attr('href','https://github.com/smooch/smooch-python').attr('target','_blank').addClass('external');
         $('.lang-selector a[data-language-name=\'' + 'java' + '\']').attr('href','https://github.com/smooch/smooch-java').attr('target','_blank').addClass('external');

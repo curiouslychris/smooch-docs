@@ -3,7 +3,7 @@ layout: 3col
 title: Smooch API Reference
 
 language_tabs:
-  - shell
+  - curl
   - javascript
   - ruby
   - python

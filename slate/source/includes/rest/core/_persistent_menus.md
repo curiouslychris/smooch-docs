@@ -9,7 +9,7 @@ Note that menu content is cached on Facebook Messenger. Seeing your changes whil
 
 > Request:
 
-```shell
+```curl
 curl https://api.smooch.io/v1/menu \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
@@ -55,7 +55,7 @@ Get the specified app's menu.
 
 > Request:
 
-```shell
+```curl
 curl https://api.smooch.io/v1/menu \
      -X PUT \
      -d '{"items": [{"type": "link", "text": "Smooch", "uri": "http://smooch.io"}]}' \
@@ -101,7 +101,7 @@ Configure the specified app's menu. See [menu configuration](#menu-configuration
 
 > Request:
 
-```shell
+```curl
 curl https://api.smooch.io/v1/menu \
      -X DELETE \
      -H 'content-type: application/json' \
@@ -135,7 +135,7 @@ Remove the specified app's menu.
 
 > Request:
 
-```shell
+```curl
 curl https://api.smooch.io/v1/integrations/:integrationId/menu \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
@@ -181,7 +181,7 @@ Get the specified integration's menu.
 
 > Request:
 
-```shell
+```curl
 curl https://api.smooch.io/v1/integrations/:integrationId/menu \
      -X POST \
      -d '{"items": [{"type": "link", "text": "Smooch", "uri": "http://smooch.io"}]}' \
@@ -226,7 +226,7 @@ Create the specified integration's menu, overriding the app menu if configured. 
 
 > Request:
 
-```shell
+```curl
 curl https://api.smooch.io/v1/integrations/:integrationId/menu \
      -X PUT \
      -d '{"items": [{"type": "link", "text": "Smooch", "uri": "http://smooch.io"}]}' \
@@ -271,7 +271,7 @@ Create the specified integration's menu, overriding the app menu if configured. 
 
 > Request:
 
-```shell
+```curl
 curl https://api.smooch.io/v1/integrations/:integrationId/menu \
      -X DELETE \
      -H 'content-type: application/json' \

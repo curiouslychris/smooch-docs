@@ -105,7 +105,7 @@ under the License.
     $(function() {
         $('.lang-selector a').on('click', function() {
             var language = $(this).data('language-name');
-            if (language != "ruby" && language != "python" && language != "java"){
+            if (language !== "ruby" && language !== "python" && language !== "java"){
                 pushURL(language);
                 activateLanguage(language);
                 return false;

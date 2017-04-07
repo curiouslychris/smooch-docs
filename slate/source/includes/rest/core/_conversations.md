@@ -6,7 +6,7 @@ When the first message is sent to an app user or received from an app user, a co
 
 > Request (App User):
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appUser", "type": "text"}' \
@@ -25,7 +25,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 
 > Request (App Maker):
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "type": "text"}' \
@@ -99,7 +99,7 @@ Additional arguments are necessary based on message type ([`text`](#text-message
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -166,7 +166,7 @@ A `text` type message is a message that is sent with text and/or actions.
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -239,7 +239,7 @@ An `image` type message is a message that is sent with an image, and, optionally
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -312,7 +312,7 @@ A `location` type message includes the coordinates (latitude and longitude) of a
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -495,7 +495,7 @@ Text fallback.
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -720,7 +720,7 @@ A link action will open the provided URI when tapped.
 
 > Send link action:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "type": "text", "actions": [{"type": "link", "text": "Put vinegar", "uri": "http://example.com" }]}' \
@@ -784,7 +784,7 @@ A buy action will prompt the user to purchase an item.
 
 > Send buy action:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "type": "text", "actions": [{"type": "buy", "text": "Buy vinegar", "amount": 1000 }]}' \
@@ -825,7 +825,7 @@ A postback action will post the action payload to the server.
 
 > Send postback action:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "type": "text", "actions": [{"type": "postback", "text": "Send vinegar", "payload": "buy_vinegar" }]}' \
@@ -866,7 +866,7 @@ You may optionally specify an `iconUrl` which will render as an icon for each op
 
 > Send reply action:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -939,7 +939,7 @@ A location request action will prompt the user to share their location. See [Cha
 
 > Send locationRequest action:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Where are you?", "role": "appMaker", "type": "text", "actions": [{"type": "locationRequest", "text": "Send Location"}]}' \
@@ -977,7 +977,7 @@ Actions in a [message item](#message-items) may also include a share button.
 
 > Send share action:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -1039,7 +1039,7 @@ Note that for this to work, the user needs to have a client linked to the target
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appUsers/c7f6e6d6c3a637261bd9656f/messages?before=1471995721 \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
@@ -1094,7 +1094,7 @@ The timestamp format should be in seconds using [Unix time](https://en.wikipedia
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X DELETE \
      -H 'authorization: Bearer your-jwt'
@@ -1119,7 +1119,7 @@ Clears the message history for a user, permanently deleting all messages, but le
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/images \
      -X POST \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt' \
@@ -1180,7 +1180,7 @@ Upload an image and post it to the conversation. Images are uploaded using the `
 ## Typing Activity
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/conversation/activity \
      -X POST \
      -d '{"role":"appMaker", "type": "typing:start"}' \
@@ -1230,7 +1230,7 @@ Typing activity is only supported on our Web Messenger, iOS SDK, Facebook Messen
 ## Reset Unread Count
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/conversation/read \
      -X POST \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'

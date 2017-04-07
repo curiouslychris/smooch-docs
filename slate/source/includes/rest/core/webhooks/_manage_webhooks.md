@@ -12,7 +12,7 @@ Smooch exposes REST API methods to:
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/webhooks \
      -X POST \
      -d '{"target": "http://example.com/callback"}' \
@@ -61,7 +61,7 @@ Alternatively, you can use the Webhooks integration in the Smooch dashboard to e
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/webhooks \
        -H 'authorization: Bearer your-jwt'
 ```
@@ -100,7 +100,7 @@ List all webhooks configured for a given app.
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/webhooks/55c8d9758590aa1900b9b9f6 \
      -H 'authorization: Bearer your-jwt'
 ```
@@ -137,7 +137,7 @@ Individual webhooks can be fetched using this API.
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/webhooks/55c8d9758590aa1900b9b9f6 \
      -X PUT \
      -d '{"target": "http://example.com/callback"}' \
@@ -184,7 +184,7 @@ Use this API to update your existing webhooks.
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/webhooks/55c8d9758590aa1900b9b9f6 \
      -X DELETE \
      -H 'authorization: Bearer your-jwt'

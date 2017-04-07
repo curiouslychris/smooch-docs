@@ -5,7 +5,7 @@ This set of endpoints is used to provision and revoke secret keys for a Smooch a
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys \
      -X POST \
      -d '{"name": "key1"}' \
@@ -48,7 +48,7 @@ Creates a secret key for the specified app. The response body will include a sec
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys \
        -H 'authorization: Bearer your-account-token'
 ```
@@ -89,7 +89,7 @@ Lists all secret keys for a given app.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys/app_5723a347f82ba0516cb4ea34 \
        -H 'authorization: Bearer your-account-token'
 ```
@@ -123,7 +123,7 @@ Returns a secret key.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys/app_5723a347f82ba0516cb4ea34 \
        -X DELETE \
        -H 'authorization: Bearer your-account-token'
@@ -152,7 +152,7 @@ Removes a secret key.
 
 > Request:
 
-```curl
+```shell
   curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys/app_5723a347f82ba0516cb4ea34/jwt \
        -H 'authorization: Bearer your-account-token'
 ```

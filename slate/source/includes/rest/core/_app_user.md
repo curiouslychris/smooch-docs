@@ -16,7 +16,7 @@ If a `userId` has been specified for a given app user, it can be used in place o
 
 > Request by smoochId:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
@@ -28,7 +28,7 @@ smooch.appUsers.get('c7f6e6d6c3a637261bd9656f').then((response) => {
 
 > Request by userId:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/steveb@channel5.com \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
@@ -82,7 +82,7 @@ Retrieve a specific app user. Like all other `/v1/appusers/` paths, an app user 
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
      -X PUT \
      -d '{"givenName": "Steve"}' \
@@ -149,7 +149,7 @@ Update an app user's basic profile information and specify custom profile data v
 
 > Request by smoochId:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/profile \
      -X DELETE \
      -H 'authorization: Bearer your-jwt'
@@ -162,7 +162,7 @@ smooch.appUsers.deleteProfile('c7f6e6d6c3a637261bd9656f').then((response) => {
 
 > Request by userId:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/steveb@channel5.com/profile \
      -X DELETE \
      -H 'authorization: Bearer your-jwt'
@@ -214,7 +214,7 @@ This endpoint requires a `jwt` credential with `app`, `integration` or `account`
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/devices/5A7F8343-DF41-46A8-96EC-8583FCB422FB \
      -X PUT \
      -d '{"appVersion": "8.0"}' \
@@ -267,7 +267,7 @@ Update the properties of a device. This API is additive; only the specific field
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/events \
      -X POST \
      -d '{"name":"completed_sale"}' \
@@ -303,7 +303,7 @@ Trigger an event for a given app user. Some Smooch whispers are triggered on dis
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers \
      -X POST \
      -d '{"userId": "steveb@channel5.com", "givenName": "Steve", "properties": {"favoriteFood": "prizza"}}' \
@@ -366,7 +366,7 @@ Unlike the other App User APIs in this section, this endpoint is not intended to
 
 > Request:
 
-```curl
+```shell
 curl https https://api.smooch.io/v1/appusers/deb920657bbc3adc3fec7963/channels \
     -H 'authorization: Bearer your-jwt'
 ```
@@ -405,7 +405,7 @@ Retrieves all of the app user's channel entity IDs.
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/deb920657bbc3adc3fec7963/channels \
      -X POST \
      -d '{"type": "twilio", "phoneNumber": "+15145555555"}' \
@@ -479,7 +479,7 @@ Support for Frontend Email is coming soon.
 
 > Request:
 
-```curl
+```shell
 curl https://api.smooch.io/v1/appusers/deb920657bbc3adc3fec7963/channels/twilio \
      -X DELETE \
      -d '{"type": "twilio"}' \

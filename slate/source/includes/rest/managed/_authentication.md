@@ -3,7 +3,7 @@ Managed Accounts require a `account` scoped JWT. To sign those JWTs, you will ne
 
 ### Using the Account Scoped Token
 
-```curl
+```shell
 # Calling GET /v1/appusers using an account scoped jwt
         curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/appusers/c7f6e6d6c3a637261bd9656f \
              -H 'authorization: Bearer your-account-jwt'

@@ -1,7 +1,7 @@
 # Integrations
 This set of endpoints is used to configure and manage various front-end messaging channels. A JWT is required with `account` scope. The paths below assume that the call will be made using an 'account' scoped JWT.
 
-The currently supported integration types are: Facebook Messenger, LINE, Telegram, Twilio SMS, WeChat, Viber and Email.
+The currently supported integration types are: Facebook Messenger, Twitter DM, LINE, Telegram, Twilio SMS, WeChat, Viber and Mailgun.
 
 ## Create Integration
 
@@ -62,6 +62,73 @@ In order to integrate a Facebook Messenger app you must acquire a Page Access To
 | **pageAccessToken**<br/><span class='req'>required</span> | A Facebook Page Access Token. |
 | **appId**<br/><span class='req'>required</span> | A Facebook App ID. |
 | **appSecret**<br/><span class='req'>required</span> | A Facebook App Secret. |
+
+## Twitter DM
+
+> Request:
+
+```shell
+curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
+     -X POST \
+     -d '{ "type": "twitter", "consumerKey": "your_consumer_key", "consumerSecret": "your_consumer_secret", "accessTokenKey": "your_access_token_key", "accessTokenSecret": "your_access_token_secret" }' \
+     -H 'content-type: application/json' \
+     -H 'authorization: Bearer your-account-token'
+```
+
+```javascript
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'twitter',
+    consumerKey: 'your_consumer_key',
+    consumerSecret: 'your_consumer_secret',
+    accessTokenKey: 'your_access_token_key',
+    accessTokenSecret: 'your_access_token_secret'
+}).then((response) => {
+    // async code
+});
+```
+
+> Response:
+
+```
+201 CREATED
+```
+```json
+{
+  "integration": {
+    "_id": "58ecfde7e2aa9fda95fa122c",
+    "type": "twitter",
+    "userId": "0000000000",
+    "username": "Mike Mikeson",
+    "accessTokenKey": "your_access_token_key",
+    "consumerKey": "your_consumer_key"
+  }
+}
+```
+
+Twitter DM Setup steps:
+
+1. Take note of your Twitter consumer key and secret (apps can be created at [apps.twitter.com](https://apps.twitter.com/)).
+2. Your app must have been whitelisted with Twitter for access to the [Account Activity API](https://dev.twitter.com/webhooks/account-activity).
+
+In order to create a Twitter DM integration you must acquire an Access Token Key and Secret from your user.
+These can be obtained via the [Twitter OAuth Flow](https://dev.twitter.com/oauth). Once you have acquired an access
+token pair from your user, call the Create Integration endpoint with your consumer key and secret, and the user’s
+access token pair.
+
+| **Arguments**             |   |
+|---------------------------|---|
+| **type**<br/><span class='req'>required</span> | The integration type: _twitter_. |
+| **consumerKey**<br/><span class='req'>required</span> | The consumer key for your Twitter app |
+| **consumerSecret**<br/><span class='req'>required</span> | The consumer key secret for your Twitter app |
+| **accessTokenKey**<br/><span class='req'>required</span> | The access token key obtained from your user via oauth |
+| **accessTokenSecret**<br/><span class='req'>required</span> | The access token secret obtained from your user via oauth |
+
+<aside class='notice'>
+When adding a Twitter integration, Smooch will automatically configure your Twitter application's webhook to point to
+Smooch servers. If a webhook already exists that does not point to Smooch, the request will fail, and you will first
+need to [delete your webhook](https://dev.twitter.com/webhooks/reference/del/account_activity/webhooks) in order to
+successfully integrate Twitter.
+</aside>
 
 ## Twilio
 
@@ -313,7 +380,10 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 
 ```javascript
 smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
-    type: 'frontendEmail'
+    type: 'mailgun',
+    apiKey: "key-f265hj32f0sd897lqd2j5keb96784043", 
+    domain: "sandbox123.mailgun.org",
+    incomingAddress: "mytestemail@sandbox123.mailgun.org"
 }).then((response) => {
     // async code
 });
@@ -514,7 +584,7 @@ Lists all integrations for a given app.
 
 | Parameter                | Description              |
 |--------------------------|--------------------------|
-| `types`                  | String, the list can be filtered to return only integrations of a specific type. Possible values are _messenger_, _line_, _telegram_, and _twilio_. More than one value can be specified through comma separation e.g. `?types=twilio,line` |
+| `types`                  | String, the list can be filtered to return only integrations of a specific type. Possible values are _messenger_, _twitter_, _line_, _telegram_, _twilio_, _mailgun_, _wechat_, and _viber_. More than one value can be specified through comma separation e.g. `?types=twilio,line` |
 
 ## Get Integration
 

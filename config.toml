@@ -83,6 +83,7 @@ pages = [
     "/guide/intro-to-channels/",
     "/guide/ott-messengers/",
     "/guide/facebook-messenger/",
+    "/guide/twitter/",
     "/guide/line/",
     "/guide/telegram/",
     "/guide/viber/",

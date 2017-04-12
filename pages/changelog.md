@@ -6,6 +6,10 @@ layout: two-column
 
 # Changelog
 
+## April 11th, 2017
+
+- [Twitter DM](https://app.smooch.io/integrations/twitter) is now a customer channel available on Smooch
+
 ## April 7th, 2017
 
 - Released [Ruby API library](https://github.com/smooch/smooch-ruby) for the Smooch API. Available as a [RubyGem](https://rubygems.org/gems/smooch-api/).

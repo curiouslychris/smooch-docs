@@ -53,6 +53,10 @@ Smooch is committed to supporting the most messaging channels on the market with
         <span class='channel-name'>Facebook Messenger</span>
     </div>
     <div class='logo-container'>
+        <img src='/images/channel-icons/icon-twitter.png' srcset='/images/channel-icons/icon-twitter.png 1x, /images/channel-icons/icon-twitter@2x.png 2x' />
+        <span class='channel-name'>Twitter DM</span>
+    </div>
+    <div class='logo-container'>
         <img src='/images/channel-icons/icon-wechat.png' srcset='/images/channel-icons/icon-wechat.png 1x, /images/channel-icons/icon-wechat@2x.png 2x' />
         <span class='channel-name'>WeChat</span>
     </div>

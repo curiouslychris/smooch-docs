@@ -684,6 +684,65 @@ const channelData = {
                 send: SUPPORT_LEVEL.PARTIAL
             }
         }
+    },
+    twitter: {
+        icon: require('../images/channel-icons/twitter.svg'),
+        name: 'Twitter',
+        capabilities: {
+            text: {
+                send: SUPPORT_LEVEL.FULL,
+                receive: SUPPORT_LEVEL.FULL
+            },
+            image: {
+                send: SUPPORT_LEVEL.FULL,
+                receive: SUPPORT_LEVEL.FULL
+            },
+            gif: {
+                send: SUPPORT_LEVEL.FULL,
+                receive: SUPPORT_LEVEL.FULL
+            },
+            emoji: {
+                send: SUPPORT_LEVEL.FULL,
+                receive: SUPPORT_LEVEL.FULL
+            },
+            link: {
+                send: SUPPORT_LEVEL.FULL
+            },
+            buy: {
+                send: SUPPORT_LEVEL.FULL
+            },
+            postback: {
+                send: SUPPORT_LEVEL.FULL
+            },
+            replies: {
+                send: SUPPORT_LEVEL.FULL
+            },
+            compoundMessages: {
+                send: SUPPORT_LEVEL.FULL
+            },
+            carousel: {
+                send: SUPPORT_LEVEL.PARTIAL
+            },
+            typingIndicator: {
+                send: SUPPORT_LEVEL.NA,
+                receive: SUPPORT_LEVEL.NA
+            },
+            readIndicator: {
+                send: SUPPORT_LEVEL.NA,
+                receive: SUPPORT_LEVEL.NA
+            },
+            conversationStart: {
+                receive: SUPPORT_LEVEL.NA
+            },
+            webMessengerLinking: SUPPORT_LEVEL.NA,
+            location: {
+                send: SUPPORT_LEVEL.NONE,
+                receive: SUPPORT_LEVEL.FULL
+            },
+            locationRequest: {
+                send: SUPPORT_LEVEL.FULL
+            }
+        }
     }
 };
 
@@ -694,6 +753,7 @@ export const CHANNELS = [
     'twilio',
     'telegram',
     'messenger',
+    'twitter',
     'line',
     'email',
     'wechat',

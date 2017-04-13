@@ -10,11 +10,11 @@ Our [Twitter DM integration](https://app.smooch.io/integrations/twitter) allows 
 
 ## Setup
 
-Access to Twitter’s Direct Messages is restricted during the [Beta period](https://dev.twitter.com/webhooks/account-activity). We’ll be granting access to qualifying customers. Please [contact us](https://smooch.formstack.com/forms/twitter) if you’re interested to connect your Smooch app to Twitter’s Direct Messages. 
+Due to account limits put in place by Twitter during their [beta period](https://dev.twitter.com/webhooks/account-activity), we're restricting access to the channel to companies building software on the [Smooch API](https://docs.smooch.io/rest/). If this describes your business, please [contact Twitter](https://gnipinc.formstack.com/forms/account_activity_api_configuration_request_form?describe_in_your_own_words_what_youre_building=I%20am%20building%20with%20the%20Smooch%20API%20...) mentioning you're a Smooch customer to get priority access.
 
-Once access is granted, you'll be able to authorize Smooch to configure your Twitter account.
+Alternately, if you already have a whitelisted Twitter app for the [Activity API](https://dev.twitter.com/webhooks/account-activity) you can already connect it via our [Integration API](https://docs.smooch.io/rest/#twitter-dm) and start building Twitter DM features inside your software.
 
-Alternatively, if you already have a whitelisted Twitter app for the [Activity API](https://dev.twitter.com/webhooks/account-activity) you can already connect it via our [Integration API](https://docs.smooch.io/rest/#twitter-dm). You can create a Twitter app [here](https://apps.twitter.com/) and request access to the Twitter DM API [here](https://gnipinc.formstack.com/forms/account_activity_api_configuration_request_form)
+You can create a Twitter app [here](https://apps.twitter.com/) and request access to the Twitter DM API [here](https://gnipinc.formstack.com/forms/account_activity_api_configuration_request_form?describe_in_your_own_words_what_youre_building=I%20am%20building%20with%20the%20Smooch%20API%20...)
 
 ## Structured Messages
 

@@ -16,6 +16,14 @@ Alternately, if you already have a whitelisted Twitter app for the [Activity API
 
 You can create a Twitter app [here](https://apps.twitter.com/) and request access to the Twitter DM API [here](https://gnipinc.formstack.com/forms/account_activity_api_configuration_request_form?describe_in_your_own_words_what_youre_building=I%20am%20building%20with%20the%20Smooch%20API%20...)
 
+### Direct Messages
+
+In order for a business to receive direct messages from anyone (including accounts it does not follow), the option must be enabled in Twitter's settings.
+Go to Twitter's [privacy and safety](https://twitter.com/settings/safety) settings and check "Receive Direct Messages from anyone".
+Be sure to save your changes!
+
+![Twitter DM](/images/twitter_dm.png)
+
 ## Structured Messages
 
 The [Twitter DM integration](https://app.smooch.io/integrations/twitter) supports sending and receiving [images](/guide/structured-messages/#images-stickers-and-gifs), [GIFs](/guide/structured-messages/#images-stickers-and-gifs) & Emojis. A business can also send [quick replies](/guide/structured-messages/#reply-buttons), [location request](/guide/structured-messages/#location-request-buttons) and [carousel](/guide/structured-messages/#carousel-messages) messages. Refer to the [channel capabilities grid](/guide/channel-capabilities/) to see all the Twitter DM integration capabilities.

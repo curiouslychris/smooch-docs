@@ -69,7 +69,7 @@ The payload for when a payment is received.
 | **app**  | A nested object representing the Smooch app associated with the event. See the [truncated app schema](#truncated-app-schema) below for details.       |
 | **appUser**  | A nested object representing the appUser associated with the event. See the [truncated appUser schema](#truncated-app-user-schema) below for details.      |
 | **payments**  | An array of objects representing the payments associated with the event. See the [payment schema](#payment-schema) below for details. |
-| **timestamp**  | A unix timestamp given in seconds, describing when Smooch received the message. |
+| **timestamp**  | A unix timestamp given in seconds, describing when Smooch received confirmation of the payment. |
 
 #### Payment schema
 

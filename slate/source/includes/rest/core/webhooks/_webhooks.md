@@ -4,6 +4,10 @@ Webhooks are a fantastic way to extend the Smooch platform beyond the built-in f
 
 These webhook APIs require a `jwt` credential with `app` level scope. Furthermore, a webhook can only operate within the scope of a single Smooch app.
 
+<aside class="notice">
+An app is limited to 10 webhooks. A webhook can subscribe to multiple trigger events. We recommend using a single webhook that registers to all the events you need.
+</aside>
+
 ### Webhook triggers
 
 When a webhook trigger is triggered, a `POST` request will be made to the URL configured in your webhook object along with a JSON payload specific for the event type.

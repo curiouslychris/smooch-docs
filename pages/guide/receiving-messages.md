@@ -73,6 +73,8 @@ The payload contains information on the message, the user who sent it and all as
 |merge:appUse|when two or more users are merged into one|
 |*|when any of the above triggers occurs|
 
+**Note:** An app is limited to 10 webhooks. A webhook can subscribe to multiple trigger events. We recommend using a single webhook that registers to all the events you need.
+
 See the [webhook payload reference](http://docs.smooch.io/rest/#webhooks-payload) for more details.
 
 #### Configuring Via the Integrations Directory

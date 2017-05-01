@@ -12,4 +12,4 @@ A message processor is simply a URL defined by you, that receives HTTP callback 
 
 You can attach additional metadata to the message during the continue call.
 
-If the continue endpoint is not called within 5 minutes the message will not be delivered at all, the message will not enter the conversation record, and any webhooks you have configured will not fire HTTP callback events.
+If the continue endpoint is not called within 5 minutes the message will not be delivered to any business systems, and any webhooks you have configured will not fire HTTP callback events.

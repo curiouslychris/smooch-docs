@@ -4,7 +4,7 @@
 
 These endpoints are used to manage processors. See [Manage Pipelines](#manage-pipelines) to specify the processors order in a pipeline.
 
-The following API endpoints use JWT-based authorization. The required scopes are either app or appMaker. When using _appMaker scope_ you call the endpoints like so by specifying the app resource: `/v1/apps/:id/middleware/processors`. When calling the endpoints with _app scope_ it isn't necessary to specify the app resource, and you can call the same endpoint like so: `/v1/middleware/processors`.
+The following API endpoints use JWT-based authorization. The required scopes are either app or account. When using _account scope_ you call the endpoints like so by specifying the app resource: `/v1/apps/:id/middleware/processors`. When calling the endpoints with _app scope_ it isn't necessary to specify the app resource, and you can call the same endpoint like so: `/v1/middleware/processors`.
 
 ## Create Processor
 

@@ -48,7 +48,7 @@ curl https://api.smooch.io/v1/middleware/continue \
      -X POST \
      -d '{"metadata":{"handled":true}}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer mw_rGw3kUlgBLgSctS-t170zQXN'
+     -H 'authorization: Bearer the-nonce'
 ```
 
 ```js
@@ -82,10 +82,10 @@ curl https://api.smooch.io/v1/middleware/continue \
 
 <api>`POST /v1/middleware/continue`</api>
 
-This endpoint allows you to continue processing a message. When this endpoint is called within five minutes of notification the message event will continue to the next processor, or to the Smooch conversation record if this is the final processor in the pipeline.
+This endpoint allows you to continue processing a message. When this endpoint is called within five minutes of notification the message event will continue to the next processor, or be delivered to business systems and webhooks if this is the final processor in the pipeline.
 
 | **Arguments**             |   |
 |---------------------------|---|
 | **metadata**<br/><span class='opt'>optional</span> | A Flat JSON object with metadata to be added to the message. See the [message schema](#message-schema) for more details on message metadata |
 
-The caller must also include a nonce in the Authorization header of the request (ex: _Authorization: Bearer the-nonce_). Tokens are valid for 5 minutes. The nonce maps to a set of data which identifies the user, conversation, app, processor, and pipeline, and is used to both verify the origin of the request, and to know which processor is next in the pipeline.
+The caller must also include a nonce in the Authorization header of the request (ex: _Authorization: Bearer mw_rGw3kUlgBLgSctS-t170zQXN_). Nonce tokens are valid for 5 minutes.

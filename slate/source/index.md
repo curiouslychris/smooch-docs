@@ -36,6 +36,12 @@ includes:
     - rest/managed/apps
     - rest/managed/app_keys
     - rest/managed/integrations
+    - --Pipelines (BETA)
+    - rest/pipelines/intro
+    - rest/pipelines/manage_processors
+    - rest/pipelines/manage_pipelines
+    - rest/pipelines/message_events
+    - rest/pipelines/secure_processors
     - --Smooch Connect
     - rest/connect/introduction
     - rest/connect/add_to_smooch_button

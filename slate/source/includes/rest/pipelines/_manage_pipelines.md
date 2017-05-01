@@ -1,5 +1,7 @@
 # Manage Pipelines
 
+<aside class="warning">These endpoints are currently in BETA and have not been wrapped in Swagger or native libraries yet. They are currently only available via HTTP call to the REST API.</aside>
+
 These endpoints are used to manage pipelines. You can add or remove processors to a pipeline by making requests to [update pipeline](#update-pipeline) specifying the entire contents of the pipeline in each call.
 
 the _appuser-message_ pipeline is currently the only available pipeline.
@@ -15,9 +17,7 @@ curl https://api.smooch.io/v1/middleware/pipelines \
 ```
 
 ```js
-smooch.pipelines.get().then((response) => {
-    // async code
-});
+// not implemented yet
 ```
 
 > Response:
@@ -52,12 +52,7 @@ curl https://api.smooch.io/v1/middleware/pipelines/appuser-message \
 ```
 
 ```js
-smooch.pipelines.update('appuser-message', [
-    '5772856acf0801526d6930e8',
-    '577284eccf0801526d6930e7'
-]).then((response) => {
-    // async code
-});
+// not implemented yet
 ```
 
 > Response:

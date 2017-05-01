@@ -39,6 +39,7 @@ When a processor is notified of an appUser message, it receives this payload dat
 | **nonce** | A code used to call the [continue endpoint](#continue-message) when a processor decides to continue the message chain. |
 
 ## Continue Message
+<aside class="warning">This endpoint is currently in BETA and has not been wrapped in Swagger or native libraries yet. It is currently only available via HTTP call to the REST API.</aside>
 
 > Request:
 
@@ -51,13 +52,7 @@ curl https://api.smooch.io/v1/middleware/continue \
 ```
 
 ```js
-smooch.processors.continue('mw_rGw3kUlgBLgSctS-t170zQXN', {
-    "metadata": {
-        "handled": true
-    }
-}).then((response) => {
-    // async code
-});
+// not implemented yet
 ```
 
 > Response:

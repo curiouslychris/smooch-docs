@@ -1,5 +1,7 @@
 # Manage Processors
 
+<aside class="warning">These endpoints are currently in BETA and have not been wrapped in Swagger or native libraries yet. They are currently only available via HTTP call to the REST API.</aside>
+
 These endpoints are used to manage processors. See [Manage Pipelines](#manage-pipelines) to specify the processors order in a pipeline.
 
 The following API endpoints use JWT-based authorization. The required scopes are either app or appMaker. When using _appMaker scope_ you call the endpoints like so by specifying the app resource: `/v1/apps/:id/middleware/processors`. When calling the endpoints with _app scope_ it isn't necessary to specify the app resource, and you can call the same endpoint like so: `/v1/middleware/processors`.
@@ -17,11 +19,7 @@ curl https://api.smooch.io/v1/middleware/processors \
 ```
 
 ```js
-smooch.processors.create({
-    target: 'http://example.com/callback'
-}).then((response) => {
-    // async code
-});
+// not implemented yet
 ```
 
 > Response:
@@ -58,9 +56,7 @@ curl https://api.smooch.io/v1/middleware/processors \
 ```
 
 ```js
-smooch.processors.list().then((response) => {
-    // async code
-});
+// not implemented yet
 ```
 
 > Response:
@@ -95,9 +91,7 @@ curl https://api.smooch.io/v1/middleware/processors/57601a3205d8542a65baef2e \
 ```
 
 ```js
-smooch.processors.get('57601a3205d8542a65baef2e').then((response) => {
-    // async code
-});
+// not implemented yet
 ```
 
 > Response:
@@ -132,11 +126,7 @@ curl https://api.smooch.io/v1/middleware/processors/57601a3205d8542a65baef2e \
 ```
 
 ```js
-smooch.processors.update({
-    target: 'http://example.com/callback'
-}).then((response) => {
-    // async code
-});
+// not implemented yet
 ```
 
 > Response:
@@ -172,9 +162,7 @@ curl https://api.smooch.io/v1/middleware/processors/577284eccf0801526d6930e7 \
      -H 'authorization: Bearer your-jwt'
 ```
 ```js
-smooch.processors.delete('577284eccf0801526d6930e7').then(() => {
-    // async code
-});
+// not implemented yet
 ```
 
 > Response:

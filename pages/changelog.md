@@ -6,6 +6,10 @@ layout: two-column
 
 # Changelog
 
+## May 8th, 2017
+
+- Added Messenger support to the [Linking API](http://docs.smooch.io/rest/#link-app-user-to-channel) through Messenger's [customer matching](https://developers.facebook.com/docs/messenger-platform/guides/customer-matching)
+
 ## April 11th, 2017
 
 - [Twitter DM](https://app.smooch.io/integrations/twitter) is now a customer channel available on Smooch

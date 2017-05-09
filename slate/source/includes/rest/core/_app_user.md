@@ -408,14 +408,17 @@ Retrieves all of the app user's channel entity IDs.
 ```shell
 curl https://api.smooch.io/v1/appusers/deb920657bbc3adc3fec7963/channels \
      -X POST \
-     -d '{"type": "twilio", "phoneNumber": "+15145555555"}' \
+     -d '{"type": "twilio", "confirmation": {"type": "prompt"}, "phoneNumber": "+15145555555"}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
 ```js
 smooch.appUsers.linkChannel('steveb@channel5.com', {
     type: 'twilio',
-    phoneNumber: '+15145555555'
+    phoneNumber: '+15145555555',
+    confirmation: {
+      type: 'prompt'
+    }
 }).then((response) => {
     // async code
 });
@@ -454,26 +457,67 @@ smooch.appUsers.linkChannel('steveb@channel5.com', {
 
 | **Arguments**                 |                            |
 |-------------------------------|----------------------------|
-| **type**<br/><span class='req'>required</span>     | The channel to link.|
+| **type**<br/><span class='req'>required</span>     | The channel to link. Can be `twilio` or `messenger`|
 | **{entity}**<br/><span class='req'>required</span> | The required entity for linking. This is [different for each channel](#linkable-channels-and-entities).|
-| **skipConfirmation**<br/><span class='opt'>optional</span> | Flag to specify whether or not the confirmation message is sent. Requires app scope JWT.|
+| **confirmation**<br/><span class='req'>required</span> | The [confirmation option](#linking-confirmation) for linking. |
+
+[Some extra arguments](#linkable-channels-and-entities) are supported depending on the selected type.
 
 Linking allows users to continue conversations on their preferred channels. An appUser's linked channels will be found in the `clients` field.
 
-When a link request is first made, the channel will be added to the `pendingClients` field. The appUser is then prompted to accept the linking request. If they do so, the corresponding channel is then moved from the `pendingClients` field to `clients` field. If they reject the linking request then the channel is removed from `pendingClients`.
+When a link request is first made, the channel will be added to the `pendingClients` field. At this point, the API call will be considered a success and a response will be returned.
+Future updates on the status of the link request can be tracked by listening to the [link:match](#trigger---code-classprettyprintlinkmatchcode), [link:success](#trigger---code-classprettyprintlinksuccesscode) and [link:failure](#trigger---code-classprettyprintlinkfailurecode) webhooks.
 
-It is possible to skip the confirmation step with the `skipConfirmation` flag. App scope JWT is required to specify the confirmation option.
+<aside class="notice">
+The `skipConfirmation` flag is still supported to preserve backwards compatibility, but will only be accepted for `twilio` linking.
+</aside>
+
+### Linking confirmation
+
+The **confirmation** option allows you to specify the strategy used to initiate a link with the target user.
+
+| **Arguments**                 |                            |
+|-------------------------------|----------------------------|
+| **type**<br/><span class='req'>required</span> | The type of confirmation. Types include [immediate](#immediate), [userActivity](#user-activity) or [prompt](#prompt) |
+| **message**<br/> | The message used to reach out to the user. Must be a valid message object as per the [post message](#post-message) API |
+
+<aside class="notice">
+Messages sent via the Linking API can only be of type `text` and `image` at the moment. If `actions` are included they can only be of type `link`.
+</aside>
+
+#### Immediate
+
+If you specify an `immediate` confirmation, Smooch will not wait for the user to confirm the link before converting the pending client to a full client. At this point, the newly linked client will automatically [become the primary](https://docs.smooch.io/guide/sending-messages/#automatic-message-delivery) for that user and subsequent messages will be delivered there first. On a successful link, the [link:success](#trigger---code-classprettyprintlinksuccesscode) webhook will be triggered.
+
+If the `message` property is provided, Smooch will attempt to deliver it to the channel prior to completing the link. Successfully sending this message will trigger a [link:match](#trigger---code-classprettyprintlinkmatchcode) webhook. Failure to deliver this message will result in a [link:failure](#trigger---code-classprettyprintlinkfailurecode) webhook, and the pending client will be removed from the user.
+
+#### User activity
+
+If you specify a `userActivity` confirmation, Smooch will wait for the user to confirm the link before converting the pending client to a full client. If the user performs an activity acknowledging the message was received (for example accepting the message request on Facebook Messenger), the [link:success](#trigger---code-classprettyprintlinksuccesscode) webhook will be triggered and the client will [become the primary]((https://docs.smooch.io/guide/sending-messages/#automatic-message-delivery)).
+
+If the `message` property is provided, Smooch will attempt to deliver it to the channel prior to listening for the user's activity. This is a good opportunity to welcome the user to the new channel and invite them to begin messaging you there. Successfully sending this message will trigger a [link:match](#trigger---code-classprettyprintlinkmatchcode) webhook. Failure to deliver this message will result in a [link:failure](#trigger---code-classprettyprintlinkfailurecode) webhook, and the pending client will be removed from the user.
+
+#### Prompt
+
+If you specify a prompt confirmation, the user will be prompted to either accept or deny your link request. Currently this confirmation type is only available for Twilio, and the message sent to prompt the user can't be customized.
+
+Successfully sending the prompt will trigger a [link:match](#trigger---code-classprettyprintlinkmatchcode) webhook. Failure to deliver this message or a denial of the prompt will result in a [link:failure](#trigger---code-classprettyprintlinkfailurecode) webhook, and the pending client will be removed from the user.
 
 ### Linkable channels and entities
 
-Given that there is no way for you to provide Smooch with the necessary ID to connect Messenger, LINE, WeChat or Telegram, we have limited the API to only accept ‘Twilio’ for now.
-Support for Frontend Email is coming soon.
+Given that there is no way for you to provide Smooch with the necessary ID to connect LINE, WeChat or Telegram, we have limited the API to accept ‘Twilio’ and 'Messenger' for now.
+Support for Mailgun is coming soon.
 
-| Channel type                 | Required entity              |
-|------------------------------|------------------------------|
+| Channel type                 | Required entity              | Extra criteria               |
+|------------------------------|------------------------------|------------------------------|
 | twilio                       | **phoneNumber**<br/> A String of the appUser's phone number. It must contain the `+` prefix and the country code.<br/> Examples of valid phone numbers: `+1 212-555-2368`, `+12125552368`, `+1 212 555 2368`.<br/> Examples of invalid phone numbers: `212 555 2368`, `1 212 555 2368`.                  |
+| messenger                    | **phoneNumber**<br/> A String of the appUser's phone number. It must contain the `+` prefix and the country code.<br/> Examples of valid phone numbers: `+1 212-555-2368`, `+12125552368`, `+1 212 555 2368`.<br/> Examples of invalid phone numbers: `212 555 2368`, `1 212 555 2368`.                  | `givenName` and `surname` may be specified to increase the likelihood of a match. |
 
-
+<aside class="notice">
+Messenger linking [requires a special permission](https://developers.facebook.com/docs/messenger-platform/guides/customer-matching#access) on your Facebook page and is subject to a $99 USD one-time fee.
+Given this permission requirement, Messenger linking is only possible when targeting an app integrated via our [Integration API](#facebook-messenger).
+A confirmation `message` is also required to initiate a link for the Messenger channel.
+</aside>
 
 ## Unlink App User From Channel
 

@@ -57,7 +57,7 @@ pages = [
     "/guide/managing-user-information/",
     "/guide/authenticating-users/",
     "/guide/creating-users/",
-    "/guide/linking-users-to-sms/",
+    "/guide/linking-users/",
     "/guide/multi-client-users/"
 ]
 

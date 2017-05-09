@@ -25,4 +25,7 @@ Triggers are specified in an optional `triggers` array in the request body. If `
 | **delivery:success**      | when a message is successfully delivered to a customer channel |
 | **delivery:failure**      | when a message fails to be delivered to a customer channel     |
 | **payment:success**       | when a payment is successfully received from a channel         |
+| **link:success**          | when a new channel is successfully linked to a user            |
+| **link:failure**          | when a user link fails                                         |
+| **link:match**            | when a user is successfully matched to an external system      |
 | <strong>*</strong>        | when any of the above triggers occurs                          |

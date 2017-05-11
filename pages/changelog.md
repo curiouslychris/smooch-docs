@@ -6,6 +6,12 @@ layout: two-column
 
 # Changelog
 
+## May 11th, 2017
+- Added a [new page](https://app.smooch.io) in the dashboard which lets you see and manage all of your Smooch apps
+- Added the ability to quickly navigate between your Smooch apps from anywhere in the dashboard using name or Id
+- Speed and performance have been improved for accounts with a large number of Smooch apps
+- The Smooch dashboard was given a facelift for an experience that is more intuitive, productive, and enjoyable
+
 ## May 8th, 2017
 
 - Added Messenger support to the [Linking API](http://docs.smooch.io/rest/#link-app-user-to-channel) through Messenger's [customer matching](https://developers.facebook.com/docs/messenger-platform/guides/customer-matching)

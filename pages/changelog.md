@@ -7,7 +7,7 @@ layout: two-column
 # Changelog
 
 ## May 11th, 2017
-- Added a [new page](https://app.smooch.io) in the dashboard which lets you see and manage all of your Smooch apps
+- Added a new page in the [dashboard](https://app.smooch.io) which lets you see and manage all of your Smooch apps
 - Added the ability to quickly navigate between your Smooch apps from anywhere in the dashboard using name or Id
 - Speed and performance have been improved for accounts with a large number of Smooch apps
 - The Smooch dashboard was given a facelift for an experience that is more intuitive, productive, and enjoyable

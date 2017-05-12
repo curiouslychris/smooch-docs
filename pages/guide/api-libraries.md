@@ -25,7 +25,7 @@ Available as a [gem](https://rubygems.org/gems/smooch-api):
 
 If you use bundler, you can add this line to your Gemfile
 
-`gem 'smooch-api', '~> 1.1.0'`
+`gem 'smooch-api', '~> 1.2.0'`
 
 Check out [the package's docs](https://github.com/smooch/smooch-ruby) for the list of methods. The source for this package is also avaible in the [GitHub](https://github.com/smooch/smooch-ruby) repo.
 
@@ -43,13 +43,13 @@ For [Maven](https://maven.apache.org/), add the following dependency to your pro
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
 
 For [Gradle](https://gradle.org/), add this dependency to your project's build file
 
-`compile "io.smooch:api:1.1.0"`
+`compile "io.smooch:api:1.2.0"`
 
 Check out [the package's docs](https://github.com/smooch/smooch-java) for the list of methods. The source for this package is also avaible in the [GitHub](https://github.com/smooch/smooch-java) repo.

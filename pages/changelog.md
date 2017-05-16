@@ -6,6 +6,15 @@ layout: two-column
 
 # Changelog
 
+## May 12th, 2017
+- [Android SDK](https://github.com/smooch/smooch-android/releases/tag/4.6.0) updated
+  - Calls to `Conversation.Delegate.onMessagesReceived` no longer occur on image upload
+  - Progress on image uploads now displays correctly
+  - Add synchronicity lock to attempt to fix `ConcurrentModificationException`
+- Added [Update App API](http://docs.smooch.io/rest/#update-app)
+- Updated [Create App API](http://docs.smooch.io/rest/#create-app) with new `maskCreditCardNumbers` option
+- Updated Smooch API wrappers to fix [issue](https://github.com/smooch/smooch-java/issues/1) caused by empty arrays being sent to the server and added [reasonable defaults](https://github.com/smooch/smooch-ruby/commit/f2739dbf1df0b13fb8c9ad9670e21e8ec2c1e7fb#diff-d708f25653882fc3f3a529fc5c74985fR429) for `limit` and `offset` params
+
 ## May 11th, 2017
 - Added a new page in the [dashboard](https://app.smooch.io) which lets you see and manage all of your Smooch apps
 - Added the ability to quickly navigate between your Smooch apps from anywhere in the dashboard using name or Id

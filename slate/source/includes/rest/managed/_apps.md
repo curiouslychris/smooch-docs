@@ -9,14 +9,17 @@ App schema and endpoints used for provisioning Smooch apps.
 ```shell
 curl https://api.smooch.io/v1/apps \
      -X POST \
-     -d '{"name": "My App"}' \
+     -d '{"name": "My App", "settings": {"maskCreditCardNumbers": false}}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-account-token'
 ```
 
 ```javascript
 smooch.apps.create({
-    name: 'My App'
+    name: 'My App',
+    settings: {
+      maskCreditCardNumbers: false
+    }    
 }).then((response) => {
     // async code
 });
@@ -32,7 +35,10 @@ smooch.apps.create({
   "app": {
     "_id": "55c8d9758590aa1900b9b9f6",
     "appToken": "3s58wwlgx8xqbidgyyvzunoyw",
-    "name": "My App"
+    "name": "My App",
+    "settings": {
+      "maskCreditCardNumbers": false
+    }    
   }
 }
 ```
@@ -44,6 +50,7 @@ Creates a new app. The response body will include the appToken, which can be use
 | **Arguments**             |   |
 |---------------------------|---|
 | **name**<br/><span class='req'>required</span> | The User facing name of the app. |
+| **settings**<br/> | Customizable app settings (see [app settings](#app-settings)). |
 
 ## List Apps
 
@@ -72,7 +79,10 @@ smooch.apps.list().then((response) => {
         {
           "_id": "55c8d9758590aa1900b9b9f6",
           "appToken": "3s58wwlgx8xqbidgyyvzunoyw",
-          "name": "My App"
+          "name": "My App",
+          "settings": {
+            "maskCreditCardNumbers": true
+          }          
         }
     ],
     "hasMore": false,
@@ -114,7 +124,10 @@ smooch.apps.get('55c8d9758590aa1900b9b9f6').then((response) => {
   "app": {
     "_id": "55c8d9758590aa1900b9b9f6",
     "appToken": "3s58wwlgx8xqbidgyyvzunoyw",
-    "name": "My App"
+    "name": "My App",
+    "settings": {
+      "maskCreditCardNumbers": true
+    }
   }
 }
 ```
@@ -122,6 +135,56 @@ smooch.apps.get('55c8d9758590aa1900b9b9f6').then((response) => {
 <api>`GET /v1/apps/{appId}`</api>
 
 Fetches an individual app.
+
+## Update App
+
+> Request:
+
+```shell
+curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6 \
+     -X PUT \
+     -d '{"name": "My New App", "settings": {"maskCreditCardNumbers": false}}' \
+     -H 'content-type: application/json' \
+     -H 'authorization: Bearer your-account-token'
+```
+
+```javascript
+smooch.apps.update('55c8d9758590aa1900b9b9f6', {
+  name: 'My New App',
+  settings: {
+    maskCreditCardNumbers: false
+  }
+}).then((response) => {
+    // async code
+});
+```
+
+> Response:
+
+```
+200 OK
+```
+```json
+{
+  "app": {
+    "_id": "55c8d9758590aa1900b9b9f6",
+    "appToken": "3s58wwlgx8xqbidgyyvzunoyw",
+    "name": "My New App",
+    "settings": {
+      "maskCreditCardNumbers": false
+    }
+  }
+}
+```
+
+<api>`PUT /v1/apps/{appId}`</api>
+
+Updates an app.
+
+| **Arguments**             |   |
+|---------------------------|---|
+| **name**<br/><span class='req'>required</span> | The User facing name of the app. |
+| **settings**<br/> | Customizable app settings (see [app settings](#app-settings)). |
 
 ## Delete App
 
@@ -163,6 +226,15 @@ The schema describes the fields you can expect to be associated with an app.
 | **_id**  | A canonical ID that can be used to reference the Smooch app that the event is associated with. |
 | **appToken**  | A public token that can be used to initialize Smooch's mobile and Web SDKs and authorize API calls on behalf of appUsers who haven't been secured by JWT. |
 | **name**  | the friendly name of the app. |
+| **settings** | Customizable app settings (see [app settings](#app-settings)). |
+
+### App settings
+
+The customizable settings associated with an app.
+
+| Field | Description                                                                                    |
+|-------|--------|------------------------------------------------------------------------------------------------|
+| **maskCreditCardNumbers** | A boolean specifying whether credit card numbers should be masked when sent through Smooch. |
 
 ### Truncated app schema
 

@@ -315,7 +315,7 @@ Menus contain 1 to 3 menu items at its first level of hierarchy. Submenus contai
 | **type**<br/><span class='req'>required</span> | Can either be `link`, `postback`, which correspond to Smooch's `link` and `postback` [actions](#action-buttons), or `submenu` for nested menus. |
 | **text**<br/><span class='req'>required</span> | The button text of the menu item. |
 | **uri**<br/><span class='opt'>optional</span> | A valid address, like http://smooch.io. Required for a `link` type item. |
-| **postback**<br/><span class='opt'>optional</span> | A payload for a postback. Required for a `postback` type item.|
+| **payload**<br/><span class='opt'>optional</span> | A payload for a postback. Required for a `postback` type item.|
 | **items**<br/><span class='opt'>optional</span> | An array of menu items for a submenu. Required for a `submenu` type item.|
 
 ### Menu Settings Schema

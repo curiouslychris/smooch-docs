@@ -21,6 +21,10 @@ Once your Facebook account is connected to Smooch, select the Facebook page you 
 
 Action buttons work as expected. A `link` action button will bring the user to the specified URL while a `postback` action button will trigger any [webhook](https://docs.smooch.io/rest/#webhooks) listening to the `postback` trigger.
 
+#### Call Buttons
+
+A `link` action with a `tel:` protocol will be delivered as a [Call Button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/call-button).
+
 #### Payments
 
 ![Facebook Messenger Payments](/images/messenger_payments.png)

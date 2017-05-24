@@ -6,6 +6,9 @@ layout: two-column
 
 # Changelog
 
+## May 24th, 2017
+- Added support for [Call Buttons](https://developers.facebook.com/docs/messenger-platform/send-api-reference/call-button) to the Messenger channel. [Learn more](/guide/facebook-messenger/#call-buttons)
+
 ## May 12th, 2017
 - [Android SDK](https://github.com/smooch/smooch-android/releases/tag/4.6.0) updated
   - Calls to `Conversation.Delegate.onMessagesReceived` no longer occur on image upload

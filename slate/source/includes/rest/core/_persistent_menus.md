@@ -177,50 +177,6 @@ smooch.integrations.menu.get('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc
 
 Get the specified integration's menu.
 
-## Create Integration Menu
-
-> Request:
-
-```shell
-curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations/5735dded48011972d621dc02/menu \
-     -X POST \
-     -d '{"items": [{"type": "link", "text": "Smooch", "uri": "http://smooch.io"}]}' \
-     -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
-```
-```js
-smooch.integrations.menu.create('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc02', {
-    items: [{
-        type: 'link',
-        text: 'Smooch',
-        uri: 'http://smooch.io'
-    }]
-}).then(() => {
-    // async code
-});
-```
-
-> Response:
-
-```
-201 CREATED
-```
-```json
-{
-    "menu": {
-        "items": [{
-            "type": "link",
-            "text": "Smooch",
-            "uri": "http://smooch.io",
-            "_id": "57b331fbf1c6aeba1f940dc7"
-        }]
-    }
-}
-```
-
-<api>`POST /v1/apps/{appId}/integrations/{integrationId}/menu`</api>
-
-Create the specified integration's menu, overriding the app menu if configured. See the [persistent menu schema](#persistent-menu-schema) for possible options.
 
 ## Update Integration Menu
 
@@ -265,7 +221,7 @@ smooch.integrations.menu.update('55c8d9758590aa1900b9b9f6', '5735dded48011972d62
 
 <api>`PUT /v1/apps/{appId}/integrations/{integrationId}/menu`</api>
 
-Create the specified integration's menu, overriding the app menu if configured. See the [persistent menu schema](#persistent-menu-schema) for possible options.
+Set the specified integration's menu, overriding the app menu if configured. See the [persistent menu schema](#persistent-menu-schema) for possible options.
 
 ## Delete Integration Menu
 

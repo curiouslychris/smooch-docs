@@ -46,7 +46,7 @@ export default class extends Component {
         for (const node of imgNodes) {
             // a valid node is a node that is not in the blacklist
             // and doesn't have an ancestor in the blacklist
-            const isValidNode = !blacklistedNodes.some((blacklistedNode) => {
+            const isValidNode = !Array.of(blacklistedNodes).some((blacklistedNode) => {
                     return IsOrHasAncestorNode(node, blacklistedNode);
             });
 

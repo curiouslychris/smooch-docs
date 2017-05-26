@@ -418,6 +418,12 @@ The full set of keys is listed below. To enable string customization across lang
 
 /* Title for user notification action */
 "Reply" = "...";
+
+/* Date format used for message grouping headers on the conversation screen */
+"MMMM d, h:mm a" = "MMMM d, h:mm a";
+
+/* Date format used for message timestamps on the conversation screen */
+"hh:mm a" = "hh:mm a";
 ```
 
 ### Styling the Conversation Interface

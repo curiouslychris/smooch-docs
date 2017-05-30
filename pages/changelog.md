@@ -6,6 +6,14 @@ layout: two-column
 
 # Changelog
 
+## May 30th, 2017
+- Added Dutch translations in iOS SDK [5.6.8](https://github.com/smooch/smooch-ios/releases/tag/5.6.8)
+
+## May 26th, 2017
+- [iOS SDK](https://github.com/smooch/smooch-ios/releases/tag/5.6.7) updated
+  - Added ability to localize date format using string files
+  - Changed the conversation navigation bar implementation to make it possible to customize the label at runtime
+
 ## May 24th, 2017
 - Added support for [Call Buttons](https://developers.facebook.com/docs/messenger-platform/send-api-reference/call-button) to the Messenger channel. [Learn more](/guide/facebook-messenger/#call-buttons)
 

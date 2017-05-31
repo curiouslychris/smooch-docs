@@ -277,3 +277,26 @@ If you want to change this behavior, simply override the following resource in `
 ```
 
 <aside class="notice">Note that the specified intent must extend from the `Activity` class.</aside>
+
+## Permissions
+
+The Smooch library includes the following permissions by default:
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.VIBRATE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+```
+
+- `WRITE_EXTERNAL_STORAGE` is used to take photos and to store downloaded pictures locally to avoid needless re-downloading.
+- `ACCESS_FINE_LOCATION` is used in order to access the customer's location when requested using [location request buttons](/guide/structured-messages/#location-request-buttons).
+
+If you do not intend to request the user's location at any point, it is safe to remove the `ACCESS_FINE_LOCATION` using the following override:
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" tools:node="remove" />
+```
+
+All other permissions are necessary for Smooch to function as intended.

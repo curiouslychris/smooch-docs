@@ -20,6 +20,6 @@ You'll want to look at Conversation.java & Conversation delegate detailed in the
 
 ## How do I set the ConversationActivity to Portrait-only mode?
 
-To do so, you’ll need to create your own activity that extends [onversationActivity](http://docs.smooch.io/api/android/).
+To do so, you’ll need to create your own activity that extends [conversationActivity](http://docs.smooch.io/api/android/).
 
 Once you've created your own activity, ensure that it's [launched when a push notification is received](/guide/native-android-sdk/#notification-action-intent-override).

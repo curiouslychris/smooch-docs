@@ -1307,3 +1307,16 @@ This table represents the fields you can expect to receive nested inside postbac
 | **amount** <span class="opt">optional</span>| An integer representing an amount of money in hundredths of a dollar (or equivalent in other currencies). |
 | **currency** <span class="opt">optional</span>| An ISO 4217 standard currency code in lowercase.                                                          |
 | **state** <span class="opt">optional</span>| The value "offered", or "paid" sent with a buy action type. |
+
+
+### Referral schema
+
+Data representing a referral object when a user is referred to a conversation via a [Messenger code](https://developers.facebook.com/docs/messenger-platform/messenger-code) or clicking a [conversion ad](https://developers.facebook.com/docs/messenger-platform/guides/ads) on Facebook.
+
+| Field       | Description                                                                  |
+|-------------|------------------------------------------------------------------------------|
+| **code**    | The referral's identifier                                                    |
+| **details** | Nested object containing `source`, `type` and `adId`                         |
+| **source**  | The source of the referral. Ex: `MESSENGER_CODE`, `ADS` etc...               |
+| **type**    | The type of referral, usually `OPEN-THREAD`                                  |
+| **adId**    | If the referral came from an ad, this field will be present with the ad's Id |

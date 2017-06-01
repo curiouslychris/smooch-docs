@@ -9,6 +9,10 @@ layout: two-column
 ## May 31st, 2017
 - Added Mailgun support to the [Linking API](http://docs.smooch.io/rest/#link-app-user-to-channel)
 - Added support for new flag `primary` to the [Linking API](http://docs.smooch.io/rest/#link-app-user-to-channel)
+- Added support for Facebook 2.0 features
+    - Added new [`conversation:referral` event](http://docs.smooch.io/rest/#conversation-events) for when a user scans a parametric Messenger code or clicks on a Facebook ad
+    - Added new referral schema to the [`conversation:started` event](http://docs.smooch.io/rest/#conversation-events)
+
 
 ## May 30th, 2017
 - Added Dutch translations in iOS SDK [5.6.8](https://github.com/smooch/smooch-ios/releases/tag/5.6.8)

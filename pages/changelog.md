@@ -6,7 +6,7 @@ layout: two-column
 
 # Changelog
 
-## May 31st, 2017
+## June 1st, 2017
 - Added Mailgun support to the [Linking API](http://docs.smooch.io/rest/#link-app-user-to-channel)
 - Added support for new flag `primary` to the [Linking API](http://docs.smooch.io/rest/#link-app-user-to-channel)
 - Added support for Facebook 2.0 features

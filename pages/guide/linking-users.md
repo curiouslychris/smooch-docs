@@ -40,6 +40,15 @@ curl https://api.smooch.io/v1/appusers/{{userID-for-created-user}}/channels \
 Messenger linking [requires a special permission](https://developers.facebook.com/docs/messenger-platform/guides/customer-matching#access) on your Facebook page and is subject to a $99 USD one-time fee.
 Given this permission requirement, Messenger linking is only possible when targeting an app integrated via our [Integration API](http://docs.smooch.io/rest/#facebook-messenger).
 
+### For Mailgun
+```bash
+curl https://api.smooch.io/v1/appusers/{{userID-for-created-user}}/channels \
+     -X POST \
+     -d '{"type": "mailgun", "address": "their@email.com"}, "confirmation": {"type": "immediate"}, "subject": "This will be the subject of the email"' \
+     -H 'content-type: application/json' \
+     -H 'authorization: Bearer your-app-scoped-token'
+```
+
 ## Send a message to the user
 Now that the user has been created and linked to the target channel, any messages you send to that user via the POST Message [endpoint](http://docs.smooch.io/rest/#post-message) will be delivered to them there.
 

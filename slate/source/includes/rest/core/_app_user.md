@@ -457,9 +457,10 @@ smooch.appUsers.linkChannel('steveb@channel5.com', {
 
 | **Arguments**                 |                            |
 |-------------------------------|----------------------------|
-| **type**<br/><span class='req'>required</span>     | The channel to link. Can be `twilio` or `messenger`|
+| **type**<br/><span class='req'>required</span>     | The channel to link. Can be `twilio`, `messenger` or `mailgun`|
 | **{entity}**<br/><span class='req'>required</span> | The required entity for linking. This is [different for each channel](#linkable-channels-and-entities).|
 | **confirmation**<br/><span class='req'>required</span> | The [confirmation option](#linking-confirmation) for linking. |
+| **primary**<br/><span class='opt'>optional</span> | Default is `true`. Flag indicating whether the client will [become the primary](https://docs.smooch.io/guide/sending-messages/#automatic-message-delivery) once linking is complete. |
 
 [Some extra arguments](#linkable-channels-and-entities) are supported depending on the selected type.
 
@@ -483,35 +484,42 @@ The **confirmation** option allows you to specify the strategy used to initiate 
 
 <aside class="notice">
 Messages sent via the Linking API can only be of type `text` and `image` at the moment. If `actions` are included they can only be of type `link`.
+The confirmation message will not be added to the appUser's conversation.
 </aside>
 
 #### Immediate
 
-If you specify an `immediate` confirmation, Smooch will not wait for the user to confirm the link before converting the pending client to a full client. At this point, the newly linked client will automatically [become the primary](https://docs.smooch.io/guide/sending-messages/#automatic-message-delivery) for that user and subsequent messages will be delivered there first. On a successful link, the [link:success](#trigger---code-classprettyprintlinksuccesscode) webhook will be triggered.
+Available on: `Twilio`, `Messenger`, `Mailgun`
+
+If you specify an `immediate` confirmation, Smooch will not wait for the user to confirm the link before converting the pending client to a full client. On a successful link, the [link:success](#trigger---code-classprettyprintlinksuccesscode) webhook will be triggered.
 
 If the `message` property is provided, Smooch will attempt to deliver it to the channel prior to completing the link. Successfully sending this message will trigger a [link:match](#trigger---code-classprettyprintlinkmatchcode) webhook. Failure to deliver this message will result in a [link:failure](#trigger---code-classprettyprintlinkfailurecode) webhook, and the pending client will be removed from the user.
 
 #### User activity
 
-If you specify a `userActivity` confirmation, Smooch will wait for the user to confirm the link before converting the pending client to a full client. If the user performs an activity acknowledging the message was received (for example accepting the message request on Facebook Messenger), the [link:success](#trigger---code-classprettyprintlinksuccesscode) webhook will be triggered and the client will [become the primary]((https://docs.smooch.io/guide/sending-messages/#automatic-message-delivery)).
+Available on: `Twilio`, `Messenger`
 
-If the `message` property is provided, Smooch will attempt to deliver it to the channel prior to listening for the user's activity. This is a good opportunity to welcome the user to the new channel and invite them to begin messaging you there. Successfully sending this message will trigger a [link:match](#trigger---code-classprettyprintlinkmatchcode) webhook. Failure to deliver this message will result in a [link:failure](#trigger---code-classprettyprintlinkfailurecode) webhook, and the pending client will be removed from the user.
+If you specify a `userActivity` confirmation, Smooch will wait for the user to confirm the link before converting the pending client to a full client. If the user performs an activity acknowledging the message was received (for example accepting the message request on Facebook Messenger), the [link:success](#trigger---code-classprettyprintlinksuccesscode) webhook will be triggered.
+
+The `message` property is mandatory for this confirmation type. Smooch will attempt to deliver it to the channel prior to listening for the user's activity. This is a good opportunity to welcome the user to the new channel and invite them to begin messaging you there. Successfully sending this message will trigger a [link:match](#trigger---code-classprettyprintlinkmatchcode) webhook. Failure to deliver this message will result in a [link:failure](#trigger---code-classprettyprintlinkfailurecode) webhook, and the pending client will be removed from the user.
 
 #### Prompt
 
-If you specify a prompt confirmation, the user will be prompted to either accept or deny your link request. Currently this confirmation type is only available for Twilio, and the message sent to prompt the user can't be customized.
+Available on: `Twilio`
+
+If you specify a prompt confirmation, the user will be prompted to either accept or deny your link request. The message sent to prompt the user can't be customized.
 
 Successfully sending the prompt will trigger a [link:match](#trigger---code-classprettyprintlinkmatchcode) webhook. Failure to deliver this message or a denial of the prompt will result in a [link:failure](#trigger---code-classprettyprintlinkfailurecode) webhook, and the pending client will be removed from the user.
 
 ### Linkable channels and entities
 
 Given that there is no way for you to provide Smooch with the necessary ID to connect LINE, WeChat or Telegram, we have limited the API to accept ‘Twilio’ and 'Messenger' for now.
-Support for Mailgun is coming soon.
 
-| Channel type                 | Required entity              | Extra criteria               |
+| Channel type                 | Required entity              | Extra properties             |
 |------------------------------|------------------------------|------------------------------|
 | twilio                       | **phoneNumber**<br/> A String of the appUser's phone number. It must contain the `+` prefix and the country code.<br/> Examples of valid phone numbers: `+1 212-555-2368`, `+12125552368`, `+1 212 555 2368`.<br/> Examples of invalid phone numbers: `212 555 2368`, `1 212 555 2368`.                  |
-| messenger                    | **phoneNumber**<br/> A String of the appUser's phone number. It must contain the `+` prefix and the country code.<br/> Examples of valid phone numbers: `+1 212-555-2368`, `+12125552368`, `+1 212 555 2368`.<br/> Examples of invalid phone numbers: `212 555 2368`, `1 212 555 2368`.                  | `givenName` and `surname` may be specified to increase the likelihood of a match. |
+| messenger                    | **phoneNumber**<br/> A String of the appUser's phone number. It must contain the `+` prefix and the country code.<br/> Examples of valid phone numbers: `+1 212-555-2368`, `+12125552368`, `+1 212 555 2368`.<br/> Examples of invalid phone numbers: `212 555 2368`, `1 212 555 2368`.                  | `givenName` and `surname` may be specified as additional criteria to increase the likelihood of a match. |
+| mailgun                      | **address**<br/> A String of the appUser's email address | `subject` may be specified to set the subject for the outgoing email. <br/><br/> Default `subject`: "New message from {appName}" |
 
 <aside class="notice">
 Messenger linking [requires a special permission](https://developers.facebook.com/docs/messenger-platform/guides/customer-matching#access) on your Facebook page and is subject to a $99 USD one-time fee.

@@ -6,6 +6,10 @@ layout: two-column
 
 # Changelog
 
+## May 31st, 2017
+- Added Mailgun support to the [Linking API](http://docs.smooch.io/rest/#link-app-user-to-channel)
+- Added support for new flag `primary` to the [Linking API](http://docs.smooch.io/rest/#link-app-user-to-channel)
+
 ## May 30th, 2017
 - Added Dutch translations in iOS SDK [5.6.8](https://github.com/smooch/smooch-ios/releases/tag/5.6.8)
 
@@ -179,7 +183,7 @@ layout: two-column
 
 - Added pagination support in iOS SDK [5.1.0](https://github.com/smooch/smooch-ios/releases/tag/5.1.0)
 
-## September 21th, 2016
+## September 21st, 2016
 
 - Added support for Facebook Messenger [share buttons](http://docs.smooch.io/rest/#action-buttons) and [quick replies icons](http://docs.smooch.io/rest/#action-buttons).
 

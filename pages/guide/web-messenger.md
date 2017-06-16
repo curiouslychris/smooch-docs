@@ -27,11 +27,19 @@ The easiest way to get started is using the Script Tag method, but you can also 
 
 #### Step 1: Include the Smooch plugin on your web page
 
-Add the following code towards the end of the `body` section on your page. Placing it at the end allows the rest of the page to load first.
+Add the following code towards the end of the `head` section on your page.
 
 ```html
-<script src="https://cdn.smooch.io/smooch.min.js"></script>
+<script>
+    (function(e,n,t,o){
+        var r;var a=[];var i;var s;var p;e[t]={init:function(){r=arguments;return{then:function(e){p=e}}},on:function(){a.push(arguments)},render:function(){i=arguments},destroy:function(){s=arguments}};e.__onSmoochHostReady__=function n(o){delete e.__onSmoochHostReady__;e[t]=o;if(r){var c=o.init.apply(o,r);if(p){c.then(p)}}if(i){o.render.apply(o,i)}if(s){o.destroy.apply(o,s)}for(var d=0;d<a.length;d++){o.on.apply(o,a[d])}};function c(){try{if(this.response.url){var e=n.getElementsByTagName("script")[0];var t=n.createElement("script");t.async=true;t.src=this.response.url;e.parentNode.insertBefore(t,e)}}catch(e){}}var d=new XMLHttpRequest;d.addEventListener("load",c);d.open("GET","https://"+o+".webloader.smooch.io/",true);d.responseType="json";d.send()
+    })(window,document,"Smooch","<app-id>");
+</script>
 ```
+
+<aside class="notice">
+Don't forget to replace <code>&lt;app-id&gt;</code> with your app id.
+</aside>
 
 #### Step 2: Initialize Smooch with your new app token
 
@@ -57,14 +65,6 @@ var Smooch = require('smooch');
 Smooch.init({appToken: 'your_app_token'});
 ```
 
-<aside class="warning">
-If you are using NPM 3.0 or above, make sure to also install the required peer dependencies:
-
-```bash
-npm install babel-polyfill@">=6.9.0 <7.0" babel-runtime@">=6.9.0 <7.0" react@"15.x.x" react-dom@"15.x.x"
-```
-</aside>
-
 ### bower
 
 ```
@@ -74,32 +74,10 @@ bower install smooch
 In your code:
 
 ```javascript
-Smooch.init({appToken: 'your_app_token'});
-```
-
-### RequireJS
-
-Since the library is self-defining its name to be `Smooch` in the context of RequireJS, you should do the following to use it :
-
-```javascript
-
-// alias Smooch in your config
-require.config({
-    "paths": {
-        "Smooch": "https://cdn.smooch.io/smooch.min"
-    }
-});
-
-require(['require', 'Smooch'], function(require){
+require([], function(require){
     var Smooch = require('Smooch');
-	// ...
-});
-
-// or
-
-define(function(require) {
-	var Smooch = require('Smooch');
-	// ...
+    Smooch.init({appToken: 'your_app_token'});
+    // ...
 });
 ```
 
@@ -124,11 +102,18 @@ At the end of the product list, click on "Customer HTML Tag" and continue.
 Paste the code below in the suggested text field. Make sure to replace 'your-app-token' with your Smooch's app token.
 
 ```html
-<script src="https://cdn.smooch.io/smooch.min.js"></script>
+<script>
+    (function(e,n,t,o){
+        var r;var a=[];var i;var s;var p;e[t]={init:function(){r=arguments;return{then:function(e){p=e}}},on:function(){a.push(arguments)},render:function(){i=arguments},destroy:function(){s=arguments}};e.__onSmoochHostReady__=function n(o){delete e.__onSmoochHostReady__;e[t]=o;if(r){var c=o.init.apply(o,r);if(p){c.then(p)}}if(i){o.render.apply(o,i)}if(s){o.destroy.apply(o,s)}for(var d=0;d<a.length;d++){o.on.apply(o,a[d])}};function c(){try{if(this.response.url){var e=n.getElementsByTagName("script")[0];var t=n.createElement("script");t.async=true;t.src=this.response.url;e.parentNode.insertBefore(t,e)}}catch(e){}}var d=new XMLHttpRequest;d.addEventListener("load",c);d.open("GET","https://"+o+".webloader.smooch.io/",true);d.responseType="json";d.send()
+    })(window,document,"Smooch","<app-id>");
+</script>
 <script>
     Smooch.init({ appToken: 'your-app-token'});
 </script>
 ```
+<aside class="notice">
+Don't forget to replace <code>&lt;app-id&gt;</code> with your app id.
+</aside>
 
 ![GTM Snippet](/images/gtm_smooch_snippet.png)
 
@@ -164,11 +149,18 @@ You are wondering how to load our widget on your Ghost blog. First connect to yo
 In the Blog Footer section, paste our initialization code.
 
 ```html
-<script src="https://cdn.smooch.io/smooch.min.js"></script>
+<script>
+    (function(e,n,t,o){
+        var r;var a=[];var i;var s;var p;e[t]={init:function(){r=arguments;return{then:function(e){p=e}}},on:function(){a.push(arguments)},render:function(){i=arguments},destroy:function(){s=arguments}};e.__onSmoochHostReady__=function n(o){delete e.__onSmoochHostReady__;e[t]=o;if(r){var c=o.init.apply(o,r);if(p){c.then(p)}}if(i){o.render.apply(o,i)}if(s){o.destroy.apply(o,s)}for(var d=0;d<a.length;d++){o.on.apply(o,a[d])}};function c(){try{if(this.response.url){var e=n.getElementsByTagName("script")[0];var t=n.createElement("script");t.async=true;t.src=this.response.url;e.parentNode.insertBefore(t,e)}}catch(e){}}var d=new XMLHttpRequest;d.addEventListener("load",c);d.open("GET","https://"+o+".webloader.smooch.io/",true);d.responseType="json";d.send()
+    })(window,document,"Smooch","<app-id>");
+</script>
 <script>
     Smooch.init({ appToken: 'your-app-token'});
 </script>
 ```
+<aside class="notice">
+Don't forget to replace <code>&lt;app-id&gt;</code> with your app id.
+</aside>
 
 ![Ghost](/images/ghost.png)
 
@@ -199,11 +191,18 @@ Then, on the theme edition dashboard, select "footer" on the first dropdown menu
 Paste the code provided below just before the ending footer tag.
 
 ```html
-<script src="https://cdn.smooch.io/smooch.min.js"></script>
+<script>
+    (function(e,n,t,o){
+        var r;var a=[];var i;var s;var p;e[t]={init:function(){r=arguments;return{then:function(e){p=e}}},on:function(){a.push(arguments)},render:function(){i=arguments},destroy:function(){s=arguments}};e.__onSmoochHostReady__=function n(o){delete e.__onSmoochHostReady__;e[t]=o;if(r){var c=o.init.apply(o,r);if(p){c.then(p)}}if(i){o.render.apply(o,i)}if(s){o.destroy.apply(o,s)}for(var d=0;d<a.length;d++){o.on.apply(o,a[d])}};function c(){try{if(this.response.url){var e=n.getElementsByTagName("script")[0];var t=n.createElement("script");t.async=true;t.src=this.response.url;e.parentNode.insertBefore(t,e)}}catch(e){}}var d=new XMLHttpRequest;d.addEventListener("load",c);d.open("GET","https://"+o+".webloader.smooch.io/",true);d.responseType="json";d.send()
+    })(window,document,"Smooch","<app-id>");
+</script>
 <script>
     Smooch.init({ appToken: 'your-app-token'});
 </script>
 ```
+<aside class="notice">
+Don't forget to replace <code>&lt;app-id&gt;</code> with your app id.
+</aside>
 
 ![Zendesk Smooch code](/images/zendeskhc_smooch.png)
 
@@ -293,24 +292,6 @@ For basic customization of colors, you can set the Brand Color, Conversation Col
 * The **Action Color** changes the appearance of links and buttons in your messages. It is also used for the 'Send' button when it is in active state. If no color is specified, the action color will default to <span style='color: #0099ff; font-weight: bold;'>#0099ff<span>.
 
 <img alt="Color Customization" src="/images/color_customization_web.png" />
-
-#### Advanced Customization
-
-For complete control over the styling of the widget, you can use CSS to override the style used by Smooch. You can simply inspect any UI elements and override any class in the widget by targeting `#sk-container #sk-wrapper .selector`. Our stylesheet only targets `#sk-container .selector`, it would become less specific than yours.
-
-```css
-// To recolor bubbles to orange
-#sk-container #sk-wrapper .sk-msg {
-    background-color: #ff3333;
-}
-#sk-container #sk-wrapper .sk-msg::after {
-    border-left-color: #ff3333;
-}
-```
-
-<aside class="warning">
-If you use CSS customizations, we strongly suggest you add Smooch to your site through <a href="/guide/web-messenger/#npm-and-browserify">npm</a> or through <a href="/guide/web-messenger/#bower">bower</a>. The version we have on <a href="/guide/web-messenger/#script-tag-method">CDN</a> has our latest updates. Any new changes we push may break your CSS customizations.
-</aside>
 
 ### Sound notification
 

@@ -598,7 +598,44 @@ Client specific info
 | **id**  | A unique identifier for a device if on Web, iOS, or Android, or a client on other channels. |
 | **displayName** <span class="opt">optional</span> | The appUser's display name as provided by the client. |
 | **avatarUrl** <span class="opt">optional</span> | The URI for an appUser's avatar, as provided by the client. |
-| **info** <span class="opt">optional</span>| A flat Object with raw properties that vary for each client platform. All keys are optionals and not guaranteed to be available.                  |
+| **info** <span class="opt">optional</span>| A flat Object with raw properties that vary for each client platform. All keys are optionals and not guaranteed to be available. See the [client info schema](#client-info-schema) below for details.                  |
 | **appVersion** <span class="opt">optional</span>| For the SDK in a native app, signifies the version of the app. |
 | **lastSeen**  | A datetime string with the format **yyyy-mm-ddThh:mm:ssZ** representing the last time the appUser sent a message, or launched a client like Web, Android, or iOS.  |
 | **linkedAt** <span class="opt">optional</span>|             | If the channel was linked to a pre-existing appUser, a timestamp signifying when the linking occurred. Formatted as **yyyy-mm-ddThh:mm:ssZ** |
+
+### Client info schema
+
+Additional channel-specific client info. All keys are optionals and not guaranteed to be available.
+
+| Field                        | Description                  | Channel(s)                   |
+|------------------------------|------------------------------|------------------------------|
+| **Username** <span class="opt">optional</span>|  The appUser’s username.                  | Twitter |
+| **avatarUrl** <span class="opt">optional</span>|  The URI of an appUser’s avatar, as provided by the channel.    | Facebook, Twitter |
+| **locale** <span class="opt">optional</span>|  The AppUser localization, as set in the channel. Example: `"en_US"`.    | Facebook |
+| **timezone** <span class="opt">optional</span>|  A number representing the appUser’s timezone. Example: `-4`. | Facebook |
+| **gender** <span class="opt">optional</span>|  The gender set in the AppUser channel.| Facebook |
+| **isPaymentEnabled** <span class="opt">optional</span>|  A boolean that specifies if the appUser has enabled payments on Facebook Messenger.| Facebook |
+| **phoneNumber** <span class="opt">optional</span>|  A String of the appUser’s phone number. It contains the `+` prefix and the country code.| Twilio |
+| **city** <span class="opt">optional</span>|  The appUser’s city, as set in the channel. | WeChat, Twilio |
+| **state** <span class="opt">optional</span>|  The appUser's state, as set in the channel.  | WeChat, Twilio |
+| **country** <span class="opt">optional</span>|The appUser's country, as set in the channel. | WeChat, Viber, Twilio |
+| **language** <span class="opt">optional</span>| The language set in the channel  | WeChat, Viber |
+| **subscribeTime** <span class="opt">optional</span>| The appUser's subscribed time to the channel.  | WeChat |
+| **sex** <span class="opt">optional</span>| The gender set in the AppUser channel. | WeChat |
+| **currentTitle** <span class="opt">optional</span>|  The title of the AppUser current visited web page. | Web |
+| **currentUrl** <span class="opt">optional</span>|   The URL of the AppUser current visited web page. | Web |
+| **browserLanguage** <span class="opt">optional</span>|   The language of the AppUser current browser. | Web |
+| **Referrer** <span class="opt">optional</span>|   The URL of the referral web page. | Web |
+| **userAgent** <span class="opt">optional</span>|   The appUser current browser’s userAgent. | Web |
+| **URL** <span class="opt">optional</span>|   The URL on which the web messenger is initialized. | Web |
+| **sdkVersion** <span class="opt">optional</span>|    Smooch SDK version in the appUser's device. | Web, iOS, Android |
+| **wifi** <span class="opt">optional</span>|    String that specifies if the wifi is enabled on the device. Example: `"YES"`.  | iOS, Android |
+| **os** <span class="opt">optional</span>|    The OS of the AppUser device. Example: `"Android"`  | iOS, Android |
+| **osVersion** <span class="opt">optional</span>|   The OS version of the AppUser device. Example: `"6.0"` | iOS, Android |
+| **appName** <span class="opt">optional</span>|  For the SDK in a native app, signifies the name of the app. | iOS, Android |
+| **installer** <span class="opt">optional</span>|  The appUser device's installer.| iOS, Android |
+| **devicePlatform** <span class="opt">optional</span>|  The AppUser device platform. ex:`"x86_64"`.| iOS, Android |
+| **carrier** <span class="opt">optional</span>|  The AppUser device carrier. Take `"nil"` if none is specified. | iOS, Android |
+| **appId** <span class="opt">optional</span>|   For the SDK in a native app, signifies the appId. | iOS, Android |
+| **radioAccessTechnology** <span class="opt">optional</span>         | String that specifies the radio access technology used by the AppUser device. Take `"nil"` if none is specified. | iOS, Android |
+| **buildNumber** <span class="opt">optional</span>|   The build Number of the iOS app on which the SDK is initialized.| iOS |

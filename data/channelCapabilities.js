@@ -331,6 +331,65 @@ const channelData = {
             }
         }
     },
+    messagebird: {
+        icon: require('../images/channel-icons/messagebird.svg'),
+        name: 'MessageBird',
+        capabilities: {
+            text: {
+                send: SUPPORT_LEVEL.FULL,
+                receive: SUPPORT_LEVEL.FULL
+            },
+            image: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.FULL
+            },
+            gif: {
+                send: SUPPORT_LEVEL.NONE,
+                receive: SUPPORT_LEVEL.FULL
+            },
+            emoji: {
+                send: SUPPORT_LEVEL.FULL,
+                receive: SUPPORT_LEVEL.FULL
+            },
+            link: {
+                send: SUPPORT_LEVEL.FULL
+            },
+            buy: {
+                send: SUPPORT_LEVEL.FULL
+            },
+            postback: {
+                send: SUPPORT_LEVEL.FULL
+            },
+            replies: {
+                send: SUPPORT_LEVEL.FULL
+            },
+            compoundMessages: {
+                send: SUPPORT_LEVEL.PARTIAL
+            },
+            carousel: {
+                send: SUPPORT_LEVEL.PARTIAL
+            },
+            typingIndicator: {
+                send: SUPPORT_LEVEL.NA,
+                receive: SUPPORT_LEVEL.NA
+            },
+            readIndicator: {
+                send: SUPPORT_LEVEL.NA,
+                receive: SUPPORT_LEVEL.NA
+            },
+            conversationStart: {
+                receive: SUPPORT_LEVEL.NA
+            },
+            webMessengerLinking: SUPPORT_LEVEL.FULL,
+            location: {
+                send: SUPPORT_LEVEL.NONE,
+                receive: SUPPORT_LEVEL.PARTIAL
+            },
+            locationRequest: {
+                send: SUPPORT_LEVEL.PARTIAL
+            }
+        }
+    },
     telegram: {
         icon: require('../images/channel-icons/telegram.svg'),
         name: 'Telegram',
@@ -751,6 +810,7 @@ export const CHANNELS = [
     'android',
     'web',
     'twilio',
+    'messagebird',
     'telegram',
     'messenger',
     'twitter',

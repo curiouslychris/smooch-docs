@@ -381,9 +381,9 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
 ```javascript
 smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
     type: 'mailgun',
-    apiKey: "key-f265hj32f0sd897lqd2j5keb96784043", 
-    domain: "sandbox123.mailgun.org",
-    incomingAddress: "mytestemail@sandbox123.mailgun.org"
+    apiKey: 'key-f265hj32f0sd897lqd2j5keb96784043',
+    domain: 'sandbox123.mailgun.org',
+    incomingAddress: 'mytestemail@sandbox123.mailgun.org'
 }).then((response) => {
     // async code
 });
@@ -396,12 +396,12 @@ smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
 ```
 ```json
 {
-	"integration": {
-		"type": "mailgun",
-		"domain": "sandbox123.mailgun.org",
-		"incomingAddress": "mytestemail@sandbox123.mailgun.org",
-		"_id": "58adf047b90af0f747cff1d2"
-	}
+    "integration": {
+        "type": "mailgun",
+        "domain": "sandbox123.mailgun.org",
+        "incomingAddress": "mytestemail@sandbox123.mailgun.org",
+        "_id": "58adf047b90af0f747cff1d2"
+    }
 }
 ```
 
@@ -415,6 +415,56 @@ To configure a Mailgun integration, visit the [API Keys tab](https://app.mailgun
 | **incomingAddress**<br/><span class='req'>required</span> | Smooch will receive all emails sent to this address. It will also be used as the *Reply-To* address.   |
 
 ***Note:*** The `incomingAddress` must have the same domain as the one specified in the `domain` parameter.
+
+## MessageBird
+
+> Request:
+
+```shell
+curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations \
+     -X POST \
+     -d '{"type": "messagebird", "accessKey": "V0oSoktDijjGiAof265hj32fh", "originator": "12262121021"}' \
+     -H 'content-type: application/json' \
+     -H 'authorization: Bearer your-jwt'
+```
+
+```javascript
+smooch.integrations.create('55c8d9758590aa1900b9b9f6', {
+    type: 'messagebird',
+    accessKey: 'V0oSoktDijjGiAof265hj32fh',
+    originator: '12262121021'
+}).then((response) => {
+    // async code
+});
+```
+
+> Response:
+
+```
+201 CREATED
+```
+```json
+{
+    "integration": {
+        "type": "messagebird",
+        "webhookSecret": "72ade38394d1da51566cede33bd1e67e",
+        "originator": "12262121021",
+        "_id": "594850b82e4a8e5e04ef2a11"
+    }
+}
+```
+
+To configure a MessageBird integration, acquire the `accessKey` and the MessageBird number you would like to use, then call the Create Integration endpoint.
+
+In the SMS Configurations of the [MessageBird number](https://dashboard.messagebird.com/app/en-ca/numbers) you've used to integrate, add a new rule with the following settings:
+
+* If `[Always]`, Then `Forward to URL` and `POST`. Then, enter the following into the URL field: `https://app.smooch.io/api/messagebird/webhooks/:appId/:integrationId/:webhookSecret`
+
+| **Arguments**                                             |                                                                                                        |
+|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **type**<br/><span class='req'>required</span>            | The integration type: _messagebird_.                                                                       |
+| **accessKey**<br/><span class='req'>required</span>          | The public API key of your MessageBird account.                                                            |
+| **originator**<br/><span class='req'>required</span> | Smooch will receive all messages sent to this phone number. |
 
 ## Apple Push Notification
 

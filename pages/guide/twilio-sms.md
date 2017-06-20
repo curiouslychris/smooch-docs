@@ -1,9 +1,9 @@
 ---
-title: SMS
+title: Twilio SMS
 section: guide
 layout: two-column
 ---
-# SMS
+# Twilio SMS
 
 Smooch offers SMS through integration with Twilio.
 

@@ -6,6 +6,11 @@ layout: two-column
 
 # Changelog
 
+## June 20th, 2017
+
+- [MessageBird](https://app.smooch.io/integrations/messagebird) is now a customer channel available on Smooch. [Learn more](http://blog.smooch.io/smooch-messagebird-new-sms-channel/)
+
+
 ## June 1st, 2017
 - Added Mailgun support to the [Linking API](http://docs.smooch.io/rest/#link-app-user-to-channel)
 - Added support for new flag `primary` to the [Linking API](http://docs.smooch.io/rest/#link-app-user-to-channel)

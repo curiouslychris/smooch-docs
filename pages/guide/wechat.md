@@ -18,11 +18,17 @@ Once you've created your account, you will need to go through the account verifi
 
 Once your account has been verified, go to the [integration page](https://app.smooch.io/integrations/wechat), connect the integration, and follow these steps.
 
-1. In the WeChat dashboard, go to the “Basic Configuration | 基本配置” page below the Develop section and enter your App ID and App Secret on the Smooch integration page.
+1. In the [WeChat dashboard](https://mp.weixin.qq.com/), go to the "Basic Configuration | 基本配置" page below the Develop section and add the following IP addresses to the whitelist separated by new lines.
 
-2. In the WeChat dashboard, click on “Modify Configuration | 修改配置” below Basic Configuration, then copy the Webhook URL and Token from the Smooch integration page and paste it there.
+    * 34.224.190.28
+    * 52.6.201.31
+    * 52.0.232.16
 
-3. After saving your settings, click on Connect to WeChat to complete the integration.
+2. In the WeChat dashboard, copy and paste your App ID and App Secret on the Smooch integration page.
+
+3. In the WeChat dashboard, click on "Modify Configuration | 修改配置" below Basic Configuration, then copy the Webhook URL and Token from the Smooch integration page and paste it there.
+
+4. After saving your settings, click on Connect to WeChat to complete the integration.
 
 ### Safe Mode
 
@@ -47,3 +53,5 @@ WeChat offers a sandbox environment to easily test their messaging features simi
 1. After saving your settings, click on Connect to WeChat to complete the integration.
 
 In the "Test QR Code | 测试号二维码" section, scan your Sandbox QR code to message your WeChat Sandbox account.
+
+<aside class="notice">When using WeChat sandbox, you may skip the whitelist step as the sandbox doesn't have any IP restrictions</aside>

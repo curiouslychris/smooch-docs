@@ -18,6 +18,11 @@ export const CAPABILITIES = {
         send: true,
         receive: true
     },
+    file: {
+        name: 'File',
+        send: true,
+        receive: true
+    },
     gif: {
         name: 'GIF',
         link: '/guide/structured-messages/#images-stickers-and-gifs',
@@ -113,6 +118,10 @@ const channelData = {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
             },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.NONE
+            },
             gif: {
                 send: SUPPORT_LEVEL.NONE,
                 receive: SUPPORT_LEVEL.NONE
@@ -169,6 +178,10 @@ const channelData = {
             image: {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
+            },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.NONE
             },
             gif: {
                 send: SUPPORT_LEVEL.NONE,
@@ -227,6 +240,10 @@ const channelData = {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
             },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.NONE
+            },
             gif: {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.NONE
@@ -283,6 +300,10 @@ const channelData = {
             image: {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
+            },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.PARTIAL
             },
             gif: {
                 send: SUPPORT_LEVEL.NONE,
@@ -343,6 +364,10 @@ const channelData = {
                 send: SUPPORT_LEVEL.PARTIAL,
                 receive: SUPPORT_LEVEL.FULL
             },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.PARTIAL
+            },
             gif: {
                 send: SUPPORT_LEVEL.NONE,
                 receive: SUPPORT_LEVEL.FULL
@@ -401,6 +426,10 @@ const channelData = {
             image: {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
+            },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.PARTIAL
             },
             gif: {
                 send: SUPPORT_LEVEL.FULL,
@@ -461,6 +490,10 @@ const channelData = {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
             },
+            file: {
+                send: SUPPORT_LEVEL.FULL,
+                receive: SUPPORT_LEVEL.PARTIAL
+            },
             gif: {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
@@ -519,6 +552,10 @@ const channelData = {
             image: {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
+            },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.NA
             },
             gif: {
                 send: SUPPORT_LEVEL.FULL,
@@ -579,6 +616,10 @@ const channelData = {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
             },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.PARTIAL
+            },
             gif: {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
@@ -637,6 +678,10 @@ const channelData = {
             image: {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
+            },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.NA
             },
             gif: {
                 send: SUPPORT_LEVEL.FULL,
@@ -697,6 +742,10 @@ const channelData = {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
             },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.NONE
+            },
             gif: {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.NONE
@@ -755,6 +804,10 @@ const channelData = {
             image: {
                 send: SUPPORT_LEVEL.FULL,
                 receive: SUPPORT_LEVEL.FULL
+            },
+            file: {
+                send: SUPPORT_LEVEL.PARTIAL,
+                receive: SUPPORT_LEVEL.NA
             },
             gif: {
                 send: SUPPORT_LEVEL.FULL,

@@ -71,8 +71,6 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 Post a message to or from the app user. If the app user does not yet have a conversation, one will be created automatically. Messages must have a `role` of either `appUser` or `appMaker`.
 
 A message must also have a `type` specifying the type of message you're trying to send.
-Depending on the type, the message object will have additional `Required` and `Optional` arguments.
-See [`text`](#text-message), [`image`](#image-message), [`carousel`](#carousel-message), [`list`](#list-message), and [`location`](#location-message).
 
 Images can be posted by URL using this API via the `image` type. Alternatively, you may also upload images to the conversation directly using the [`/images`](#upload-image) endpoint.
 
@@ -83,7 +81,7 @@ For messages originating from an app maker, a `jwt` credential with `app` level 
 | **Arguments**                |                       |
 |------------------------------|-----------------------|
 | **role**<br/><span class='req'>required</span>       | The role of the individual posting the message. Can be either `appUser` or `appMaker`. |
-| **type**<br/><span class='req'>required</span>       | The type of the message being posted. Can be [`text`](#text-message), [`image`](#image-message), [`carousel`](#carousel-message), [`list`](#list-message), or [`location`](#location-message).    |
+| **type**<br/><span class='req'>required</span>       | The type of the message being posted. Can be [`text`](#text-message), [`image`](#image-message), [`file`](#file-message), [`carousel`](#carousel-message), [`list`](#list-message), or [`location`](#location-message).    |
 | **name**<br/><span class='opt'>optional</span>       | The display name of the message author. Messages with role `appUser` will default to a friendly name based on the user's `givenName` and `surname`. Messages with role `appMaker` have no default name. |
 | **email**<br/><span class='opt'>optional</span>      | The email address of the message author. This field is typically used to identify an app maker in order to render the avatar in the app user client. If the email of the Smooch account is used, the configured profile avatar will be used. Otherwise, any [gravatar](http://gravatar.com) matching the specified email will be used as the message avatar. |
 | **avatarUrl**<br/><span class='opt'>optional</span>  | The URL of the desired message avatar image. This field will override any avatar chosen via the `email` parameter. |
@@ -92,7 +90,7 @@ For messages originating from an app maker, a `jwt` credential with `app` level 
 | **payload**<br/><span class='opt'>optional</span>    | The payload of a `reply` action, if applicable |
 
 <aside class="notice">
-Additional arguments are necessary based on message type ([`text`](#text-message), [`image`](#image-message), [`carousel`](#carousel-message), [`list`](#list-message))
+Additional arguments are necessary based on message type ([`text`](#text-message), [`image`](#image-message), [`file`](#file-message), [`carousel`](#carousel-message), [`list`](#list-message))
 </aside>
 
 ### Text Message
@@ -234,6 +232,71 @@ An `image` type message is a message that is sent with an image, and, optionally
 | **actions**<br/><span class='opt'>optional*</span>   | Array of [action buttons](#action-buttons). |
 | **mediaUrl**<br/><span class='req'>required*</span>  | The image URL used for the image message. |
 | **mediaType**<br/><span class='opt'>optional</span>  | The media type is defined here, for example `image/jpeg`. If `mediaType` is not specified, the media type will be resolved with the `mediaUrl`. |
+
+### File Message
+
+> Request:
+
+```shell
+curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+     -X POST \
+     -H 'content-type: application/json' \
+     -H 'authorization: Bearer your-jwt' \
+     -d '
+{
+    "role": "appMaker",
+    "type": "file",
+    "mediaUrl": "http://example.org/document.pdf",
+    "mediaType": "application/pdf"
+}'
+```
+```js
+smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+    role: 'appMaker',
+    type: 'file',
+    mediaUrl: 'http://example.org/document.pdf',
+    mediaType: 'application/pdf'
+}).then(() => {
+    // async code
+});
+```
+
+> Response:
+
+```
+201 CREATED
+```
+```json
+{
+  "message": {
+    "_id": "57966d21c19c9da00839a5e9",
+    "role": "appMaker",
+    "type": "file",
+    "mediaUrl": "http://example.org/document.pdf",
+    "mediaType": "application/pdf"
+  }
+}
+```
+```js
+201 CREATED
+```
+
+A `file` type message is a message that is sent with a file attachment.
+If you have a raw unhosted file you want to send, you can use the [attachments upload API](#upload-attachment) to upload the file to Smooch before sending the message.
+
+| **Arguments**                |                       |
+|------------------------------|-----------------------|
+| **text**<br/><span class='opt'>optional</span>  | Accompanying text or a description of the file. |
+| **mediaUrl**<br/><span class='req'>required</span>  | The URL of the file attachment. |
+| **mediaType**<br/><span class='opt'>optional</span>  | The media type is defined here, for example `application/pdf`. If `mediaType` is not specified, the media type will be resolved with the `mediaUrl`. |
+
+#### Channel Support
+
+File messages are fully supported on Facebook Messenger and will render as such:
+
+<span class="half-width-img">![messenger file upload](/images/file_messenger.png)</span>
+
+On all other channels, they are rendered as a link.
 
 ### Location Message
 
@@ -1115,7 +1178,49 @@ smooch.appUsers.deleteMessages('c7f6e6d6c3a637261bd9656f').then(() => {
 
 Clears the message history for a user, permanently deleting all messages, but leaving any connections to Messaging Channels and Business Systems intact. These connections allow for the conversation to continue in the future, while still being associated to the same appUser.
 
-## Upload Image
+## Upload Attachment
+
+> Request:
+
+```shell
+curl https://api.smooch.io/v1/apps/c7f6e6d6c3a637261bd9656f/attachments?access=public \
+     -X POST \
+     -H 'authorization: Bearer your-jwt' \
+     -H 'content-type: multipart/form-data' \     
+     -F 'source=@document.pdf;type=application/pdf'
+```
+```js
+var file = fileInput.files[0];
+smooch.attachments.create('c7f6e6d6c3a637261bd9656f', 'public', file).then(() => {
+    // async code
+});
+```
+
+> Response:
+
+```
+201 CREATED
+```
+```json
+{
+  "mediaUrl": "https://media.smooch.io/apps/c7f6e6d6c3a637261bd9656f/a77caae4cbbd263a0938eba00016b7c8/document.pdf",
+  "mediaType": "application/pdf"
+}
+```
+
+<api>`POST /v1/apps/{appId}/attachments?access={access}`</api>
+
+Upload an attachment to Smooch to use in future messages. Files are uploaded using the `multipart/form-data` content type. Use the returned `mediaUrl` and `mediaType` to send [`file messages`](#file-message).
+
+| **Form Parameters**          |                            |
+|------------------------------|----------------------------|
+| **source**<br/><span class='req'>required</span>    | The attachment data, provided as a readable file stream.            |
+
+| **Query Parameters**          |                            |
+|------------------------------|----------------------------|
+| **access**<br/><span class='req'>required</span>    | The access level for the attachment. Currently the only available access level is `public` |
+
+### Upload and Send Image (Deprecated)
 
 > Request:
 
@@ -1167,6 +1272,10 @@ smooch.appUsers.uploadImage('c7f6e6d6c3a637261bd9656f', file,
   }
 }
 ```
+
+<aside class="warning">
+This API is deprecated. It is recommended that you use the [upload attachment](#upload-attachment) API then attach the resulting `mediaUrl` and `mediaType` to an `image` type message.
+</aside>
 
 <api>`POST /v1/appusers/{smoochId|userId}/images`</api>
 

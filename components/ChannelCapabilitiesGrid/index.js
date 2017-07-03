@@ -18,13 +18,15 @@ export default class ChannelCapabilitiesGrid extends Component {
         return <div className='channel-capabilities-grid'>
                    <h1>Channel Capabilities</h1>
                    <p className='intro'>
-                       The Smooch API gives you access to the richest features across the broadest set of messaging channels. This comparison grid provides a comprehensive view of feature support across all available channel. Notice that support level may vary based on channel as well as direction of the message (send or receive). For any question regarding our feature support, feel free to get in touch with us to discuss your use case.
-                    </p>
+                       The Smooch API gives you access to the richest features across the broadest set of messaging channels. This comparison grid provides a comprehensive view of feature
+                       support across all available channel. Notice that support level may vary based on channel as well as direction of the message (send or receive). For any
+                       question regarding our feature support, feel free to get in touch with us to discuss your use case.
+                   </p>
                    <Header />
                    <SectionHeader>
                        Content types
                    </SectionHeader>
-                   { this.generateRows(['text', 'image', 'location', 'gif', 'emoji']) }
+                   { this.generateRows(['text', 'image', 'file', 'emoji', 'gif', 'location']) }
                    <SectionHeader>
                        Action types
                    </SectionHeader>

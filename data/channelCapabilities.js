@@ -847,7 +847,7 @@ const channelData = {
             conversationStart: {
                 receive: SUPPORT_LEVEL.NA
             },
-            webMessengerLinking: SUPPORT_LEVEL.NA,
+            webMessengerLinking: SUPPORT_LEVEL.PARTIAL,
             location: {
                 send: SUPPORT_LEVEL.NONE,
                 receive: SUPPORT_LEVEL.FULL

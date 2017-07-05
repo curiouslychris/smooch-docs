@@ -20,6 +20,7 @@ export const CAPABILITIES = {
     },
     file: {
         name: 'File',
+        link: 'https://docs.smooch.io/rest/#file-message',
         send: true,
         receive: true
     },

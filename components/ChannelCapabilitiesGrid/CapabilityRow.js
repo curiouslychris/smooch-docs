@@ -95,13 +95,15 @@ export default class CapabilityRow extends Component {
             classNames.push(className);
         }
 
+
         return <Row className={ classNames.join(' ') }>
                    <Cell verticalHeader>
                        <Cell alignLeft
                              noBorder>
                            { capabilityDetails.link ?
-                                 <Link to={ capabilityDetails.link }>
-                                 { capabilityDetails.name }
+                                 <Link to={ capabilityDetails.link }
+                                       target={ capabilityDetails.link.startsWith('/') ? undefined : '_blank' }>
+                                     { capabilityDetails.name }
                                  </Link> :
                                  capabilityDetails.name }
                        </Cell>

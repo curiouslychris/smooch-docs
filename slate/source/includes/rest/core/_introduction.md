@@ -39,6 +39,7 @@ Smooch uses standard HTTP status codes to communicate errors
 | **403** | Forbidden - Your credentials are valid but you don't have access to the requested resource. |
 | **404** | Not Found - The object you're requesting doesn't exist. |
 | **409** | Conflict - You might be trying to update the same resource concurrently. |
+| **413** | Request entity too large - The size of the entity (e.g. file) you are trying to send exceeds our limit. |
 | **429** | Too Many Requests - You are calling our APIs more frequently than we allow. |
 | **500, 502, 503, 504** | Server Errors - Something went wrong on our end. |
 

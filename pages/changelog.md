@@ -6,6 +6,10 @@ layout: two-column
 
 # Changelog
 
+## July 7th, 2017
+
+- Updated [webhook retry policy](http://docs.smooch.io/rest/#retry-policy) to abort retries on [non-recoverable errors](http://docs.smooch.io/rest/#non-recoverable-errors)
+
 ## July 3rd, 2017
 
 - Added new [Attachment API](http://docs.smooch.io/rest/#upload-attachments)

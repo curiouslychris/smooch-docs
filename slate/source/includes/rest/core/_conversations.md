@@ -1376,7 +1376,7 @@ This table represents the fields you can expect to receive in a webhook payload'
 | **received**  | A unix timestamp given in seconds, describing when Smooch received the message.                                         |
 | **source**  | A nested object describing the source of the message. See the [source schema](#sourcedestination-schema) below for details.                   |
 | **avatarUrl** <span class="opt">optional</span>| The URL for an image of the appMaker.                                                                                   |
-| **type**  | `"text"`, `"image"`, `"carousel"`, `"location"`, or `"list"`.                                                                                                 |
+| **type**  | `"text"`, `"image"`, `"file"`, `"carousel"`, `"location"`, or `"list"`.                                                                                                 |
 | **actions** <span class="opt">optional</span> | An array of objects representing the actions associated with the message. See the [action schema](#action-schema) below for details. |
 | **mediaUrl** <span class="opt">optional</span>| The URL for media, such as an image, attached to the message. |
 | **mediaType** <span class="opt">optional</span>| The MIME type for any media attached in the mediaUrl. |

@@ -1221,7 +1221,7 @@ Upload an attachment to Smooch to use in future messages. Files are uploaded usi
 | **access**<br/><span class='req'>required</span>    | The access level for the attachment. Currently the only available access level is `public` |
 
 <aside class="notice">
-The maximal size allowed per file is 10 Mb. Exceeding this size will result in a [`413 error`](#errors). 
+The maximum size allowed per file is 10MB. Exceeding this size will result in a [`413 error`](#errors). 
 </aside>
 
 ### Upload and Send Image (Deprecated)

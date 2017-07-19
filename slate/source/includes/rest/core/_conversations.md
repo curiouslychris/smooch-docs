@@ -86,7 +86,7 @@ For messages originating from an app maker, a `jwt` credential with `app` level 
 | **email**<br/><span class='opt'>optional</span>      | The email address of the message author. This field is typically used to identify an app maker in order to render the avatar in the app user client. If the email of the Smooch account is used, the configured profile avatar will be used. Otherwise, any [gravatar](http://gravatar.com) matching the specified email will be used as the message avatar. |
 | **avatarUrl**<br/><span class='opt'>optional</span>  | The URL of the desired message avatar image. This field will override any avatar chosen via the `email` parameter. |
 | **destination**<br/><span class='opt'>optional</span>| The channel where you want your message delivered to. This only works for messages with role `appMaker`. See [Channel Targeting](#channel-targeting) for more information. |
-| **metadata**<br/><span class='opt'>optional</span>   | Flat object containing any custom properties associated with the message. If you are developing your own messaging client you can use this field to render custom message types. |
+| **metadata**<br/><span class='opt'>optional</span>   | Flat object containing any custom properties associated with the message. If you are developing your own messaging client you can use this field to render custom message types. See the [metadata schema](#metadata-schema) for more information. |
 | **payload**<br/><span class='opt'>optional</span>    | The payload of a `reply` action, if applicable |
 
 <aside class="notice">
@@ -813,7 +813,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 | **type**<br/><span class='req'>required</span>     | `link` |
 | **uri**<br/><span class='req'>required</span>      | The action URI. This is the link that will be used in the clients when clicking the button. |
 | **default**<br/><span class='opt'>optional</span>  | Flag indicating the message action is the default for a [message item](#message-items) in Facebook Messenger. |
-| **metadata**<br/><span class='opt'>optional</span> | Flat object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span> | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information.|
 | **extraChannelOptions**<br/><span class='opt'>optional</span> | Extra options to pass directly to the channel API. See [Extra Channel Options](#extra-channel-options-schema) |
 
 <aside class="notice">
@@ -877,7 +877,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 | **type**<br/><span class='req'>required</span>      | `buy` |
 | **amount**<br/><span class='req'>required</span>    | The amount being charged. It needs to be specified in cents and is an integer (9.99$ -> 999).|
 | **currency**<br/><span class='opt'>optional</span>  | The currency of the amount being charged (USD, CAD, etc.). If not specified, it would use the default one set in your account. [See supported currencies](https://support.stripe.com/questions/which-currencies-does-stripe-support). |
-| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information. |
 
 <aside class="notice">
 The <a href="/javascript/#stripe">Stripe integration</a> must be configured and active in order to accept buy buttons.
@@ -917,7 +917,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 | **text**<br/><span class='req'>required</span>      | The button text. |
 | **type**<br/><span class='req'>required</span>      | `postback` |
 | **payload**<br/><span class='req'>required</span>    | A string payload to help you identify the action context. You can also use metadata for more complex needs. |
-| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information. |
 
 <aside class="notice">
 See how to handle postback with <a href="#webhook-triggers">webhook triggers</a>.
@@ -981,7 +981,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 | **type**<br/><span class='req'>required</span>      | `reply` |
 | **payload**<br/><span class='req'>required</span>   | A string payload to help you identify the action context. Used when posting the reply. You can also use metadata for more complex needs. |
 | **iconUrl**<br/><span class='opt'>optional</span>   | An icon to render next to the reply option (Facebook Messenger and Web Messenger only) |
-| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information. |
 
 <aside class="notice">
 `reply` type actions can be sent either alone or with [location request](#location-request) actions. If an action of a different type is included in the message, it will be rejected.
@@ -1029,7 +1029,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 |------------------------------|----------------------------|
 | **text**<br/><span class='req'>required</span>      | The button text. |
 | **type**<br/><span class='req'>required</span>      | `locationRequest`|
-| **metadata**<br/><span class='opt'>optional</span> | Flat object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span> | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information. |
 
 <aside class="notice">
 `locationRequest` type actions can be sent either alone or with [reply](#reply) actions. If an action of a different type is included in the message, it will be rejected.
@@ -1081,7 +1081,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 |  **Arguments**                |                  |
 |------------------------------|----------------------------|
 | **type**<br/><span class='req'>required</span>      | `share` |
-| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. |
+| **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information. |
 
 <aside class="notice">
 Share Buttons are currently only supported in Facebook Messenger carousels.
@@ -1433,3 +1433,132 @@ Data representing a referral object when a user is referred to a conversation vi
 | **source**  | The source of the referral. Ex: `MESSENGER_CODE`, `ADS` etc...               |
 | **type**    | The type of referral, usually `OPEN-THREAD`                                  |
 | **adId**    | If the referral came from an ad, this field will be present with the ad's Id |
+
+
+### Metadata schema
+
+> Request (App Maker):
+
+```shell
+curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+     -X POST \
+     -d '{"text":"Just put some vinegar on it", "role": "appMaker", "type": "text", "metadata": {"lang": "en-ca", "items": 3}
+}' \
+     -H 'content-type: application/json' \
+     -H 'authorization: Bearer your-jwt'
+```
+```js
+smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+    type: 'text',
+    text: 'Just put some vinegar on it',
+    role: 'appMaker',
+    metadata: {
+        lang: 'en-ca',
+        items: 3
+    },
+    actions:[{
+        type: 'link',
+        text: 'Put vinegar',
+        uri: 'http://example.com',
+        metadata: {
+            buttonIntent: 'vinegar'
+        }
+    }]
+}).then(() => {
+    // async code
+});
+```
+
+> Response:
+
+```
+201 CREATED
+```
+```json
+{
+  "message": {
+    "_id": "55c8c1498590aa1900b9b9b1",
+    "authorId": "c7f6e6d6c3a637261bd9656f",
+    "actions": [{
+      "_id": "57966d22c19c9da00839a5eb",
+      "text": "Put vinegar",
+      "type": "link",
+      "metadata": {
+        "buttonIntent": "vinegar"
+      }
+    }],
+    "role": "appMaker",
+    "type": "text",
+    "name": "Steve",
+    "text": "Just put some vinegar on it",
+    "avatarUrl": "https://www.gravatar.com/image.jpg",
+    "received": 1439220041.586,
+    "metadata": {
+      "items": 3, 
+      "lang": "en-ca" 
+    }
+  },
+  "conversation": {
+    "_id": "df0ebe56cbeab98589b8bfa7",
+    "unreadCount": 0
+  }
+}
+```
+
+> Webhook payload (trigger: appMaker message):
+
+```json
+{
+    "trigger": "message:appMaker",
+    "app": {
+        "_id": "5698edbf2a43bd081be982f1"
+    },
+    "messages": [{
+        "_id": "596fba0c38ef4f2d00f6ccc2",
+        "text": "Just put some vinegar on it",
+        "metadata": {
+            "items": 3,
+            "lang": "en-ca"
+        },
+        "actions": [{
+            "text": "Put vinegar",
+            "metadata": {
+                "buttonIntent": "vinegar"
+            },
+            "_id": "596fba0c38ef4f2d00f6ccc3",
+            "uri": "http://example.com",
+            "type": "link"
+        }],
+        "type": "text",
+        "role": "appMaker",
+        "name": "Steve",
+        "received": 1500494348.872,
+        "authorId": "c7f6e6d6c3a637261bd9656f",
+        "source": {
+            "type": "api"
+        }
+   }],
+   "appUser": {
+       "_id": "c7f6e6d6c3a637261bd9656f",
+       "userId": "bob@example.com",
+       "properties": {},
+        "signedUpAt": "2015-10-06T03:38:02.346Z",
+        "clients": [
+          {
+            "active": true,
+            "id": "5A7F8343-DF41-46A8-96EC-8583FCB422FB",
+            "lastSeen": "2016-03-09T19:09:01.431Z",
+            "platform": "messenger"
+          }
+        ]
+    }
+}
+```
+
+Data representing an optional flat object sent as an argument of a POST Message API call containing additional properties associated with the message. Metadata can be attached to the message itself and to optional Action Buttons like links or postbacks. The metadata properties are sent back to the appMaker in the appropriate payload delivered through webhook.
+
+<aside class="notice">
+`Strings`, `numbers` and `booleans` are the only supported format that can be passed to metadata.
+</aside>
+
+

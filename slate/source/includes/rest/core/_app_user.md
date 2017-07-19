@@ -595,6 +595,7 @@ Client specific info
 |------------------------------------------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | **active**  | If active is `false` then the appUser is not logged in to the client and signifies that the appUser will not receive APN or FCM notifications. This pertains to the SDKs. |
 | **platform**  | Includes one of `"web"`, `"ios"`, `"android"`, `"messenger"`, `"viber"`, `"telegram"`, `"wechat"`, `"line"`, `"twilio"`, and `"frontendEmail"`, `"other"`, or any number of other platforms. |
+| **primary**  | Boolean indicating if the platform is the appUser's primary channel. The primary channel is the user's most active channel and the preferred delivery channel for the appMaker's messages.|
 | **id**  | A unique identifier for a device if on Web, iOS, or Android, or a client on other channels. |
 | **displayName** <span class="opt">optional</span> | The appUser's display name as provided by the client. |
 | **avatarUrl** <span class="opt">optional</span> | The URI for an appUser's avatar, as provided by the client. |

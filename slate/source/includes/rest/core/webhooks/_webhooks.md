@@ -20,7 +20,7 @@ Triggers are specified in an optional `triggers` array in the request body. If `
 | **message:appUser**       | only messages with role `appUser`                              |
 | **message:appMaker**      | only messages with role `appMaker` or `whisper`                |
 | **conversation:read**     | when a user reads a conversation                               |
-| **conversation:referral**     | when a user scans a Messenger code or click an ad on Facebook                              |
+| **conversation:referral**     | when a user scans a Messenger code, clicks an ad on Facebook or scans a WeChat QR code                         |
 | **postback**              | when a user clicks on a postback action                        |
 | **merge:appUser**         | when two or more users are merged into one                     |
 | **delivery:success**      | when a message is successfully delivered to a customer channel |

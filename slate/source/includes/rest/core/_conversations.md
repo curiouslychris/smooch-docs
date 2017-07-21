@@ -107,10 +107,17 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
     "role": "appMaker",
     "type": "text",
     "text": "Hello!",
+    "metadata": {
+        "lang": "en-ca",
+        "items": 3
+    }
     "actions": [{
         "text": "More info",
         "type": "link",
-        "uri": "http://example.org"
+        "uri": "http://example.org",
+        "metadata": {
+            "buttonIntent": "more"
+        }
     }]
 }'
 ```
@@ -119,10 +126,17 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     role: 'appMaker',
     type: 'text',
     text: 'Hello!',
+    metadata: {
+        lang: 'en-ca',
+        items: 3
+    },
     actions: [{
         text: 'More info',
         type: 'link',
-        uri: 'http://example.org'
+        uri: 'http://example.org',
+        metadata: {
+            buttonIntent: 'moreInfo'
+        }
     }]
 }).then(() => {
     // async code
@@ -140,11 +154,18 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     "_id": "57966d21c19c9da00839a5e9",
     "role": "appMaker",
     "type": "text",
+    "metadata": {
+        "items": 3,
+        "lang": "en-ca"
+    },
     "actions": [{
         "_id": "57966d22c19c9da00839a5ec",
         "text": "More info",
         "type": "link",
-        "uri": "http://example.org"
+        "uri": "http://example.org",
+        "metadata": {
+            "buttonIntent": "moreInfo"
+        }
     }]
   }
 }
@@ -1436,124 +1457,6 @@ Data representing a referral object when a user is referred to a conversation vi
 
 
 ### Metadata schema
-
-> Request (App Maker):
-
-```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
-     -X POST \
-     -d '{"text":"Just put some vinegar on it", "role": "appMaker", "type": "text", "metadata": {"lang": "en-ca", "items": 3}
-}' \
-     -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
-```
-```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
-    type: 'text',
-    text: 'Just put some vinegar on it',
-    role: 'appMaker',
-    metadata: {
-        lang: 'en-ca',
-        items: 3
-    },
-    actions:[{
-        type: 'link',
-        text: 'Put vinegar',
-        uri: 'http://example.com',
-        metadata: {
-            buttonIntent: 'vinegar'
-        }
-    }]
-}).then(() => {
-    // async code
-});
-```
-
-> Response:
-
-```
-201 CREATED
-```
-```json
-{
-  "message": {
-    "_id": "55c8c1498590aa1900b9b9b1",
-    "authorId": "c7f6e6d6c3a637261bd9656f",
-    "actions": [{
-      "_id": "57966d22c19c9da00839a5eb",
-      "text": "Put vinegar",
-      "type": "link",
-      "metadata": {
-        "buttonIntent": "vinegar"
-      }
-    }],
-    "role": "appMaker",
-    "type": "text",
-    "name": "Steve",
-    "text": "Just put some vinegar on it",
-    "avatarUrl": "https://www.gravatar.com/image.jpg",
-    "received": 1439220041.586,
-    "metadata": {
-      "items": 3, 
-      "lang": "en-ca" 
-    }
-  },
-  "conversation": {
-    "_id": "df0ebe56cbeab98589b8bfa7",
-    "unreadCount": 0
-  }
-}
-```
-
-> Webhook payload (trigger: appMaker message):
-
-```json
-{
-    "trigger": "message:appMaker",
-    "app": {
-        "_id": "5698edbf2a43bd081be982f1"
-    },
-    "messages": [{
-        "_id": "596fba0c38ef4f2d00f6ccc2",
-        "text": "Just put some vinegar on it",
-        "metadata": {
-            "items": 3,
-            "lang": "en-ca"
-        },
-        "actions": [{
-            "text": "Put vinegar",
-            "metadata": {
-                "buttonIntent": "vinegar"
-            },
-            "_id": "596fba0c38ef4f2d00f6ccc3",
-            "uri": "http://example.com",
-            "type": "link"
-        }],
-        "type": "text",
-        "role": "appMaker",
-        "name": "Steve",
-        "received": 1500494348.872,
-        "authorId": "c7f6e6d6c3a637261bd9656f",
-        "source": {
-            "type": "api"
-        }
-   }],
-   "appUser": {
-       "_id": "c7f6e6d6c3a637261bd9656f",
-       "userId": "bob@example.com",
-       "properties": {},
-        "signedUpAt": "2015-10-06T03:38:02.346Z",
-        "clients": [
-          {
-            "active": true,
-            "id": "5A7F8343-DF41-46A8-96EC-8583FCB422FB",
-            "lastSeen": "2016-03-09T19:09:01.431Z",
-            "platform": "messenger"
-          }
-        ]
-    }
-}
-```
 
 Data representing an optional flat object sent as an argument of a POST Message API call containing additional properties associated with the message. Metadata can be attached to the message itself and to optional Action Buttons like links or postbacks. The metadata properties are sent back to the appMaker in the appropriate payload delivered through webhook.
 

@@ -1221,7 +1221,7 @@ Upload an attachment to Smooch to use in future messages. Files are uploaded usi
 | **access**<br/><span class='req'>required</span>    | The access level for the attachment. Currently the only available access level is `public` |
 
 <aside class="notice">
-The maximum size allowed per file is 10MB. Exceeding this size will result in a [`413 error`](#errors). 
+The maximum size allowed per file is 10MB. Exceeding this size will result in a [`413 error`](#errors).
 </aside>
 
 ### Upload and Send Image (Deprecated)
@@ -1424,12 +1424,17 @@ This table represents the fields you can expect to receive nested inside postbac
 
 ### Referral schema
 
-Data representing a referral object when a user is referred to a conversation via a [Messenger code](https://developers.facebook.com/docs/messenger-platform/messenger-code) or clicking a [conversion ad](https://developers.facebook.com/docs/messenger-platform/guides/ads) on Facebook.
+Data representing a referral object when a user is referred to a conversation via a [Messenger code](https://developers.facebook.com/docs/messenger-platform/messenger-code), clicking a [conversion ad](https://developers.facebook.com/docs/messenger-platform/guides/ads) on Facebook, or scanning a parametric [QR code event](http://admin.wechat.com/wiki/index.php?title=Event-based_Messages#Scanning_Parametric_QR_Code_Event) on WeChat.
 
 | Field       | Description                                                                  |
 |-------------|------------------------------------------------------------------------------|
-| **code**    | The referral's identifier                                                    |
-| **details** | Nested object containing `source`, `type` and `adId`                         |
-| **source**  | The source of the referral. Ex: `MESSENGER_CODE`, `ADS` etc...               |
-| **type**    | The type of referral, usually `OPEN-THREAD`                                  |
-| **adId**    | If the referral came from an ad, this field will be present with the ad's Id |
+| **code**    | The referral's identifier. Available in referrals from WeChat and Messenger |
+| **details** <span class="opt">optional</span>| Nested object containing additional information. Only available on Messenger. See the [referral details schema](#referral-details-schema) for more details |
+
+### Referral details schema
+
+| Field       | Description                                                                  |
+|-------------|------------------------------------------------------------------------------|
+| **source**  | The source of the referral. Ex: `MESSENGER_CODE`, `ADS` etc... Only available on Messenger |
+| **type**    | The type of referral, typically `OPEN-THREAD`. Only available on Messenger |
+| **adId**  <span class="opt">optional</span> | If the referral came from an ad, this field will be present with the ad's Id. Only available on Messenger |

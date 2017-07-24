@@ -2,15 +2,15 @@
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/init \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/init \
      -X POST \
      -d '{"device": {"id": "03f70682b7f5b21536a3674f38b3e220", "platform": "ios", "appVersion": "1.0"}, "userId": "bob@example.com"}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 
 ```js
-smooch.appUsers.init({
+smooch.appUsers.init('5963c0d619a30a2e00de36b8', {
     device: {
         id: '03f70682b7f5b21536a3674f38b3e220',
         platform: 'ios',
@@ -59,7 +59,7 @@ smooch.appUsers.init({
 }
 ```
 
-<api>`POST /v1/init`</api>
+<api>`POST /v1/apps/{appId}/init`</api>
 
 This API is called by an iOS, Android, or browser client when the app is first loaded. It serves a number of purposes:
 

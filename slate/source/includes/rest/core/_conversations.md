@@ -1,20 +1,20 @@
 # Conversations
 
-When the first message is sent to an app user or received from an app user, a conversation is automatically created for them. The conversation and messages for a given app user can be retrieved and created by way of the `/v1/appusers/` API.
+When the first message is sent to an app user or received from an app user, a conversation is automatically created for them. The conversation and messages for a given app user can be retrieved and created by way of the `/v1/apps/{appId}/appusers/` API.
 
 ## Post Message
 
 > Request (App User):
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appUser", "type": "text"}' \
      -H 'content-type: application/json' \
-     -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
+     -H 'authorization: your-account-jwt'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     text: 'Just put some vinegar on it',
     role: 'appUser',
     type: 'text'
@@ -26,14 +26,14 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 > Request (App Maker):
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "type": "text"}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     type: 'text',
     text: 'Just put some vinegar on it',
     role: 'appMaker'
@@ -66,7 +66,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 }
 ```
 
-<api>`POST /v1/appusers/{smoochId|userId}/messages`</api>
+<api>`POST /v1/apps/{appId}/appusers/{smoochId|userId}/messages`</api>
 
 Post a message to or from the app user. If the app user does not yet have a conversation, one will be created automatically. Messages must have a `role` of either `appUser` or `appMaker`.
 
@@ -98,10 +98,10 @@ Additional arguments are necessary based on message type ([`text`](#text-message
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt' \
+     -H 'authorization: Bearer your-account-jwt' \
      -d '
 {
     "role": "appMaker",
@@ -122,7 +122,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
 }'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     role: 'appMaker',
     type: 'text',
     text: 'Hello!',
@@ -186,10 +186,10 @@ A `text` type message is a message that is sent with text and/or actions.
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt' \
+     -H 'authorization: Bearer your-account-jwt' \
      -d '
 {
     "role": "appMaker",
@@ -204,7 +204,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
 }'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     role: 'appMaker',
     type: 'image',
     text: 'Hello!',
@@ -259,10 +259,10 @@ An `image` type message is a message that is sent with an image, and, optionally
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt' \
+     -H 'authorization: Bearer your-account-jwt' \
      -d '
 {
     "role": "appMaker",
@@ -272,7 +272,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
 }'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     role: 'appMaker',
     type: 'file',
     mediaUrl: 'http://example.org/document.pdf',
@@ -324,10 +324,10 @@ On all other channels, they are rendered as a link.
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt' \
+     -H 'authorization: Bearer your-account-jwt' \
      -d '
 {
     "role": "appUser",
@@ -339,7 +339,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
 }'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     role: 'appUser',
     type: 'location',
     coordinates: {
@@ -397,10 +397,10 @@ A `location` type message includes the coordinates (latitude and longitude) of a
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt' \
+     -H 'authorization: Bearer your-account-jwt' \
      -d '
 {
     "role": "appMaker",
@@ -435,7 +435,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
 }'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     role: 'appMaker',
     type: 'carousel',
     items: [{
@@ -580,10 +580,10 @@ Text fallback.
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt' \
+     -H 'authorization: Bearer your-account-jwt' \
      -d '
      {
         "role":"appMaker",
@@ -632,7 +632,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
 ```
 
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
    role:"appMaker",
    type:"list",
    items:[
@@ -805,14 +805,14 @@ A link action will open the provided URI when tapped.
 > Send link action:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "type": "text", "actions": [{"type": "link", "text": "Put vinegar", "uri": "http://example.com" }]}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     text: 'Just put some vinegar on it',
     role: 'appMaker',
     type: 'text',
@@ -869,14 +869,14 @@ A buy action will prompt the user to purchase an item.
 > Send buy action:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "type": "text", "actions": [{"type": "buy", "text": "Buy vinegar", "amount": 1000 }]}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     text: 'Just put some vinegar on it',
     role: 'appMaker',
     type: 'text',
@@ -910,14 +910,14 @@ A postback action will post the action payload to the server.
 > Send postback action:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "type": "text", "actions": [{"type": "postback", "text": "Send vinegar", "payload": "buy_vinegar" }]}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     text: 'Just put some vinegar on it',
     role: 'appMaker',
     type: 'text',
@@ -951,10 +951,10 @@ You may optionally specify an `iconUrl` which will render as an icon for each op
 > Send reply action:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
      -d '
 {
     "text":"Which do you prefer?",
@@ -974,7 +974,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
 }'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     text: 'Which do you prefer?',
     type: 'text',
     role: 'appMaker',
@@ -1024,14 +1024,14 @@ A location request action will prompt the user to share their location. See [Cha
 > Send locationRequest action:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Where are you?", "role": "appMaker", "type": "text", "actions": [{"type": "locationRequest", "text": "Send Location"}]}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     text: 'Where are you?',
     role: 'appMaker',
     type: 'text',
@@ -1062,10 +1062,10 @@ Actions in a [message item](#message-items) may also include a share button.
 > Send share action:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
-     -H "authorization: Bearer your-jwt" \
+     -H "authorization: Bearer your-account-jwt" \
      -d '
 {
     "role": "appMaker",
@@ -1082,7 +1082,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
 }'
 ```
 ```js
-smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     text: 'Title',
     role: 'appMaker',
     type: 'carousel',
@@ -1124,11 +1124,11 @@ Note that for this to work, the user needs to have a client linked to the target
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appUsers/c7f6e6d6c3a637261bd9656f/messages?before=1471995721 \
-     -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appUsers/c7f6e6d6c3a637261bd9656f/messages?before=1471995721 \
+     -H 'authorization: your-account-jwt'
 ```
 ```js
-smooch.appUsers.getMessages('c7f6e6d6c3a637261bd9656f', {before: '1471995721'}).then((response) => {
+smooch.appUsers.getMessages('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {before: '1471995721'}).then((response) => {
     // async code
 });
 ```
@@ -1153,11 +1153,11 @@ smooch.appUsers.getMessages('c7f6e6d6c3a637261bd9656f', {before: '1471995721'}).
     "avatarUrl": "https://www.gravatar.com/image.jpg",
     "received": 1439220041.586
   }],
-  "next": "https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages?after=1471995721"
+  "next": "https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages?after=1471995721"
 }
 ```
 
-<api>`GET /v1/appusers/{smoochId|userId}/messages`</api>
+<api>`GET /v1/apps/{appId}/appusers/{smoochId|userId}/messages`</api>
 
 Get the specified app user's conversation history with a limit of 100 messages, if it exists. If a conversation has not yet been created for the specified app user, 404 will be returned.
 
@@ -1179,12 +1179,12 @@ The timestamp format should be in seconds using [Unix time](https://en.wikipedia
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X DELETE \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.deleteMessages('c7f6e6d6c3a637261bd9656f').then(() => {
+smooch.appUsers.deleteMessages('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f').then(() => {
     // async code
 });
 ```
@@ -1195,7 +1195,7 @@ smooch.appUsers.deleteMessages('c7f6e6d6c3a637261bd9656f').then(() => {
 200 OK
 ```
 
-<api>`DELETE /v1/appusers/{smoochId|userId}/messages`</api>
+<api>`DELETE /v1/apps/{appId}/appusers/{smoochId|userId}/messages`</api>
 
 Clears the message history for a user, permanently deleting all messages, but leaving any connections to Messaging Channels and Business Systems intact. These connections allow for the conversation to continue in the future, while still being associated to the same appUser.
 
@@ -1204,15 +1204,15 @@ Clears the message history for a user, permanently deleting all messages, but le
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/apps/c7f6e6d6c3a637261bd9656f/attachments?access=public \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/attachments?access=public \
      -X POST \
-     -H 'authorization: Bearer your-jwt' \
+     -H 'authorization: Bearer your-account-jwt' \
      -H 'content-type: multipart/form-data' \     
      -F 'source=@document.pdf;type=application/pdf'
 ```
 ```js
 var file = fileInput.files[0];
-smooch.attachments.create('c7f6e6d6c3a637261bd9656f', 'public', file).then(() => {
+smooch.attachments.create('5963c0d619a30a2e00de36b8', 'public', file).then(() => {
     // async code
 });
 ```
@@ -1242,7 +1242,7 @@ Upload an attachment to Smooch to use in future messages. Files are uploaded usi
 | **access**<br/><span class='req'>required</span>    | The access level for the attachment. Currently the only available access level is `public` |
 
 <aside class="notice">
-The maximum size allowed per file is 10MB. Exceeding this size will result in a [`413 error`](#errors). 
+The maximum size allowed per file is 10MB. Exceeding this size will result in a [`413 error`](#errors).
 </aside>
 
 ### Upload and Send Image (Deprecated)
@@ -1250,9 +1250,9 @@ The maximum size allowed per file is 10MB. Exceeding this size will result in a 
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/images \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/images \
      -X POST \
-     -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt' \
+     -H 'authorization: your-account-jwt' \
      -H 'content-type: multipart/form-data' \
      -F 'source=@screenshot.jpg;type=image/jpeg' \
      -F 'role=appUser' \
@@ -1261,7 +1261,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/images \
 ```js
 // Frontend version
 var file = fileInput.files[0];
-smooch.appUsers.uploadImage('c7f6e6d6c3a637261bd9656f', file,
+smooch.appUsers.uploadImage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', file,
 {
     text: 'Just put some vinegar on it',
     role: 'appUser'
@@ -1302,7 +1302,7 @@ smooch.appUsers.uploadImage('c7f6e6d6c3a637261bd9656f', file,
 This API is deprecated. It is recommended that you use the [upload attachment](#upload-attachment) API then attach the resulting `mediaUrl` and `mediaType` to an `image` type message.
 </aside>
 
-<api>`POST /v1/appusers/{smoochId|userId}/images`</api>
+<api>`POST /v1/apps/{appId}/appusers/{smoochId|userId}/images`</api>
 
 Upload an image and post it to the conversation. Images are uploaded using the `multipart/form-data` content type. Similar to the `/messages` endpoint, a `role` parameter must be specified. The `/images` endpoint accepts the same parameters as `/messages` but they are sent as form parameters as opposed to being encoded in JSON bodies. The uploaded image will render as part of the message thread in all supported app maker channels (email, Slack, HipChat, Zendesk, Helpscout).
 
@@ -1315,15 +1315,15 @@ Upload an image and post it to the conversation. Images are uploaded using the `
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/conversation/activity \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/conversation/activity \
      -X POST \
      -d '{"role":"appMaker", "type": "typing:start"}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 
 ```js
-smooch.appUsers.typingActivity('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.typingActivity('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     role: 'appMaker',
     type: 'typing:start'
 }).then(() => {
@@ -1345,7 +1345,7 @@ smooch.appUsers.typingActivity('c7f6e6d6c3a637261bd9656f', {
 }
 ```
 
-<api>`POST /v1/appusers/{appUserId|userId}/conversation/activity`</api>
+<api>`POST /v1/apps/{appId}/appusers/{appUserId|userId}/conversation/activity`</api>
 
 Notify Smooch when an app maker starts or stops typing a response.
 
@@ -1365,12 +1365,12 @@ Typing activity is only supported on our Web Messenger, iOS SDK, Facebook Messen
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/conversation/read \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/conversation/read \
      -X POST \
-     -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
+     -H 'authorization: your-account-jwt'
 ```
 ```js
-smooch.conversations.resetUnreadCount('c7f6e6d6c3a637261bd9656f').then(() => {
+smooch.conversations.resetUnreadCount('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f').then(() => {
     // async code
 });
 ```
@@ -1381,7 +1381,7 @@ smooch.conversations.resetUnreadCount('c7f6e6d6c3a637261bd9656f').then(() => {
 200 OK
 ```
 
-<api>`POST /v1/appusers/{appUserId|userId}/conversation/read`</api>
+<api>`POST /v1/apps/{appId}/appusers/{appUserId|userId}/conversation/read`</api>
 
 Reset the unread count of the conversation to 0. If the conversation has not yet been created for the specified app user 404 will be returned.
 
@@ -1445,16 +1445,20 @@ This table represents the fields you can expect to receive nested inside postbac
 
 ### Referral schema
 
-Data representing a referral object when a user is referred to a conversation via a [Messenger code](https://developers.facebook.com/docs/messenger-platform/messenger-code) or clicking a [conversion ad](https://developers.facebook.com/docs/messenger-platform/guides/ads) on Facebook.
+Data representing a referral object when a user is referred to a conversation via a [Messenger code](https://developers.facebook.com/docs/messenger-platform/messenger-code), clicking a [conversion ad](https://developers.facebook.com/docs/messenger-platform/guides/ads) on Facebook, or scanning a parametric [QR code event](http://admin.wechat.com/wiki/index.php?title=Event-based_Messages#Scanning_Parametric_QR_Code_Event) on WeChat.
 
 | Field       | Description                                                                  |
 |-------------|------------------------------------------------------------------------------|
-| **code**    | The referral's identifier                                                    |
-| **details** | Nested object containing `source`, `type` and `adId`                         |
-| **source**  | The source of the referral. Ex: `MESSENGER_CODE`, `ADS` etc...               |
-| **type**    | The type of referral, usually `OPEN-THREAD`                                  |
-| **adId**    | If the referral came from an ad, this field will be present with the ad's Id |
+| **code**    | The referral's identifier. Available in referrals from WeChat and Messenger |
+| **details** <span class="opt">optional</span>| Nested object containing additional information. Only available on Messenger. See the [referral details schema](#referral-details-schema) for more details |
 
+### Referral details schema
+
+| Field       | Description                                                                  |
+|-------------|------------------------------------------------------------------------------|
+| **source**  | The source of the referral. Ex: `MESSENGER_CODE`, `ADS` etc... Only available on Messenger |
+| **type**    | The type of referral, typically `OPEN-THREAD`. Only available on Messenger |
+| **adId**  <span class="opt">optional</span> | If the referral came from an ad, this field will be present with the ad's Id. Only available on Messenger |                       |
 
 ### Metadata schema
 
@@ -1463,5 +1467,3 @@ Data representing an optional flat object sent as an argument of a POST Message 
 <aside class="notice">
 `Strings`, `numbers` and `booleans` are the only supported format that can be passed to metadata.
 </aside>
-
-

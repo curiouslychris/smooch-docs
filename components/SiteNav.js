@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
+import NavItem from '../lib/react-bootstrap/NavItem';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import { generateNavStructure } from '../utils/navigation';
@@ -80,6 +81,7 @@ export default class extends Component {
 
 
         return <Navbar className='navbar-site'
+                       collapseOnSelect
                        fluid>
                    <Navbar.Header>
                        <Navbar.Brand>

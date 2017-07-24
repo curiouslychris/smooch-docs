@@ -21,6 +21,8 @@
     "markdown-it-prism": "1.0.1",
     "markdown-it-sub": "1.0.0",
     "object-assign": "4.1.0",
+    "prop-types": "15.5.10",
+    "prop-types-extra": "1.0.1",
     "react-bootstrap": "0.30.6",
     "react-headroom": "2.1.2",
     "react-helmet": "3.2.2",

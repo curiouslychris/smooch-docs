@@ -14,9 +14,7 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/keys \
 ```
 
 ```javascript
-smooch.apps.keys.create('55c8d9758590aa1900b9b9f6', {
-    name: 'key1'
-}).then((response) => {
+smooch.apps.keys.create('55c8d9758590aa1900b9b9f6', 'key1').then((response) => {
     // async code
 });
 ```

@@ -10,12 +10,12 @@ Seeing your changes while testing might require deleting the conversation in the
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/menu \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/menu \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.menu.get()
+smooch.menu.get('5963c0d619a30a2e00de36b8', '5963c0d619a30a2e00de36b8')
 .then(() => {
     // async code
 });
@@ -47,7 +47,7 @@ smooch.menu.get()
 }
 ```
 
-<api>`GET /v1/menu`</api>
+<api>`GET /v1/apps/{appId}/menu`</api>
 
 Get the specified app's menu.
 
@@ -56,14 +56,14 @@ Get the specified app's menu.
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/menu \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/menu \
      -X PUT \
      -d '{"items": [{"type": "link", "text": "Smooch", "uri": "http://smooch.io"}]}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.menu.configure({
+smooch.menu.configure('5963c0d619a30a2e00de36b8', {
     items: [{
         type: 'link',
         text: 'Smooch',
@@ -93,7 +93,7 @@ smooch.menu.configure({
 }
 ```
 
-<api>`PUT /v1/menu`</api>
+<api>`PUT /v1/apps/{appId}/menu`</api>
 
 Configure the specified app's menu. See the [persistent menu schema](#persistent-menu-schema) for possible options.
 
@@ -105,10 +105,10 @@ Configure the specified app's menu. See the [persistent menu schema](#persistent
 curl https://api.smooch.io/v1/menu \
      -X DELETE \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.menu.remove()
+smooch.menu.remove('5963c0d619a30a2e00de36b8')
 .then(() => {
     // async code
 });
@@ -127,7 +127,7 @@ smooch.menu.remove()
 }
 ```
 
-<api>`DELETE /v1/menu`</api>
+<api>`DELETE /v1/apps/{appId}/menu`</api>
 
 Remove the specified app's menu.
 
@@ -138,7 +138,7 @@ Remove the specified app's menu.
 ```shell
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations/5735dded48011972d621dc02/menu \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
 smooch.integrations.menu.get('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc02')
@@ -187,7 +187,7 @@ curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations/5735dde
      -X PUT \
      -d '{"items": [{"type": "link", "text": "Smooch", "uri": "http://smooch.io"}]}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
 smooch.integrations.menu.update('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc02', {
@@ -231,7 +231,7 @@ Set the specified integration's menu, overriding the app menu if configured. See
 curl https://api.smooch.io/v1/apps/55c8d9758590aa1900b9b9f6/integrations/5735dded48011972d621dc02/menu \
      -X DELETE \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
 smooch.integrations.menu.delete('55c8d9758590aa1900b9b9f6', '5735dded48011972d621dc02')

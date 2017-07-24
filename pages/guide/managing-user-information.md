@@ -30,11 +30,11 @@ In addition to custom properties, there are a number of predefined properties su
 To add properties via the REST API call the PUT Update [endpoint](http://docs.smooch.io/rest/#update-app-user):
 
 ```bash
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f \
      -X PUT \
      -d '{"givenName": "Hilda", "properties": {"your-custom-property": "some-value"}}' \
      -H 'content-type: application/json' \
-     -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
+     -H 'authorization: your-account-jwt'
 ```
 
 ## Adding properties using the SDKs

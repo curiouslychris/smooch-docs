@@ -13,15 +13,15 @@ Smooch exposes REST API methods to:
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/webhooks \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/webhooks \
      -X POST \
      -d '{"target": "http://example.com/callback"}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 
 ```js
-smooch.webhooks.create({
+smooch.webhooks.create('5963c0d619a30a2e00de36b8', {
     target: 'http://example.com/callback'
 }).then((response) => {
     // async code
@@ -62,12 +62,12 @@ Alternatively, you can use the Webhooks integration in the Smooch dashboard to e
 > Request:
 
 ```shell
-  curl https://api.smooch.io/v1/webhooks \
-       -H 'authorization: Bearer your-jwt'
+  curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/webhooks \
+       -H 'authorization: Bearer your-account-jwt'
 ```
 
 ```js
-smooch.webhooks.list().then((response) => {
+smooch.webhooks.list('5963c0d619a30a2e00de36b8').then((response) => {
     // async code
 });
 ```
@@ -101,12 +101,12 @@ List all webhooks configured for a given app.
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/webhooks/55c8d9758590aa1900b9b9f6 \
-     -H 'authorization: Bearer your-jwt'
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/webhooks/55c8d9758590aa1900b9b9f6 \
+     -H 'authorization: Bearer your-account-jwt'
 ```
 
 ```js
-smooch.webhooks.get('55c8d9758590aa1900b9b9f6').then((response) => {
+smooch.webhooks.get('5963c0d619a30a2e00de36b8', '55c8d9758590aa1900b9b9f6').then((response) => {
     // async code
 });
 ```
@@ -138,15 +138,15 @@ Individual webhooks can be fetched using this API.
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/webhooks/55c8d9758590aa1900b9b9f6 \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/webhooks/55c8d9758590aa1900b9b9f6 \
      -X PUT \
      -d '{"target": "http://example.com/callback"}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 
 ```js
-smooch.webhooks.update('55c8d9758590aa1900b9b9f6', {
+smooch.webhooks.update('5963c0d619a30a2e00de36b8', '55c8d9758590aa1900b9b9f6', {
     target: 'http://example.com/callback'
 }).then((response) => {
     // async code
@@ -185,12 +185,12 @@ Use this API to update your existing webhooks.
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/webhooks/55c8d9758590aa1900b9b9f6 \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/webhooks/55c8d9758590aa1900b9b9f6 \
      -X DELETE \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.webhooks.delete('55c8d9758590aa1900b9b9f6').then(() => {
+smooch.webhooks.delete('5963c0d619a30a2e00de36b8', '55c8d9758590aa1900b9b9f6').then(() => {
     // async code
 });
 ```

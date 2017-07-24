@@ -2,14 +2,14 @@
 
 The app user object represents an end user using your app. The app user document contains basic profile information such as `givenName`, `surname`, and `email`, as well as any custom user properties you choose to configure.
 
-The `/v1/appusers` path gives you APIs that can be used to update the user's properties, retrieve conversation history, post a message, and track app user events.
+The `/v1/apps/{appId}/appusers` path gives you APIs that can be used to update the user's properties, retrieve conversation history, post a message, and track app user events.
 
 ## userId
 
 App users may be created with an optional `userId` parameter. This is a unique identifier that is chosen by the API consumer and it can be used to synchronize a single conversation across multiple clients. To understand how this works, see the section covering [users on multiple clients](/guide/multi-client-users).
 
 <aside class="notice">
-If a `userId` has been specified for a given app user, it can be used in place of the `appUser._id` in any `/v1/appusers/` API path.
+If a `userId` has been specified for a given app user, it can be used in place of the `appUser._id` in any `/v1/apps/{appId}/appusers/` API path.
 </aside>
 
 ## Get App User
@@ -17,11 +17,11 @@ If a `userId` has been specified for a given app user, it can be used in place o
 > Request by smoochId:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
-     -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f \
+     -H 'authorization: your-account-jwt'
 ```
 ```js
-smooch.appUsers.get('c7f6e6d6c3a637261bd9656f').then((response) => {
+smooch.appUsers.get('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f').then((response) => {
     // async code
 });
 ```
@@ -29,11 +29,11 @@ smooch.appUsers.get('c7f6e6d6c3a637261bd9656f').then((response) => {
 > Request by userId:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/steveb@channel5.com \
-     -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/steveb@channel5.com \
+     -H 'authorization: your-account-jwt'
 ```
 ```js
-smooch.appUsers.get('steveb@channel5.com').then((response) => {
+smooch.appUsers.get('5963c0d619a30a2e00de36b8', 'steveb@channel5.com').then((response) => {
     // async code
 });
 ```
@@ -74,23 +74,23 @@ smooch.appUsers.get('steveb@channel5.com').then((response) => {
 }
 ```
 
-<api>`GET /v1/appusers/{smoochId|userId}`</api>
+<api>`GET /v1/apps/{appId}/appusers/{smoochId|userId}`</api>
 
-Retrieve a specific app user. Like all other `/v1/appusers/` paths, an app user can be identified using either the `smoochId` or the `userId`.
+Retrieve a specific app user. Like all other `/v1/apps/{appId}/appusers/` paths, an app user can be identified using either the `smoochId` or the `userId`.
 
 ## Update App User
 
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f \
      -X PUT \
      -d '{"givenName": "Steve"}' \
      -H 'content-type: application/json' \
-     -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
+     -H 'authorization: your-account-jwt'
 ```
 ```js
-smooch.appUsers.update('c7f6e6d6c3a637261bd9656f', {
+smooch.appUsers.update('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', {
     givenName: 'Steve'
 }).then((response) => {
     // async code
@@ -133,7 +133,7 @@ smooch.appUsers.update('c7f6e6d6c3a637261bd9656f', {
 }
 ```
 
-<api>`PUT /v1/appusers/{smoochId|userId}`</api>
+<api>`PUT /v1/apps/{appId}/appusers/{smoochId|userId}`</api>
 
 Update an app user's basic profile information and specify custom profile data via `properties`. This API is additive; only the specific fields specified in the request body, and only the specific JSON sub-fields included in the `properties` field will be updated. In other words, omitting a field will not delete that field.
 
@@ -150,12 +150,12 @@ Update an app user's basic profile information and specify custom profile data v
 > Request by smoochId:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/profile \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/profile \
      -X DELETE \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.deleteProfile('c7f6e6d6c3a637261bd9656f').then((response) => {
+smooch.appUsers.deleteProfile('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f').then((response) => {
     // async code
 });
 ```
@@ -163,12 +163,12 @@ smooch.appUsers.deleteProfile('c7f6e6d6c3a637261bd9656f').then((response) => {
 > Request by userId:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/steveb@channel5.com/profile \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/steveb@channel5.com/profile \
      -X DELETE \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.deleteProfile('steveb@channel5.com').then((response) => {
+smooch.appUsers.deleteProfile('5963c0d619a30a2e00de36b8', 'steveb@channel5.com').then((response) => {
     // async code
 });
 ```
@@ -200,7 +200,7 @@ smooch.appUsers.deleteProfile('steveb@channel5.com').then((response) => {
 }
 ```
 
-<api>`DELETE /v1/appusers/{smoochId|userId}/profile`</api>
+<api>`DELETE /v1/apps/{appId}/appusers/{smoochId|userId}/profile`</api>
 
 Delete a user's profile. Calling this API will clear `givenName`, `surname`, `email` and every custom property for the specified user.
 
@@ -215,14 +215,14 @@ This endpoint requires a `jwt` credential with `app`, `integration` or `account`
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/devices/5A7F8343-DF41-46A8-96EC-8583FCB422FB \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/devices/5A7F8343-DF41-46A8-96EC-8583FCB422FB \
      -X PUT \
      -d '{"appVersion": "8.0"}' \
      -H 'content-type: application/json' \
-     -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
+     -H 'authorization: your-account-jwt'
 ```
 ```js
-smooch.appUsers.updateDevice('c7f6e6d6c3a637261bd9656f', '5A7F8343-DF41-46A8-96EC-8583FCB422FB', {
+smooch.appUsers.updateDevice('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', '5A7F8343-DF41-46A8-96EC-8583FCB422FB', {
     appVersion: '8.0'
 }).then((response) => {
     // async code
@@ -253,7 +253,7 @@ smooch.appUsers.updateDevice('c7f6e6d6c3a637261bd9656f', '5A7F8343-DF41-46A8-96E
 }
 ```
 
-<api>`PUT /v1/appusers/{smoochId|userId}/devices/{deviceId}`</api>
+<api>`PUT /v1/apps/{appId}/appusers/{smoochId|userId}/devices/{deviceId}`</api>
 
 Update the properties of a device. This API is additive; only the specific fields specified in the request body, and only the specific JSON sub-fields included in the `info` field will be updated. In other words, omitting a field will not delete that field.
 
@@ -268,14 +268,14 @@ Update the properties of a device. This API is additive; only the specific field
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/events \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f/events \
      -X POST \
      -d '{"name":"completed_sale"}' \
      -H 'content-type: application/json' \
-     -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
+     -H 'authorization: your-account-jwt'
 ```
 ```js
-smooch.appUsers.trackEvent('c7f6e6d6c3a637261bd9656f', 'completed_sale').then((response) => {
+smooch.appUsers.trackEvent('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656f', 'completed_sale').then((response) => {
     // async code
 });
 ```
@@ -291,7 +291,7 @@ smooch.appUsers.trackEvent('c7f6e6d6c3a637261bd9656f', 'completed_sale').then((r
 }
 ```
 
-<api>`POST /v1/appusers/{smoochId|userId}/events`</api>
+<api>`POST /v1/apps/{appId}/appusers/{smoochId|userId}/events`</api>
 
 Trigger an event for a given app user. Some Smooch whispers are triggered on discrete events. This API is used to trigger such events. For example, if an app has a whisper configured to be sent whenever a user has triggered the `completed_sale` event, calling this API is the way to trigger such a whisper.
 
@@ -304,14 +304,14 @@ Trigger an event for a given app user. Some Smooch whispers are triggered on dis
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers \
      -X POST \
      -d '{"userId": "steveb@channel5.com", "givenName": "Steve", "properties": {"favoriteFood": "prizza"}}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.create('steveb@channel5.com', {
+smooch.appUsers.create('5963c0d619a30a2e00de36b8', 'steveb@channel5.com', {
     givenName: 'Steve',
     properties: {
         favoriteFood: 'prizza'
@@ -342,7 +342,7 @@ smooch.appUsers.create('steveb@channel5.com', {
 }
 ```
 
-<api>`POST /v1/appusers`</api>
+<api>`POST /v1/apps/{appId}/appusers`</api>
 
 | **Arguments**                 |                            |
 |-------------------------------|----------------------------|
@@ -356,7 +356,7 @@ smooch.appUsers.create('steveb@channel5.com', {
 
 In the vast majority of cases app users will be created from the device or browser registered using the [init API](#init). In some cases however it might be necessary to pre-create an app user object before that user runs your app for the first time. This API facilitates this scenario. A `userId` must be specified so that a future `init` call made from a device can use the same `userId` to link the device to the pre-created app user.
 
-Suppose for example you begin a conversation with an end user `bob@example.com` over email and you wish to transfer this conversation history over into Smooch once that user logs in to your app. To facilitate this, you can call `POST /v1/appusers` to pre-create a Smooch identity with `userId` `bob@example.com`, to which you can import that existing conversation history. After Bob signs in to your app and your app calls `init` with the same `userId`, they will see their conversation history.
+Suppose for example you begin a conversation with an end user `bob@example.com` over email and you wish to transfer this conversation history over into Smooch once that user logs in to your app. To facilitate this, you can call `POST /v1/apps/{appId}/appusers` to pre-create a Smooch identity with `userId` `bob@example.com`, to which you can import that existing conversation history. After Bob signs in to your app and your app calls `init` with the same `userId`, they will see their conversation history.
 
 <aside class="notice">
 Unlike the other App User APIs in this section, this endpoint is not intended to be called from an end user's device or from a browser. It requires a `jwt` credential with `app` level scope.
@@ -367,8 +367,8 @@ Unlike the other App User APIs in this section, this endpoint is not intended to
 > Request:
 
 ```shell
-curl https https://api.smooch.io/v1/appusers/deb920657bbc3adc3fec7963/channels \
-    -H 'authorization: Bearer your-jwt'
+curl https https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/deb920657bbc3adc3fec7963/channels \
+    -H 'authorization: Bearer your-account-jwt'
 ```
 
 ```js
@@ -395,7 +395,7 @@ curl https https://api.smooch.io/v1/appusers/deb920657bbc3adc3fec7963/channels \
 }
 ```
 
-<api>`GET /v1/appusers/{smoochId|userId}/channels`</api>
+<api>`GET /v1/apps/{appId}/appusers/{smoochId|userId}/channels`</api>
 
 Retrieves all of the app user's channel entity IDs.
 
@@ -406,14 +406,14 @@ Retrieves all of the app user's channel entity IDs.
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/deb920657bbc3adc3fec7963/channels \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/deb920657bbc3adc3fec7963/channels \
      -X POST \
      -d '{"type": "twilio", "confirmation": {"type": "prompt"}, "phoneNumber": "+15145555555"}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.linkChannel('steveb@channel5.com', {
+smooch.appUsers.linkChannel('5963c0d619a30a2e00de36b8', 'steveb@channel5.com', {
     type: 'twilio',
     phoneNumber: '+15145555555',
     confirmation: {
@@ -453,7 +453,7 @@ smooch.appUsers.linkChannel('steveb@channel5.com', {
 }
 ```
 
-<api>`POST /v1/appusers/{smoochId|userId}/channels`</api>
+<api>`POST /v1/apps/{appId}/appusers/{smoochId|userId}/channels`</api>
 
 | **Arguments**                 |                            |
 |-------------------------------|----------------------------|
@@ -532,14 +532,14 @@ A confirmation `message` is also required to initiate a link for the Messenger c
 > Request:
 
 ```shell
-curl https://api.smooch.io/v1/appusers/deb920657bbc3adc3fec7963/channels/twilio \
+curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/deb920657bbc3adc3fec7963/channels/twilio \
      -X DELETE \
      -d '{"type": "twilio"}' \
      -H 'content-type: application/json' \
-     -H 'authorization: Bearer your-jwt'
+     -H 'authorization: Bearer your-account-jwt'
 ```
 ```js
-smooch.appUsers.unlinkChannel('steveb@channel5.com', 'twilio')
+smooch.appUsers.unlinkChannel('5963c0d619a30a2e00de36b8', 'steveb@channel5.com', 'twilio')
 .then(() => {
     // async code
 });
@@ -551,7 +551,7 @@ smooch.appUsers.unlinkChannel('steveb@channel5.com', 'twilio')
 200 OK
 ```
 
-<api>`DELETE /v1/appusers/{smoochId|userId}/channels/{channel}`</api>
+<api>`DELETE /v1/apps/{appId}/appusers/{smoochId|userId}/channels/{channel}`</api>
 
 Removes the specified channel from the appUser's clients.
 

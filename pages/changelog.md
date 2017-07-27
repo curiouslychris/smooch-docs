@@ -12,7 +12,7 @@ layout: two-column
 
 ## July 3rd, 2017
 
-- Added new [Attachment API](http://docs.smooch.io/rest/#upload-attachments)
+- Added new [Attachment API](https://docs.smooch.io/rest/#upload-attachment)
 - Added support for new [file message type](http://docs.smooch.io/rest/#file-message)
 - Android SDK [4.7.0](https://github.com/smooch/smooch-android/releases/tag/4.7.0), Web Messenger [3.15.0](https://github.com/smooch/smooch-js/releases/tag/3.15.0) and iOS SDK [5.7.0](https://github.com/smooch/smooch-ios/releases/tag/5.7.0) have been updated to render [file messages](http://docs.smooch.io/rest/#file-message) as a link
 

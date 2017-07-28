@@ -6,6 +6,10 @@ layout: two-column
 
 # Changelog
 
+## July 29th, 2017
+
+- Added [raw client info](http://docs.smooch.io/rest/#raw-client-info) to clients reflecting profile information available from each channel.
+
 ## July 7th, 2017
 
 - Updated [webhook retry policy](http://docs.smooch.io/rest/#retry-policy) to abort retries on [non-recoverable errors](http://docs.smooch.io/rest/#non-recoverable-errors)

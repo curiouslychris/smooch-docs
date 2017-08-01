@@ -19,7 +19,9 @@ Once your Facebook account is connected to Smooch, select the Facebook page you 
 
 ### Action Buttons
 
-Action buttons work as expected. A `link` action button will bring the user to the specified URL while a `postback` action button will trigger any [webhook](https://docs.smooch.io/rest/#webhooks) listening to the `postback` trigger.
+Facebook Messenger currently supports all available [action types](https://docs.smooch.io/rest/#action-buttons).
+
+The number of action buttons allowed in a given message or message item is limited by the Facebook Messenger platform. For actions of type `reply` and `locationRequest`, the limit is eleven. For all other action types, the limit is three. If the `actions` array of a message or message item exceeds the number of actions that Facebook Messenger allows, the list will be truncated to fit the limit, and actions beyond the allowed size will be ignored.
 
 #### Call Buttons
 

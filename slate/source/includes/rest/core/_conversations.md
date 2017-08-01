@@ -791,12 +791,10 @@ Only [carousel](#carousel-message) and [list](#list-message) messages currently 
 
 ### Action Buttons
 
-Actions buttons can be sent through the [post message API](#post-message) by including them in the message payload.
-
-There are 4 types of supported actions : **link**, **buy**, **postback**, and **reply**. Type must be specified by providing a `type` argument in the action object.
+Actions buttons can be sent through the [post message API](#post-message) by including them in the message payload. There are many types of actions, each with its own abilities and limitations. See below for the payloads of each distinct action type.
 
 <aside class="notice">
-    Action buttons can only be sent with an `appMaker` role.
+    Action buttons can only be attached to messages with a `role` of `appMaker`.
 </aside>
 
 #### Link
@@ -833,7 +831,7 @@ smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656
 | **text**<br/><span class='req'>required</span>     | The button text. |
 | **type**<br/><span class='req'>required</span>     | `link` |
 | **uri**<br/><span class='req'>required</span>      | The action URI. This is the link that will be used in the clients when clicking the button. |
-| **default**<br/><span class='opt'>optional</span>  | Flag indicating the message action is the default for a [message item](#message-items) in Facebook Messenger. |
+| **default**<br/><span class='opt'>optional</span>  | Boolean value indicating whether the action is the default action for a [message item](#message-items) in Facebook Messenger. |
 | **metadata**<br/><span class='opt'>optional</span> | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information.|
 | **extraChannelOptions**<br/><span class='opt'>optional</span> | Extra options to pass directly to the channel API. See [Extra Channel Options](#extra-channel-options-schema) |
 
@@ -901,11 +899,11 @@ smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656
 | **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information. |
 
 <aside class="notice">
-The <a href="/javascript/#stripe">Stripe integration</a> must be configured and active in order to accept buy buttons.
+The <a href="/javascript/#stripe">Stripe integration</a>, or payments for Facebook Messenger, must be configured and active in order to send buy buttons.
 </aside>
 
 #### Postback
-A postback action will post the action payload to the server.
+A postback action will post the action payload to the server when tapped.
 
 > Send postback action:
 
@@ -941,7 +939,7 @@ smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656
 | **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information. |
 
 <aside class="notice">
-See how to handle postback with <a href="#webhook-triggers">webhook triggers</a>.
+See how to handle postback events with <a href="#webhook-triggers">webhook triggers</a>.
 </aside>
 
 #### Reply
@@ -1001,7 +999,7 @@ smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656
 | **text**<br/><span class='req'>required</span>      | The button text. |
 | **type**<br/><span class='req'>required</span>      | `reply` |
 | **payload**<br/><span class='req'>required</span>   | A string payload to help you identify the action context. Used when posting the reply. You can also use metadata for more complex needs. |
-| **iconUrl**<br/><span class='opt'>optional</span>   | An icon to render next to the reply option (Facebook Messenger and Web Messenger only) |
+| **iconUrl**<br/><span class='opt'>optional</span>   | An icon to render next to the reply option |
 | **metadata**<br/><span class='opt'>optional</span>  | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information. |
 
 <aside class="notice">
@@ -1009,7 +1007,7 @@ smooch.appUsers.sendMessage('5963c0d619a30a2e00de36b8', 'c7f6e6d6c3a637261bd9656
 </aside>
 
 <aside class="notice">
-Icons are currently only supported on Facebook Messenger and Web Messenger.
+Icons are currently only supported on Facebook Messenger, iOS, Android, and Web Messenger.
 </aside>
 
 **Facebook Messenger**
@@ -1394,6 +1392,7 @@ This table represents the fields you can expect to receive in a webhook payload'
 | Field                                         | Description                                                                                                             |
 |-----------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------|
 | **_id**  | The unique ID for the message.                                                                |
+| **type**  | `"text"`, `"image"`, `"file"`, `"carousel"`, `"location"`, or `"list"`.                                                                                                 |
 | **text**  | The message text.                                                                                                       |
 | **role**  | The role of the message sender. `"appUser"`, `"appMaker"`, or `"whisper"`.                                                      |
 | **authorId**  | The appUser's _id if the message `role` is `"appUser"`, otherwise, a hash based on the appMaker's email address.        |
@@ -1401,7 +1400,6 @@ This table represents the fields you can expect to receive in a webhook payload'
 | **received**  | A unix timestamp given in seconds, describing when Smooch received the message.                                         |
 | **source**  | A nested object describing the source of the message. See the [source schema](#sourcedestination-schema) below for details.                   |
 | **avatarUrl** <span class="opt">optional</span>| The URL for an image of the appMaker.                                                                                   |
-| **type**  | `"text"`, `"image"`, `"file"`, `"carousel"`, `"location"`, or `"list"`.                                                                                                 |
 | **actions** <span class="opt">optional</span> | An array of objects representing the actions associated with the message. See the [action schema](#action-schema) below for details. |
 | **mediaUrl** <span class="opt">optional</span>| The URL for media, such as an image, attached to the message. |
 | **mediaType** <span class="opt">optional</span>| The MIME type for any media attached in the mediaUrl. |
@@ -1434,13 +1432,17 @@ This table represents the fields you can expect to receive nested inside postbac
 | Field      | Description                                                                                               |
 |------------|--------|-----------------------------------------------------------------------------------------------------------|
 | **_id**  | A canonical ID.                                                                                           |
-| **type**  | `"link"`, `"reply"`, `"postback"`, `"share"`, `"location"`, or `"buy"`.                                                        |
-| **uri** <span class="opt">optional</span>| The URI for a link type button, a checkout page for buy type buttons. May also be an empty string.                                 |
-| **text** <span class="opt">optional</span>| The button text.                                                                                          |
-| **payload** <span class="opt">optional</span>| The payload of a postback or reply button.                                          |
-| **amount** <span class="opt">optional</span>| An integer representing an amount of money in hundredths of a dollar (or equivalent in other currencies). |
-| **currency** <span class="opt">optional</span>| An ISO 4217 standard currency code in lowercase.                                                          |
-| **state** <span class="opt">optional</span>| The value "offered", or "paid" sent with a buy action type. |
+| **type**  | `link`, `reply`, `postback`, `share`, `locationRequest`, or `buy`.                                                        |
+| **uri** <span class="opt">optional</span>| The URI for a `link` type action, a checkout page for `buy` type actions. May also be an empty string. |
+| **text** <span class="opt">optional</span>| The button text. |
+| **payload** <span class="opt">optional</span>| The payload of a `postback` or `reply` button. |
+| **amount** <span class="opt">optional</span>| An integer representing an amount of money in hundredths of a dollar (or equivalent in other currencies). Used for actions of type `buy`. |
+| **currency** <span class="opt">optional</span>| An ISO 4217 standard currency code in lowercase. Used for actions of type `buy`. |
+| **state** <span class="opt">optional</span>| The value `offered`, or `paid` representing the payment status of a `buy` type action. |
+| **default**<br/><span class='opt'>optional</span>  | Boolean value indicating whether the action is the default action for a [message item](#message-items) in Facebook Messenger. Used for actions of type `link`. |
+| **metadata**<br/><span class='opt'>optional</span> | Flat object containing any custom properties associated with the action. See the [metadata schema](#metadata-schema) for more information.|
+| **extraChannelOptions**<br/><span class='opt'>optional</span> | Extra options to pass directly to the channel API. See [Extra Channel Options](#extra-channel-options-schema). |
+| **iconUrl**<br/><span class='opt'>optional</span>   | An icon to render alongside the action text. Used for actions of type `reply`. |
 
 
 ### Referral schema

@@ -620,7 +620,11 @@ Client specific info
 ### Raw client info
 
 Smooch retrieves raw client specific information from each channels and makes it available via the `raw` field of the client.
-See the tables below for an idea of what to expect in this field.
+All keys are optionals and not guaranteed to be available
+
+<aside class="notice">
+The list of fields below is an overview of what you can expect in the `raw` field and is provided as a convenience. We recommend following the links to the official specification for each channel for a complete definition.
+</aside>
 
 #### Messenger
 

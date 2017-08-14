@@ -30,8 +30,7 @@ subsections = [
 name = "Home"
 pages = [
     "/guide/",
-    "/guide/api-quickstart/",
-    "/guide/business-quickstart/"
+    "/guide/api-quickstart/"
 ]
 
 [subsections.authentication]

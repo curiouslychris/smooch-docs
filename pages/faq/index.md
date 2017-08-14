@@ -6,15 +6,12 @@ layout: two-column
 
 # Smooch FAQ
 
-Smooch makes it easy to add conversational capabilities to your product or business. In these docs you'll find everything you need to use our platform, the Smooch Conversation Cloud.
+Look for a topic on the left side to find an answer to a frequently asked question about this topic.
 
 ## Getting Started with Smooch
 
-We've built a few quickstart guides to help you get started with Smooch. Whether you're building messaging into your product or simply want to start engaging with your customers on a new channel, Smooch has got you covered.
-
-|Developer?|Business?|
-|:-:|:-:|
-|The [API Quickstart](/guide/api-quickstart/) shows you how to add conversations to your app in minutes.|The [Business Quickstart](/guide/business-quickstart/) walks you through adding conversations to your favourite business system, using our quick and easy integrations.|
+We've built a quickstart guide to help you get started with Smooch.
+The [API Quickstart](/guide/api-quickstart/) shows you how to add conversations to your app in minutes.
 
 ## We're here to help!
 

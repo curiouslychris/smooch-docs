@@ -22,13 +22,17 @@ First, [create a new page](https://www.facebook.com/pages/create/).
 
 ## Connect Facebook to Smooch
 
-If you haven't already, sign up for a [Smooch account](https://app.smooch.io/), and follow SmoochBot's instructions to connect Facebook Messenger.
+If you haven't already, sign up for a [Smooch account](https://app.smooch.io/), and create an app.
 
-![SmoochBot](/images/smoochbot.png)
+![Create app](/images/create_app.png)
 
- You can also connect Facebook Messenger from the [integration page for Facebook Messenger](https://app.smooch.io/integrations/messenger).
+Once you have an app, you can connect Facebook Messenger from the [Integration Directory](https://app.smooch.io/integrations/messenger).
 
-Now, whenever someone sends a message to your Facebook page, it will also be sent to Smooch. Great! Let's figure out a way to answer them!
+Once you've autorized Smooch to your Facebook account, select the page you created above and save.
+
+![Select Facebook page](/images/select_facebook_page.png)
+
+Now, whenever someone sends a message to your Facebook page, it will be sent to Smooch. At this point, if you try to message your page you'll see an entry in the log corresponding to this message. Great! Now let's get those message to your server.
 
 ## Deploy a server
 
@@ -50,7 +54,7 @@ To send an answer back, we'll need to call the Smooch REST API. Smooch provides 
 
 The smooch-core package will handle creating an app scope JWT and authenticating calls to the REST API.
 
-Install it with npm `npm i smooch-core`
+Install it with npm `npm install smooch-core`
 
 ## Send a message to a user with the REST API
 

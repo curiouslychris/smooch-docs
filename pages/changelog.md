@@ -6,9 +6,13 @@ layout: two-column
 
 # Changelog
 
+## August 15th, 2017
+
+- iOS SDK [5.8.2](https://github.com/smooch/smooch-ios/releases/tag/5.8.2) was released with support for iOS 11 and XCode 9
+
 ## July 29th, 2017
 
-- Added [raw client info](http://docs.smooch.io/rest/#raw-client-info) to clients reflecting profile information available from each channel.
+- Added [raw client info](http://docs.smooch.io/rest/#raw-client-info) to clients reflecting profile information available from each channel
 
 ## July 7th, 2017
 

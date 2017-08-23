@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-OUTPUT=/tmp/sync-output
 aws configure set preview.cloudfront true
 rm -rf public
 npm run build
@@ -15,8 +14,7 @@ echo 'Copy iOS and Android class references'
 cp -r class-references/* public/api/ > /dev/null
 
 echo 'Publishing to S3'
-aws s3 sync public/ s3://docs.smooch.io/ --delete > $OUTPUT
-PATTERN="s3://docs.smooch.io"
+aws s3 sync public/ s3://docs.smooch.io/ > /dev/null
 INVALIDATION_BATCH="Paths={Quantity=1,Items=[/*]},CallerReference=\"build${CIRCLE_BUILD_NUM}\""
 
 echo 'Invalidating Cloudfront'

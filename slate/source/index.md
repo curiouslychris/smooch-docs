@@ -27,7 +27,6 @@ includes:
     - rest/core/webhooks/linking_events
     - rest/core/webhooks/securing_a_webhook
     - rest/core/webhooks/retry_policy
-    - rest/core/init
     - rest/core/app_user
     - rest/core/message
     - rest/core/message_types

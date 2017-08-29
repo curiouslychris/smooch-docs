@@ -44,7 +44,7 @@ If you wish to apply, please [contact us](https://smooch.formstack.com/forms/pay
 
 You can send Buy buttons either via the `$[label](9.99)` syntax or by including Buy actions in your call to the [Post Message API](https://docs.smooch.io/rest/#action-buttons).
 
-Buy buttons can be combined with a text message, other actions, an image and/or in a [list](https://docs.smooch.io/rest/#list-message) or [carousel](https://docs.smooch.io/rest/#carousel-message) message type.
+Buy buttons can be combined with a text message, other actions, an image and/or in a [list](https://docs.smooch.io/rest/#list) or [carousel](https://docs.smooch.io/rest/#carousel) message type.
 
 Facebook limits messages to contain only one buy button per list item and they must be in the first position.
 
@@ -68,7 +68,7 @@ Messenger also has full support for list messages. List messages are a verticall
 
 ![List example](https://docs.smooch.io/rest/images/list_messenger.png)
 
-You can send list messages containing up to 10 items via the [Post Message API](https://docs.smooch.io/rest/#list-message). Note that each items in a list can only contain 1 button ([Link](https://docs.smooch.io/rest/#link), [Buy](https://docs.smooch.io/rest/#buy), [Postback](https://docs.smooch.io/rest/#postback) & [Share](https://docs.smooch.io/rest/#share) are the only allowed action types). Each item also supports a default action. Using this, you can enable people to open a URL when the row of the list item is tapped.
+You can send list messages containing up to 10 items via the [Post Message API](https://docs.smooch.io/rest/#list). Note that each items in a list can only contain 1 button ([Link](https://docs.smooch.io/rest/#link), [Buy](https://docs.smooch.io/rest/#buy), [Postback](https://docs.smooch.io/rest/#postback) & [Share](https://docs.smooch.io/rest/#share) are the only allowed action types). Each item also supports a default action. Using this, you can enable people to open a URL when the row of the list item is tapped.
 
 List messages can also append 1 action button at the bottom of the list. For example, you can use this extra action to let users see more items as shown above (More choices).
 

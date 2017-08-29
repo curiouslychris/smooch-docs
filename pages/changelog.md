@@ -21,8 +21,8 @@ layout: two-column
 ## July 3rd, 2017
 
 - Added new [Attachment API](https://docs.smooch.io/rest/#upload-attachment)
-- Added support for new [file message type](http://docs.smooch.io/rest/#file-message)
-- Android SDK [4.7.0](https://github.com/smooch/smooch-android/releases/tag/4.7.0), Web Messenger [3.15.0](https://github.com/smooch/smooch-js/releases/tag/3.15.0) and iOS SDK [5.7.0](https://github.com/smooch/smooch-ios/releases/tag/5.7.0) have been updated to render [file messages](http://docs.smooch.io/rest/#file-message) as a link
+- Added support for new [file message type](http://docs.smooch.io/rest/#file)
+- Android SDK [4.7.0](https://github.com/smooch/smooch-android/releases/tag/4.7.0), Web Messenger [3.15.0](https://github.com/smooch/smooch-js/releases/tag/3.15.0) and iOS SDK [5.7.0](https://github.com/smooch/smooch-ios/releases/tag/5.7.0) have been updated to render [file messages](http://docs.smooch.io/rest/#file) as a link
 
 ## June 20th, 2017
 
@@ -129,7 +129,7 @@ layout: two-column
 
 ## January 27th, 2017
 
-- Added location request API. [Learn More](https://docs.smooch.io/rest/#location-request)
+- Added location request API. [Learn More](https://docs.smooch.io/rest/#location)
 - Added support for receiving user's location. [Learn more](https://docs.smooch.io/rest/#trigger---code-classprettyprintmessageappusercode-location)
 - Added Facebook Messenger Payments support. [Learn More](https://docs.smooch.io/guide/facebook-messenger/)
 - Added new `payment:success` webhook. [Lean more](https://docs.smooch.io/rest/#trigger---code-classprettyprintpaymentsuccesscode)
@@ -165,7 +165,7 @@ layout: two-column
 
 ## December 2nd, 2016
 
-- Added support for Facebook Messenger [list messages](http://docs.smooch.io/rest/#list-message)
+- Added support for Facebook Messenger [list messages](http://docs.smooch.io/rest/#list)
 - Added new field `type` to the [create message API](http://docs.smooch.io/rest/#post-message)
 - Reply actions are now transformed into keyboard buttons on Viber
 
@@ -247,7 +247,7 @@ Web Messenger [3.2.0](https://github.com/smooch/smooch-js/releases/tag/3.2.0) no
 
 ## July 26th, 2016
 
-- Added [carousel API](http://docs.smooch.io/rest/#carousel-messages) with full support for Facebook Messenger and Telegram. Text only fallback for all other channels.
+- Added [carousel API](http://docs.smooch.io/rest/#carousel) with full support for Facebook Messenger and Telegram. Text only fallback for all other channels.
 
 ## July 13th, 2016
 

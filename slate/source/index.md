@@ -29,7 +29,10 @@ includes:
     - rest/core/webhooks/retry_policy
     - rest/core/init
     - rest/core/app_user
-    - rest/core/conversations
+    - rest/core/message
+    - rest/core/message_types
+    - rest/core/message_actions
+    - rest/core/conversation
     - rest/core/persistent_menus
     - --Managed accounts
     - rest/managed/introduction

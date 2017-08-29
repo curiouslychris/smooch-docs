@@ -5,7 +5,7 @@ Smooch uses JSON Web Token (JWT) for authentication. [See below](#authentication
 
 | Scope        | Authorized Methods  |
 |--------------|------------------|
-| **appUser**  | [Init](#init), [App User](#app-user), and [Conversations](#conversations) methods |
+| **appUser**  | [Init](#init), [App User](#app-user), and [Message](#message) methods |
 | **app**      | All [Core](#core) methods |
 | **account**  | All [Core](#core) and [Managed Accounts](#managed-accounts) methods |
 

@@ -20,7 +20,7 @@ On the top left of our dashboard, we give you the ability to create multiple app
 
 ## Do you suport the Carousel feature of Facebook Messenger?
 
-We fully support carousel messages through our API: http://docs.smooch.io/rest/#carousel-messages
+We fully support carousel messages through our API: http://docs.smooch.io/rest/#carousel
 
 ## Why can't i send buy buttons on Facebook Messenger?
 

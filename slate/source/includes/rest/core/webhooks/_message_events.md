@@ -39,7 +39,7 @@
 }
 ```
 
-The payload for a [text message](#text-message).
+The payload for a [text message](#text).
 
 #### Message event payload schema
 
@@ -89,7 +89,7 @@ The payload for a [text message](#text-message).
 }
 ```
 
-The payload for an [image message](#image-message).
+The payload for an [image message](#image).
 
 ### Trigger - `message:appMaker` (carousel)
 
@@ -147,7 +147,7 @@ The payload for an [image message](#image-message).
 }
 ```
 
-The payload for a [carousel message](#carousel-message).
+The payload for a [carousel message](#carousel).
 
 ### Trigger - `message:appMaker` (list)
 
@@ -213,7 +213,7 @@ The payload for a [carousel message](#carousel-message).
 }
 ```
 
-The payload for a [list message](#list-message).
+The payload for a [list message](#list).
 
 ### Trigger - `message:appUser` (location)
 
@@ -259,4 +259,4 @@ The payload for a [list message](#list-message).
 }
 ```
 
-The payload for a [location message](#location-message).
+The payload for a [location message](#location).

@@ -12,11 +12,9 @@ layout: two-column
 
 ## Adding Smooch to your app
 
-There are two ways to install the Smooch SDK. Our recommended way to install Smooch is through [CocoaPods](/guide/native-ios-sdk/#cocoapods-method). We support Carthage too and you can also go the [manual route](/guide/native-ios-sdk/#manual-method-carthage) and drop the SDK into your Xcode project.
+The Smooch iOS SDK supports installation through both [CocoaPods](/guide/native-ios-sdk/#cocoapods) and [Carthage](/guide/native-ios-sdk/#carthage). Read on and follow your preferred way of adding the SDK to your project.
 
-We've documented both methods for adding Smooch to your app. Read on and follow your preferred way of adding the SDK to your project.
-
-### CocoaPods Method
+### CocoaPods
 
 First, Install [CocoaPods](https://cocoapods.org/) if it isn't already
 
@@ -36,32 +34,35 @@ Finally, install the pod
 $ pod install
 ```
 
-That's it! You're now ready to [initialize Smooch in your app](#import-the-smooch-header-file).
+That's it! You're now ready to [initialize Smooch in your app](/guide/native-ios-sdk/#import-the-smooch-header-file).
 
 <aside class="notice">
 Remember — when you use CocoaPods to manage your app's dependencies, you have to build and run your app using the newly-generated .xcworkspace file and not the .xcodeproj file.
 </aside>
 
-### Manual Method / Carthage
+### Carthage
 
-1. First, grab a copy of `Smooch.framework` either through [GitHub](https://github.com/smooch/smooch-ios), [Carthage](https://github.com/Carthage/Carthage), or by [direct download](https://github.com/smooch/smooch-ios/archive/master.zip).
+First, follow the steps to [install Carthage](https://github.com/Carthage/Carthage#installing-carthage) on your system if it isn't already.
 
-1. Add `Smooch.framework` to your project, and link it to the desired targets.
+```
+$ brew install carthage
+```
 
-1. Now you'll have to add Smooch's dependencies to your project if they're not already linked in. Go to "Build phases" in your project's target and select "Link Binary With Libraries":
- * AssetsLibrary.framework
- * AVFoundation.framework
- * CFNetwork.framework
- * CoreGraphics.framework
- * CoreTelephony.framework
- * CoreText.framework
- * Foundation.framework
- * Photos.framework
- * QuartzCore.framework
- * SystemConfiguration.framework
- * UIKit.framework
-1. Add the `-licucore` option to your app's `Other Linker Flags` build setting.
-1. You're now ready to [initialize Smooch in your app](/guide/native-ios-sdk/#import-the-smooch-header-file).
+Next, add the Smooch framework to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile)
+
+```
+github "smooch/smooch-ios"
+```
+
+And finally, follow the [installation steps](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos) for iOS projects to link the Smooch dependency to your application.
+
+That's it! You're now ready to [initialize Smooch in your app](/guide/native-ios-sdk/#import-the-smooch-header-file).
+
+### Manual Installation
+
+<aside class="warning">
+The Smooch framework includes code slices for the <code>i386</code> and <code>x86_64</code> simulator architectures, which can cause errors when submitting your app to the store. For this reason, it is not recommended to install Smooch manually. Both <a href="/guide/native-ios-sdk/#cocoapods">CocoaPods</a> and <a href="/guide/native-ios-sdk/#carthage">Carthage</a> include run scripts to strip these architectures when building your app - you should use one of those methods instead.
+</aside>
 
 ### Import the Smooch header file
 
@@ -164,10 +165,6 @@ To update Carthage dependencies, you can simply run:
 ```
 $ carthage update
 ```
-
-#### Manual
-
-First, grab the latest version of `Smooch.framework` either through [GitHub](https://github.com/smooch/smooch-ios) or by [direct download](https://github.com/smooch/smooch-ios/archive/master.zip). Then, find the location of the old .framework file on disk, and replace it with the new one.
 
 ## Configuring push notifications
 

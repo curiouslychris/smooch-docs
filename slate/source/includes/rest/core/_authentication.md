@@ -28,7 +28,7 @@ The JWT itself is transmitted via the HTTP `authorization` header. The token sho
 To sign JWTs, you will need to create a secret key in the Smooch dashboard, by going into the Settings tab. Clicking on "Create New Secret Key" will generate a new key id and a secret key pair which you can use to sign JWTs.
 
 <aside class="warning">
-After using a JWT with `appUser` scope to authenticate an app user for the `/appuser` or `/init` routes, it becomes no longer possible to authenticate that app user on a client SDK with an `appToken` alone.
+After using a JWT with `appUser` scope to authenticate an app user for the `/appuser` routes, it becomes no longer possible to authenticate that app user on a client SDK with an `appToken` alone.
 </aside>
 
 ## Header

@@ -28,10 +28,9 @@ includes:
     - rest/core/webhooks/securing_a_webhook
     - rest/core/webhooks/retry_policy
     - rest/core/app_user
-    - rest/core/message
+    - rest/core/conversation
     - rest/core/message_types
     - rest/core/message_actions
-    - rest/core/conversation
     - rest/core/persistent_menus
     - --Managed accounts
     - rest/managed/introduction

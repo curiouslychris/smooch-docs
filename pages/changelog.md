@@ -6,6 +6,10 @@ layout: two-column
 
 # Changelog
 
+## September 1st, 2017
+
+- Introduced a 14-day trial period for API usage on free plans
+
 ## August 15th, 2017
 
 - iOS SDK [5.8.2](https://github.com/smooch/smooch-ios/releases/tag/5.8.2) was released with support for iOS 11 and XCode 9

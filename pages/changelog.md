@@ -8,9 +8,7 @@ layout: two-column
 
 ## September 18th, 2017
 
-- Optimized initialization sequence in Android SDK [5.0.0](https://github.com/smooch/smooch-android/releases/tag/5.0.0)
-- Optimized initialization sequence in Web Messenger [4.0.0](https://github.com/smooch/smooch-web/releases/tag/4.0.0)
-- Optimized initialization sequence in iOS SDK [6.0.0](https://github.com/smooch/smooch-ios/releases/tag/6.0.0)
+- Android SDK [5.0.0](https://github.com/smooch/smooch-android/releases/tag/5.0.0), Web Messenger [4.0.0](https://github.com/smooch/smooch-web/releases/tag/4.0.0) and iOS SDK [6.0.0](https://github.com/smooch/smooch-ios/releases/tag/6.0.0) have been updated with a new optimized initialization sequence. See release notes for more details.
 
 ## September 1st, 2017
 

@@ -6,6 +6,12 @@ layout: two-column
 
 # Changelog
 
+## September 18th, 2017
+
+- Optimized initialization sequence in Android SDK [5.0.0](https://github.com/smooch/smooch-android/releases/tag/5.0.0)
+- Optimized initialization sequence in Web Messenger [4.0.0](https://github.com/smooch/smooch-web/releases/tag/4.0.0)
+- Optimized initialization sequence in iOS SDK [6.0.0](https://github.com/smooch/smooch-ios/releases/tag/6.0.0)
+
 ## September 1st, 2017
 
 - Introduced a 14-day trial period for API usage on free plans

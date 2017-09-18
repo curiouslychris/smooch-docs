@@ -54,7 +54,7 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/appToken">appToken</option>
+		<option value="//api/name/appId">appId</option>
 		
 		<option value="//api/name/conversationAccentColor">conversationAccentColor</option>
 		
@@ -64,13 +64,9 @@
 		
 		<option value="//api/name/enableUserNotificationCenterDelegateOverride">enableUserNotificationCenterDelegateOverride</option>
 		
-		<option value="//api/name/jwt">jwt</option>
-		
 		<option value="//api/name/notificationDisplayTime">notificationDisplayTime</option>
 		
 		<option value="//api/name/requestPushPermissionOnFirstMessage">requestPushPermissionOnFirstMessage</option>
-		
-		<option value="//api/name/userId">userId</option>
 		
 	</optgroup>
 	
@@ -78,7 +74,7 @@
 	
 	<optgroup label="Class Methods">
 		
-		<option value="//api/name/settingsWithAppToken:">+ settingsWithAppToken:</option>
+		<option value="//api/name/settingsWithAppId:">+ settingsWithAppId:</option>
 		
 	</optgroup>
 	
@@ -124,8 +120,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/settingsWithAppToken:" title="settingsWithAppToken:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/settingsWithAppToken:">+&nbsp;settingsWithAppToken:</a></code>
+	<a name="//api/name/settingsWithAppId:" title="settingsWithAppId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/settingsWithAppId:">+&nbsp;settingsWithAppId:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -135,12 +131,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initializes a settings object with the given app token.</p>
+				<p>Initializes a settings object with the given app id.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (instancetype)settingsWithAppToken:(NSString *)<em>appToken</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (instancetype)settingsWithAppId:(NSString *)<em>appId</em></code></div>
 
 		    
 			
@@ -149,8 +145,8 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>appToken</code></th>
-						<td><p>A valid app token retrieved from the Smooch web portal.</p></td>
+						<th scope="row" class="argument-name"><code>appId</code></th>
+						<td><p>A valid app id retrieved from the Smooch web portal.</p></td>
 					</tr>
 				
 				</table>
@@ -177,8 +173,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/appToken" title="appToken"></a>
-	<h3 class="method-title"><code><a href="#//api/name/appToken">&nbsp;&nbsp;appToken</a></code>
+	<a name="//api/name/appId" title="appId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/appId">&nbsp;&nbsp;appId</a></code>
 </h3>
 
 	<div class="method-info">
@@ -188,12 +184,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The app token corresponding to your application.</p>
+				<p>The app id corresponding to your application.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *appToken</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *appId</code></div>
 
 		    
 			
@@ -205,7 +201,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>App tokens are issued on the Smooch web portal.</p>
+				<p>App id can be retrieved from the Smooch web portal</p>
 
 <p>This value may only be set once, and must be set at init time.</p>
 			</div>
@@ -309,120 +305,6 @@
 
 			
 
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SKTSettings.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/userId" title="userId"></a>
-	<h3 class="method-title"><code><a href="#//api/name/userId">&nbsp;&nbsp;userId</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>The distinct id of the current user, if known.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, nullable) NSString *userId</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Defaults to the last known user id for the given app token (user login state is persisted between app launches). Defaults to nil if the previous user was anonymous, or if there was no previous user.</p>
-
-<p>This value may only be set once, and must be set at init time. To change at runtime, use Smooch.login instead.</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection see-also-section">
-				<h4 class="method-subtitle">See Also</h4>
-				<ul>
-					
-					<li><code><p><a href="../Classes/Smooch.html">Smooch</a></p></code></li>
-					
-				</ul>
-			</div>
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SKTSettings.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/jwt" title="jwt"></a>
-	<h3 class="method-title"><code><a href="#//api/name/jwt">&nbsp;&nbsp;jwt</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Optional jwt used to prove the origin of the login request.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, nullable) NSString *jwt</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Used only if userId is not nil. Defaults to the last known jwt for the given app token.</p>
-
-<p>This value may only be set once, and must be set at init time. To change at runtime, use Smooch.login instead.</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection see-also-section">
-				<h4 class="method-subtitle">See Also</h4>
-				<ul>
-					
-					<li><code><p><a href="../Classes/Smooch.html">Smooch</a></p></code></li>
-					
-				</ul>
-			</div>
 			
 
 			
@@ -690,7 +572,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Smooch. All rights reserved. Updated: 2017-08-15</p>
+						<p class="copyright">Copyright &copy; 2017 Smooch. All rights reserved. Updated: 2017-09-18</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -68,11 +68,11 @@
 		
 		<option value="//api/name/handleUserNotificationActionWithIdentifier:withResponseInfo:completionHandler:">+ handleUserNotificationActionWithIdentifier:withResponseInfo:completionHandler:</option>
 		
-		<option value="//api/name/initWithSettings:">+ initWithSettings:</option>
+		<option value="//api/name/initWithSettings:completionHandler:">+ initWithSettings:completionHandler:</option>
 		
-		<option value="//api/name/login:jwt:">+ login:jwt:</option>
+		<option value="//api/name/login:jwt:completionHandler:">+ login:jwt:completionHandler:</option>
 		
-		<option value="//api/name/logout">+ logout</option>
+		<option value="//api/name/logoutWithCompletionHandler:">+ logoutWithCompletionHandler:</option>
 		
 		<option value="//api/name/newConversationViewController">+ newConversationViewController</option>
 		
@@ -85,8 +85,6 @@
 		<option value="//api/name/show">+ show</option>
 		
 		<option value="//api/name/showConversationFromViewController:">+ showConversationFromViewController:</option>
-		
-		<option value="//api/name/track:">+ track:</option>
 		
 		<option value="//api/name/userNotificationCategories">+ userNotificationCategories</option>
 		
@@ -138,8 +136,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/initWithSettings:" title="initWithSettings:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithSettings:">+&nbsp;initWithSettings:</a></code>
+	<a name="//api/name/initWithSettings:completionHandler:" title="initWithSettings:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithSettings:completionHandler:">+&nbsp;initWithSettings:completionHandler:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -154,7 +152,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (void)initWithSettings:(SKTSettings *)<em>settings</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (void)initWithSettings:(SKTSettings *)<em>settings</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>handler</em></code></div>
 
 		    
 			
@@ -165,6 +163,11 @@
 					<tr>
 						<th scope="row" class="argument-name"><code>settings</code></th>
 						<td><p>The settings to use.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>An optional block to evaluate the result of the operation</p></td>
 					</tr>
 				
 				</table>
@@ -231,7 +234,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Settings object passed in +initWithSettings:, or nil if +initWithSettings: hasn&rsquo;t been called yet.</p>
+				<p>Settings object passed in +initWithSettings:completionHandler:, or nil if +initWithSettings:completionHandler: hasn&rsquo;t been called yet.</p>
 			</div>
 			
 
@@ -299,7 +302,7 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Uses the top-most view controller of the <code>UIApplicationDelegate</code> as the presenting view controller.</p>
 
-<p>+initWithSettings: must have been called prior to calling this method.</p>
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
 			</div>
 			
 
@@ -347,7 +350,7 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Note: If a view controller was created and presented using <code>newConversationViewController</code>, calling this method will have no effect.</p>
 
-<p>+initWithSettings: must have been called prior to calling this method.</p>
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
 			</div>
 			
 
@@ -441,7 +444,7 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>In most cases, it is better to use +show. If you need more fine-grained control over which view controller is used as presenting view controller, use this method instead.</p>
 
-<p>+initWithSettings: must have been called prior to calling this method.</p>
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
 			</div>
 			
 
@@ -483,7 +486,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A new instance of the Smooch conversation view controller class. Returns nil if +initWithSettings: hasn&rsquo;t been called</p>
+				<p>A new instance of the Smooch conversation view controller class. Returns nil if +initWithSettings:completionHandler: hasn&rsquo;t been called</p>
 			</div>
 			
 
@@ -494,7 +497,7 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>You may use this view controller to embed the conversation in a navigation controller, to change the modal presentation style, or display it in any way you choose.</p>
 
-<p>A view controller created in this way is tied to the current user&rsquo;s conversation at creation time. If the current user changes (i.e. by calling +login:jwt: or +logout), the view controller is invalidated and must be recreated for the new user.</p>
+<p>A view controller created in this way is tied to the current user&rsquo;s conversation at creation time. If the current user changes (i.e. by calling +login:jwt:completionHandler: or +logoutWithCompletionHandler:), the view controller is invalidated and must be recreated for the new user.</p>
 
 <p>Note: It is the responsibility of the caller to show, hide, and maintain a reference to this view controller. Calling <code>close</code> will not dismiss a view controller created in this way.</p>
 			</div>
@@ -586,64 +589,6 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/track:" title="track:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/track:">+&nbsp;track:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Tracks an app event, and processes any whispers associated with that event.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>+ (void)track:(NSString *)<em>eventName</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>eventName</code></th>
-						<td><p>The name of the event to track. This should match a whisper created on the admin panel for your app.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Whispers can be configured in the Smooch admin panel.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Smooch.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/conversation" title="conversation"></a>
 	<h3 class="method-title"><code><a href="#//api/name/conversation">+&nbsp;conversation</a></code>
 </h3>
@@ -668,7 +613,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Current conversation, or nil if +initWithSettings: hasn&rsquo;t been called yet.</p>
+				<p>Current conversation, or nil if +initWithSettings:completionHandler: hasn&rsquo;t been called yet.</p>
 			</div>
 			
 
@@ -699,8 +644,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/login:jwt:" title="login:jwt:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/login:jwt:">+&nbsp;login:jwt:</a></code>
+	<a name="//api/name/login:jwt:completionHandler:" title="login:jwt:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/login:jwt:completionHandler:">+&nbsp;login:jwt:completionHandler:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -715,7 +660,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (void)login:(NSString *)<em>userId</em> jwt:(nullable NSString *)<em>jwt</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (void)login:(NSString *)<em>userId</em> jwt:(NSString *)<em>jwt</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>handler</em></code></div>
 
 		    
 			
@@ -730,7 +675,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>jwt</code></th>
-						<td><p>Optional jwt used to prove the origin of the login request. May be nil.</p></td>
+						<td><p>jwt used to prove the origin of the login request. Must not be nil.</p></td>
 					</tr>
 				
 				</table>
@@ -746,9 +691,9 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>You can either use this method to transition from logged out state to logged in, or to switch the currently logged in user to a different one.</p>
 
-<p>User login state is persisted across app launches. You must call +logout to reset to anonymous mode.</p>
+<p>User login state is persisted across app launches. You must call +logoutWithCompletionHandler: to reset to anonymous mode.</p>
 
-<p>+initWithSettings: must have been called prior to calling this method.</p>
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
 
 <p>You may not call login while the conversation screen is shown. Doing so will result in a no-op.</p>
 			</div>
@@ -768,8 +713,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/logout" title="logout"></a>
-	<h3 class="method-title"><code><a href="#//api/name/logout">+&nbsp;logout</a></code>
+	<a name="//api/name/logoutWithCompletionHandler:" title="logoutWithCompletionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/logoutWithCompletionHandler:">+&nbsp;logoutWithCompletionHandler:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -784,7 +729,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (void)logout</code></div>
+			<div class="method-subsection method-declaration"><code>+ (void)logoutWithCompletionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>completionHandler</em></code></div>
 
 		    
 			
@@ -796,9 +741,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method will automatically login an anonymous user after logging out the current user.</p>
-
-<p>Calling this method while already in anonymous state has no effect.</p>
+				<p>Calling this method while already in anonymous state has no effect.</p>
 
 <p>You may not call logout while the conversation screen is shown. Doing so will result in a no-op.</p>
 			</div>
@@ -956,7 +899,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>An object conforming to UNUserNotificationCenterDelegate protocol, or nil if +initWithSettings: hasn&rsquo;t been called yet.</p>
+				<p>An object conforming to UNUserNotificationCenterDelegate protocol, or nil if +initWithSettings:completionHandler: hasn&rsquo;t been called yet.</p>
 			</div>
 			
 
@@ -969,7 +912,7 @@
 
 <p>By default this object will automatically be set as the UNUserNotificationCenter delegate at init time. Smooch will maintain a reference to your app&rsquo;s existing delegate (if applicable), and automatically forward any calls for notifications that did not originate from Smooch.</p>
 
-<p>To disable automatic overriding, you must set SKTSettings.enableUserNotificationCenterDelegateOverride to NO before calling +initWithSettings:. If you choose to do so, you must manually forward any relevant calls from your own delegate object. To check the origin of a notification, see the documentation for SKTPushNotificationIdentifier. For example:</p>
+<p>To disable automatic overriding, you must set SKTSettings.enableUserNotificationCenterDelegateOverride to NO before calling +initWithSettings:completionHandler:. If you choose to do so, you must manually forward any relevant calls from your own delegate object. To check the origin of a notification, see the documentation for SKTPushNotificationIdentifier. For example:</p>
 
 <p>-(void)userNotificationCenter:(UNUserNotificationCenter <em>)center willPresentNotification:(UNNotification </em>)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
 {
@@ -1146,7 +1089,7 @@ On iOS 10, returns a set of UNNotificationCategory objects, to be used with <cod
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Smooch. All rights reserved. Updated: 2017-08-15</p>
+						<p class="copyright">Copyright &copy; 2017 Smooch. All rights reserved. Updated: 2017-09-18</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

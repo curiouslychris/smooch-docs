@@ -13,11 +13,6 @@ subsections = [
     'references'
 ]
 
-[sections.api]
-subsections = [
-    'rest'
-]
-
 [sections.faq]
 subsections = [
     'faq',
@@ -53,11 +48,11 @@ pages = [
 name = "Users"
 pages = [
     "/guide/intro-to-users/",
-    "/guide/managing-user-information/",
-    "/guide/authenticating-users/",
     "/guide/creating-users/",
     "/guide/linking-users/",
-    "/guide/multi-client-users/"
+    "/guide/managing-user-information/",
+    "/guide/multi-client-users/",
+    "/guide/authenticating-users/"
 ]
 
 [subsections.managed-accounts]
@@ -114,14 +109,6 @@ pages = [
     "/changelog/",
     "/guide/security/",
     "/guide/sending-images-and-buttons-shorthand/"
-]
-
-[subsections.rest]
-name = "REST"
-pages = [
-    "/api/",
-    "/api/connect/",
-    "/api/inside/"
 ]
 
 [subsections.faq]

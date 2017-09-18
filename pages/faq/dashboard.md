@@ -6,8 +6,8 @@ layout: two-column
 
 # Dashboard FAQ
 
-## Where do I find my app token & API Keys?
-The "Settings" tab on the dashboard displays your app token and allows you to create API keys to use with other applications that connect to your Smooch app. You can generate "account-level" keys that grant permission to your entire account from the dropdown menu in the top right of the page. Simply click your account name and avatar and select "Account" from the dropdown.
+## Where do I find my app ID & API Keys?
+The "Settings" tab on the dashboard displays your app ID and allows you to create API keys to use with other applications that connect to your Smooch app. You can generate "account-level" keys that grant permission to your entire account from the dropdown menu in the top right of the page. Simply click your account name and avatar and select "Account" from the dropdown.
 
 ## Is it possible to close my account?
 We don't close accounts on Smooch right now. Instead, simply disable your integrations from the overview page.

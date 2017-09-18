@@ -6,16 +6,12 @@ layout: two-column
 
 # Authenticating Users
 
-
-Provided you're [assigning `userId`s to your users](/guide/multi-client-users/), you can authenticate users to Smooch by issuing signed [JSON web token](http://jwt.io) (JWT) credentials. This option requires your app to be connected to your own secure web service. There are JWT libraries available supporting a wide variety of popular languages and platforms.
+When [assigning `userId`s to your users](/guide/multi-client-users/), a [JSON web token](http://jwt.io) (JWT) credential is required to protect the identity and data of that user. This option requires your app to be connected to your own secure web service. There are JWT libraries available supporting a wide variety of popular languages and platforms.
 
 To issue JWTs:
 
-1. Generate a secret key for your Smooch app. You can do this from the [Smooch dashboard](https://app.smooch.io) under the Settings tab.
-
-    ![Secret Keys](/images/secret_keys.png)
-
-1. Implement server side code to sign new JWTs using the key ID and secret provided. The JWT header must specify the key ID (`kid`). The JWT payload must include a `scope` claim of 'appUser' and a `userId` claim which you've assigned to the app user.
+1. Generate a secret key pair for your Smooch app. You can do this from the [Smooch dashboard](https://app.smooch.io) under the Settings tab.
+1. Implement server side code to sign new JWTs using the key ID and secret provided. The JWT header must specify the key ID (`kid`). The JWT payload must include a `scope` claim of `appUser` and a `userId` claim which you've assigned to the app user. Make sure the `userId` field is formatted as a String. If you use numeric ids, the `userId` must be a String representation of the number - using a number directly will result in an invalid auth error.
 
     A node.js sample is provided below:
 
@@ -63,43 +59,6 @@ To issue JWTs:
     ```java
     Smooch.login(yourUserId, yourJwt);
     ```
-
-Securing a `userId` happens automatically by using a JWT for the first time. Once a JWT is used to authenticate an individual `userId` with Smooch, that specific `userId` will require a JWT credential in all future init or login calls made to Smooch.
-
-Once you've issued a `userId` and `JWT` to a user for the first time you can save them to the device locally. Having done this, instead of making a separate call to `login` you can provide Smooch with the `userId` and `JWT` parameters during app initialization:
-
-Objective-C:
-```objective_c
-SKTSettings* settings = [SKTSettings settingsWithAppToken:@"YOUR_APP_TOKEN"];
-settings.userId = yourUserId;
-settings.jwt = yourJwt;
-[Smooch initWithSettings:settings];
-```
-
-Swift:
-```swift
-var settings = SKTSettings(appToken: "YOUR_APP_TOKEN")
-settings.userId = yourUserId
-settings.jwt = yourJwt
-Smooch.initWithSettings(settings)
-```
-
-JavaScript:
-```javascript
-Smooch.init({
-    appToken: 'YOUR_APP_TOKEN',
-    userId: yourUserId,
-    jwt: yourJwt
-});
-```
-
-Java:
-```java
-Settings settings = new Settings("YOUR_APP_TOKEN");
-settings.setUserId(yourUserId);
-settings.setJWT(yourJwt);
-Smooch.init(this, settings);
-```
 
 <aside class="warning">
 If your secret key is ever compromised you can generate a new one. Smooch will accept a JWT as long as it contains all required fields and is signed with any of your Smooch app's valid secret keys. Deleting a secret key will invalidate all JWTs that were signed with it.

@@ -6,28 +6,15 @@ layout: two-column
 
 # Managing user information
 
-Each time a user's actions trigger a webhook event, the [webhook payload](http://docs.smooch.io/rest/#webhooks-payload) contains information about that user, stored in the `appUser` property:
-
-```javascript
-"appUser": {
-    "_id": "smooch-id",
-    "userId": "some-user-id",
-    "properties": {
-        "your-custom-property": "some-value"
-    },
-    ...
-}
- ```
-
-The app user can be extended to contain whatever custom properties you require under the `properties` property.
+App users can be extended to contain whatever custom properties you require under the `properties` property.
 
 Custom properties can be added to a user:
 1. via the [REST API](http://docs.smooch.io/rest/#update-app-user)
-2. at initialization time with the mobile and Web SDKs
+2. at runtime with the mobile and Web SDKs
 
 In addition to custom properties, there are a number of predefined properties such as `givenName`, `surname`, and `email` that can also be set via the SDKs, or REST API.
 
-To add properties via the REST API call the PUT Update [endpoint](http://docs.smooch.io/rest/#update-app-user):
+To add properties via the REST API call the [Update App User endpoint](http://docs.smooch.io/rest/#update-app-user):
 
 ```bash
 curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a637261bd9656f \
@@ -39,13 +26,12 @@ curl https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/c7f6e6d6c3a
 
 ## Adding properties using the SDKs
 
-Here, we add a property and name on init from the Web SDK:
+Here, we add a property and name from the Web SDK:
 
 
 Web SDK:
 ```javascript
-Smooch.init({
-    appToken: 'your_app_token',
+Smooch.updateUser({
     givenName: 'Doctor',
     surname: 'Who?',
     email: 'the-doctor@smooch.io',
@@ -55,12 +41,14 @@ Smooch.init({
 });
 ```
 
-All user properties are optional, so the object you pass into `init` could also look as simple as:
+All user properties are optional, so the object you pass into `updateUser` could also look as simple as:
 
 
 Web SDK:
 ```javascript
-{appToken: "your_app_token", givenName: "Trogdor"}
+Smooch.updateUser({
+    givenName: 'Trogdor'
+});
 ```
 
 ### iOS
@@ -104,7 +92,7 @@ Web SDK:
 Smooch.updateUser({
     givenName: 'Doctor',
     surname: 'Who'
-})
+});
 ```
 
 ### Setting the user email address
@@ -135,7 +123,7 @@ Web SDK:
 ```javascript
 Smooch.updateUser({
     email: 'the-doctor@smooch.io'
-})
+});
 ```
 
 Setting or updating the user email will send a notification inside your configured business system. Here's how it looks in Slack for example :
@@ -144,7 +132,7 @@ Setting or updating the user email will send a notification inside your configur
 
 ### Setting the signed up date
 
-Setting the user's signed up date allows Whispers based on that date to be sent to the right people. If not set, we'll default to the first time Smooch sees the user, which is the moment the `init` call is made for the first time for a given user. It's best to set it yourself to avoid sending a welcome message to users that in fact signed up a long while ago.
+Setting the user's signed up date allows you to track when the user started using your service. If not set, it will default to the time the user was created in Smooch, which is most likely the moment when the user messaged you for the first time.
 
 
 Objective-C:
@@ -172,12 +160,12 @@ Web SDK:
 ```javascript
 Smooch.updateUser({
     signedUpAt: new Date("Nov 6, 2013")
-})
+});
 ```
 
 ### Adding custom profile information
 
-You can also specify any other kind of profile information that will be sent along when users contact you. You can also use any properties you store using this API to send targeted messages to your users proactively using our Whispers feature.
+You can also specify any other kind of profile information that will be sent along when users contact you.
 
 
 Objective-C:
@@ -209,23 +197,19 @@ User.getCurrentUser().addProperties(customProperties);
 You need to make sure the SDK is properly initialized before attempting to update a user information.
 </aside>
 
-You can either update the user right after the initialization using ".then":
-
+You can either update the user right after initialization using `.then`:
 
 Web SDK:
 ```javascript
-<script>
 Smooch.init({
-  appToken: 'your-app-token',
-  emailCaptureEnabled: true
+  appId: 'your-app-id'
 })
   .then(function() {
     Smooch.updateUser({
       givenName: 'New',
       surname: 'Name'
-    })   
-  })
-<script>
+    });
+  });
 ```
 Or you can update the information by binding your event before calling Smooch.init() with the method Smooch.on('ready') like below:
 
@@ -235,7 +219,7 @@ Smooch.on('ready', function(){
   Smooch.updateUser({
     givenName: 'New',
     surname: 'Name'
-  })
+  });
 });
 
 Smooch.init(...);

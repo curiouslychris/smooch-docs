@@ -23,9 +23,7 @@ To get started with the account management API you'll need to generate a Managed
 
 Create an app by calling the [create app endpoint](https://docs.smooch.io/rest/#create-app) using an account scoped JSON Web Token, and passing the public facing name of the app as JSON data.
 
-The response to the create app request will contain an app ID (`_id`) property and an `appToken` property.
-
-You can use the appToken to init Web and Mobile SDKs.
+The response to the create app request will contain the app's `_id`, which can be used to initialize the Web and Mobile SDKs.
 
 ## Configuring webhooks
 

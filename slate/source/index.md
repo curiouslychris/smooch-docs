@@ -32,12 +32,12 @@ includes:
     - rest/core/message_types
     - rest/core/message_actions
     - rest/core/persistent_menus
+    - rest/core/integrations
     - --Managed accounts
     - rest/managed/introduction
     - rest/managed/authentication
     - rest/managed/apps
     - rest/managed/app_keys
-    - rest/managed/integrations
     - --Smooch Connect
     - rest/connect/introduction
     - rest/connect/add_to_smooch_button

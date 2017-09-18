@@ -74,10 +74,6 @@ A message must also have a `type` specifying the type of message you're trying t
 
 Images can be posted by URL using this API via the `image` type. Alternatively, you may also upload images to the conversation directly using the [`/images`](#upload-image) endpoint.
 
-<aside class="notice">
-For messages originating from an app maker, a `jwt` credential with `app` level scope must be used.
-</aside>
-
 | **Arguments**                |                       |
 |------------------------------|-----------------------|
 | **role**<br/><span class='req'>required</span>       | The role of the individual posting the message. Can be either `appUser` or `appMaker`. |

@@ -212,10 +212,6 @@ Delete a user's profile. Calling this API will clear `givenName`, `surname`, `em
 
 For every client owned by the user, it will also clear `displayName`, `avatarUrl` and any channel specific information stored in the `info` field.
 
-<aside class="notice">
-This endpoint requires a `jwt` credential with `app`, `integration` or `account` level scope.
-</aside>
-
 ## Pre-Create App User
 
 > Request:
@@ -274,10 +270,6 @@ smooch.appUsers.create('5963c0d619a30a2e00de36b8', 'steveb@channel5.com', {
 In the vast majority of cases app users will be automatically created by the Smooch SDKs or Messaging Channel integrations. In some cases however it might be necessary to pre-create an app user object before that user runs your app for the first time. This API facilitates this scenario. A `userId` must be specified so that a future `login` call made from a device can use the same `userId` to link the device to the pre-created app user.
 
 Suppose for example you begin a conversation with an end user `bob@example.com` over email and you wish to transfer this conversation history over into Smooch once that user logs in to your app. To facilitate this, you can call `POST /v1/apps/{appId}/appusers` to pre-create a Smooch identity with `userId` `bob@example.com`, to which you can import that existing conversation history. After Bob signs in to your app and your app calls `login` with the same `userId`, they will see their conversation history.
-
-<aside class="notice">
-Unlike the other App User APIs in this section, this endpoint is not intended to be called from an end user's device or from a browser. It requires a `jwt` credential with `app` level scope.
-</aside>
 
 ## Get App User Channel Entities
 
@@ -486,7 +478,7 @@ The appUser schema describes the appUser data sent in webhook payloads, and in G
 | **signedUpAt**  | A datetime string with the format **yyyy-mm-ddThh:mm:ssZ** representing the moment an appUser was created.                |
 | **clients**  | An array of objects representing the clients associated with the appUser. See the [client schema](#client-schema) below for details. |
 | **pendingClients**  | As clients, but containing linked clients which have not been confirmed yet (i.e. Twilio SMS)                             |
-| **devices**  | Identical to the clients array, but **deprecated**.                                                                |
+| **devices** (_deprecated_)  | Identical to the clients array, but **deprecated**.                                                                |
 | **conversationStarted**  | A boolean representing of whether a message has been sent or not.                                                         |
 | **credentialRequired**  | A boolean representing whether the appUser is secured by a JSON Web Token or not.                                         |
 | **email** <span class="opt">optional</span>| An optional email address.                                                                                                |

@@ -45,7 +45,7 @@ smooch.apps.create({
 
 <api>`POST /v1/apps`</api>
 
-Creates a new app. The response body will include the appToken, which can be used to initialize the Web, iOS and Android clients and make calls to the app user facing API.
+Creates a new app. The response body will include the app's `_id`, which can be used to initialize the Web, iOS and Android clients.
 
 | **Arguments**             |   |
 |---------------------------|---|
@@ -223,8 +223,8 @@ The schema describes the fields you can expect to be associated with an app.
 
 | Field | Description                                                                                    |
 |-------|--------|------------------------------------------------------------------------------------------------|
-| **_id**  | A canonical ID that can be used to reference the Smooch app that the event is associated with. |
-| **appToken**  | A public token that can be used to initialize Smooch's mobile and Web SDKs and authorize API calls on behalf of appUsers who haven't been secured by JWT. |
+| **_id**  | A canonical ID that can be used to retrieve the Smooch app. Also used to initialize Smooch's Mobile and Web SDKs.   |
+| **appToken** (_deprecated_)  | A public token used to initialize older versions of the Smooch Mobile and Web SDKs. |
 | **name**  | the friendly name of the app. |
 | **settings** | Customizable app settings (see [app settings](#app-settings)). |
 
@@ -242,4 +242,4 @@ A truncated version of the app sent with webhook payloads.
 
 | Field | Description                                                                                    |
 |-------|--------|------------------------------------------------------------------------------------------------|
-| **_id**  | A canonical ID that can be used to reference the Smooch app that the event is associated with. |
+| **_id**  | A canonical ID that can be used to retrieve the Smooch app. Also used to initialize Smooch's Mobile and Web SDKs.   |

@@ -46,7 +46,7 @@ smooch.webhooks.create('5963c0d619a30a2e00de36b8', {
 }
 ```
 
-<api>`POST /v1/webhooks`</api>
+<api>`POST /v1/apps/{appId}/webhooks`</api>
 
 Create a webhook for the specified app. The response body will include a secret which will be transmitted with each webhook invocation and can be used to verify the authenticity of the caller.
 
@@ -92,7 +92,7 @@ smooch.webhooks.list('5963c0d619a30a2e00de36b8').then((response) => {
 }
 ```
 
-<api>`GET /v1/webhooks`</api>
+<api>`GET /v1/apps/{appId}/webhooks`</api>
 
 List all webhooks configured for a given app.
 
@@ -129,7 +129,7 @@ smooch.webhooks.get('5963c0d619a30a2e00de36b8', '55c8d9758590aa1900b9b9f6').then
 }
 ```
 
-<api>`GET /v1/webhooks/{webhookId}`</api>
+<api>`GET /v1/apps/{appId}/webhooks/{webhookId}`</api>
 
 Individual webhooks can be fetched using this API.
 
@@ -171,7 +171,7 @@ smooch.webhooks.update('5963c0d619a30a2e00de36b8', '55c8d9758590aa1900b9b9f6', {
 }
 ```
 
-<api>`PUT /v1/webhooks/{webhookId}`</api>
+<api>`PUT /v1/apps/{appId}/webhooks/{webhookId}`</api>
 
 Use this API to update your existing webhooks.
 
@@ -201,6 +201,6 @@ smooch.webhooks.delete('5963c0d619a30a2e00de36b8', '55c8d9758590aa1900b9b9f6').t
 200 OK
 ```
 
-<api>`DELETE /v1/webhooks/{webhookId}`</api>
+<api>`DELETE /v1/apps/{appId}/webhooks/{webhookId}`</api>
 
 Deletes the specified webhook.

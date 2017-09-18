@@ -1,5 +1,5 @@
 # Integrations
-This set of endpoints is used to configure and manage various front-end messaging channels. A JWT is required with `account` or `app` scope.
+This set of endpoints is used to configure and manage various front-end messaging channels.
 
 The supported integration types are: Facebook Messenger, Twitter DM, LINE, Telegram, Twilio SMS, WeChat, Viber and Mailgun.
 

@@ -107,30 +107,27 @@ If you don't provide one of these keys, any attempt from the user to send their 
 ### Initialize Smooch in your app
 
 
-After following the steps above, your app is setup for working with the Smooch SDK. Before your code can invoke its functionality, you'll have to initialize the library using your app's token.
+After following the steps above, your app is setup for working with the Smooch SDK. Before your code can invoke its functionality, you'll have to initialize the library using your app id. You can find it by [logging into Smooch](https://app.smooch.io) and copying it from the settings page as shown below.
 
-This token is free and uniquely identifies your app and links it to the Smooch backend that does the heavy lifting necessary to bridge the gap between you and your users.
+![App Id on Overview Page](/images/appid.png)
 
-You can find your token by [logging into Smooch](https://app.smooch.io) and copying it from the settings page as shown below.
+To initialize Smooch, add the following line of code to your applicationDidFinishLaunchingWithOptions: method
 
-![App Token on Overview Page](/images/apptoken.png)
-
-Once you've located your token, use the code below to initialize Smooch.
-
-
-Add the following line of code to your applicationDidFinishLaunchingWithOptions: method
-
-Objective-C:
+##### Objective-C:
 ```objective_c
-[Smooch initWithSettings:[SKTSettings settingsWithAppToken:@"YOUR_APP_TOKEN"]];
+[Smooch initWithSettings:[SKTSettings settingsWithAppId:@"YOUR_APP_ID"] completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
+    // Your code after init is complete
+}];
 ```
 
-Swift:
+##### Swift:
 ```swift
-Smooch.initWithSettings(SKTSettings(appToken: "YOUR_APP_TOKEN"))
+Smooch.initWith(SKTSettings(appId: "YOUR_APP_ID")) { (error: Error?, userInfo: [AnyHashable : Any]?) in
+    // Your code after init is complete
+}
 ```
 
-Make sure to replace `YOUR_APP_TOKEN` with your app token.
+Make sure to replace `YOUR_APP_ID` with your app id.
 
 #### Displaying the Smooch User Interface
 
@@ -138,12 +135,14 @@ Once you've initialized Smooch, you're ready to try it out.
 
 Find a suitable place in your app's interface to invoke Smooch and use the code below to display the Smooch user interface. You can bring up Smooch whenever you think that your user will need access to help or a communication channel to contact you.
 
-Objective-C:
+##### Objective-C:
+
 ```objective_c
 [Smooch show];
 ```
 
-Swift:
+##### Swift:
+
 ```swift
 Smooch.show()
 ```
@@ -434,7 +433,7 @@ Suppose you wanted the conversation UI to have a black navigation bar and red me
 
 Objective-C:
 ```objective_c
-SKTSettings* settings = [SKTSettings settingsWithAppToken:@"YOURAPP_TOKEN"];
+SKTSettings* settings = [SKTSettings settingsWithAppId:@"YOUR_APP_ID"];
 settings.conversationAccentColor = [UIColor redColor];
 settings.conversationStatusBarStyle = UIStatusBarStyleLightContent;
 
@@ -445,7 +444,7 @@ settings.conversationStatusBarStyle = UIStatusBarStyleLightContent;
 
 Swift:
 ```swift
-var settings = SKTSettings(appToken: "YOUR_APP_TOKEN")
+var settings = SKTSettings(appId: "YOUR_APP_ID")
 settings.conversationAccentColor = UIColor.redColor();
 settings.conversationStatusBarStyle = UIStatusBarStyle.LightContent;
 

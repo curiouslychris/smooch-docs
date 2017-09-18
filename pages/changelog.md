@@ -26,7 +26,7 @@ layout: two-column
 
 - Added new [Attachment API](https://docs.smooch.io/rest/#upload-attachment)
 - Added support for new [file message type](http://docs.smooch.io/rest/#file)
-- Android SDK [4.7.0](https://github.com/smooch/smooch-android/releases/tag/4.7.0), Web Messenger [3.15.0](https://github.com/smooch/smooch-js/releases/tag/3.15.0) and iOS SDK [5.7.0](https://github.com/smooch/smooch-ios/releases/tag/5.7.0) have been updated to render [file messages](http://docs.smooch.io/rest/#file) as a link
+- Android SDK [4.7.0](https://github.com/smooch/smooch-android/releases/tag/4.7.0), Web Messenger [3.15.0](https://github.com/smooch/smooch-web/releases/tag/3.15.0) and iOS SDK [5.7.0](https://github.com/smooch/smooch-ios/releases/tag/5.7.0) have been updated to render [file messages](http://docs.smooch.io/rest/#file) as a link
 
 ## June 20th, 2017
 
@@ -121,11 +121,11 @@ layout: two-column
 ## February 20th, 2017
 
 - Added new [`conversation:start` event](https://docs.smooch.io/rest/#webhook-triggers) in the webhooks for when a user opts in to start a conversation.
-- Improved Facebook Messenger linking support in Web Messenger [3.13.0](https://github.com/smooch/smooch-js/releases/tag/3.13.0)
+- Improved Facebook Messenger linking support in Web Messenger [3.13.0](https://github.com/smooch/smooch-web/releases/tag/3.13.0)
 
 ## February 17th, 2017
 
-- Android SDK [4.3.0](https://github.com/smooch/smooch-android/releases/tag/4.3.0) & Web Messenger [3.12.0](https://github.com/smooch/smooch-js/releases/tag/3.12.0) bring support for location sharing and improved user experience while a message is being sent.
+- Android SDK [4.3.0](https://github.com/smooch/smooch-android/releases/tag/4.3.0) & Web Messenger [3.12.0](https://github.com/smooch/smooch-web/releases/tag/3.12.0) bring support for location sharing and improved user experience while a message is being sent.
 
 ## February 14th, 2017
 
@@ -179,7 +179,7 @@ layout: two-column
 
 ## November 16th, 2016
 
-- Added typing indicator support in Web Messenger [3.8.0](https://github.com/smooch/smooch-js/releases/tag/3.8.0)
+- Added typing indicator support in Web Messenger [3.8.0](https://github.com/smooch/smooch-web/releases/tag/3.8.0)
 
 ## November 15th, 2016
 
@@ -188,13 +188,13 @@ layout: two-column
 
 ## November 10th, 2016
 
-- Added [suggested replies](http://docs.smooch.io/rest/#action-buttons) support in Web Messenger [3.7.0](https://github.com/smooch/smooch-js/releases/tag/3.7.0)
+- Added [suggested replies](http://docs.smooch.io/rest/#action-buttons) support in Web Messenger [3.7.0](https://github.com/smooch/smooch-web/releases/tag/3.7.0)
 
 ## November 7th, 2016
 
 - [Viber](https://app.smooch.io/integrations/viber) is now a customer channel available on Smooch. [Learn more](http://blog.smooch.io/bring-your-business-to-viber-with-smooch/)
 - Updated [LINE](https://app.smooch.io/integrations/line) to support Carousel, Action buttons, Quick replies and Postback. [Learn more](http://blog.smooch.io/line-upped-its-messaging-game/)
-- Web Messenger [3.6.0](https://github.com/smooch/smooch-js/releases/tag/3.6.0) was released to support Viber and LINE
+- Web Messenger [3.6.0](https://github.com/smooch/smooch-web/releases/tag/3.6.0) was released to support Viber and LINE
 - Added [delete app API](http://docs.smooch.io/rest/#delete-app)
 
 ## October 28th, 2016
@@ -225,7 +225,7 @@ layout: two-column
 ## September 2nd, 2016
 
 - Added pagination support on the [conversation API](http://docs.smooch.io/rest/#get-messages)
-- Web Messenger [3.4.0](https://github.com/smooch/smooch-js/releases/tag/3.4.0) adds support for pagination and loads message history as you scroll
+- Web Messenger [3.4.0](https://github.com/smooch/smooch-web/releases/tag/3.4.0) adds support for pagination and loads message history as you scroll
 
 ## August 18th, 2016
 
@@ -235,7 +235,7 @@ layout: two-column
 
 ## August 15th, 2016
 
-- Added user linking for the SMS customer channel on Web Messenger [3.3.0](https://github.com/smooch/smooch-js/releases/tag/3.3.0). [Learn more](http://blog.smooch.io/new-feature-sms-linking-added-to-web-messenger/)
+- Added user linking for the SMS customer channel on Web Messenger [3.3.0](https://github.com/smooch/smooch-web/releases/tag/3.3.0). [Learn more](http://blog.smooch.io/new-feature-sms-linking-added-to-web-messenger/)
 - Added [user linking API](http://docs.smooch.io/rest/#link-app-user-to-channel) for SMS
 
 ## August 10th, 2016
@@ -244,7 +244,7 @@ layout: two-column
 
 ## July 29th, 2016
 
-Web Messenger [3.2.0](https://github.com/smooch/smooch-js/releases/tag/3.2.0) now supports:
+Web Messenger [3.2.0](https://github.com/smooch/smooch-web/releases/tag/3.2.0) now supports:
 - Being displayed as a button or a tab when closed.
 - Color customization from the dashboard.
 - Automatic contrast detection for text displayed on top of configured colors.
@@ -259,14 +259,14 @@ Web Messenger [3.2.0](https://github.com/smooch/smooch-js/releases/tag/3.2.0) no
 
 ## June 29th, 2016
 
-Web Messenger [3.1.0](https://github.com/smooch/smooch-js/releases/tag/3.1.0) adds:
+Web Messenger [3.1.0](https://github.com/smooch/smooch-web/releases/tag/3.1.0) adds:
 - An error banner when sending a message fails
 - Auto resize based on window height
 
 ## June 22nd, 2016
 
 - Added [WeChat](https://app.smooch.io/integrations/wechat) as a customer channel. [Learn more](http://blog.smooch.io/wechat-smooch-talk-to-customers-in-asia-your-way/)
-- Web Messenger [3.0.0](https://github.com/smooch/smooch-js/releases/tag/3.0.0) adds notifications and account linking on Facebook Messenger, Telegram & WeChat. [Learn more](http://blog.smooch.io/introducing-smooch-web-messenger-smart-notifications/)
+- Web Messenger [3.0.0](https://github.com/smooch/smooch-web/releases/tag/3.0.0) adds notifications and account linking on Facebook Messenger, Telegram & WeChat. [Learn more](http://blog.smooch.io/introducing-smooch-web-messenger-smart-notifications/)
 
 ## May 25th, 2016
 

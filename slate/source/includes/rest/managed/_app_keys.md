@@ -1,5 +1,5 @@
 # App Keys
-This set of endpoints is used to provision and revoke secret keys for a Smooch app. A JWT with scope `account` is required to access the secret keys API.
+This set of endpoints is used to provision and revoke secret keys for a Smooch app.
 
 ## Create Key
 

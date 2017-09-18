@@ -13,9 +13,9 @@ Smooch integrations can be divided roughly into:
 * SMS (through integrations with third parties like Twilio).
 * Pre-skinned messaging SDKs (for Web, Android, and iOS).
 
-SMS and OTT channels are connected to a Smooch app through an integration step, when the app maker passing credentials for their account on the messaging service to Smooch. This integration step can be done programmatically via the [REST API](/guide/configuring-messaging-channels/), or manually with the [dashboard UI](https://app.smooch.io/integrations/categories/customer-channels).
+SMS and OTT channels are connected to a Smooch app through an integration step, where the app maker passes credentials for their account on the messaging service to Smooch. This integration step can be done programmatically via the [REST API](/guide/configuring-messaging-channels/), or manually with the [dashboard UI](https://app.smooch.io/integrations/categories/customer-channels).
 
-The Web, Android, and iOS SDKs can be integrated simply by initializing the SDK with the appToken for a Smooch app.
+The Web, Android, and iOS SDKs can be integrated simply by initializing the SDK with the `_id` for a Smooch app.
 
 ## Channel Features
 

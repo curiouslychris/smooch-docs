@@ -14,7 +14,7 @@ layout: two-column
 
 The Smooch library is distributed in both AAR and JAR format. If you are using Android Studio, follow the instructions for [installation of the AAR package](/guide/native-android-sdk/#android-studio-with-gradle).
 
-<aside class="notice">The minimum supported SDK version is API level <b>15</b>, and your app must be compiled with at least API version <b>25</b>. If your app needs to support earlier versions of Android, you may still try to integrate, but it is untested and we cannot guarantee compatibility.
+<aside class="notice">The minimum supported SDK version is API level <b>15</b>, and your app must be compiled with at least API version <b>26</b>. If your app needs to support earlier versions of Android, you may still try to integrate, but it is untested and we cannot guarantee compatibility.
 </aside>
 
 ### Android Studio with Gradle
@@ -46,23 +46,26 @@ Sync the Gradle project then add the necessary code to [initialize Smooch in you
 
 ### Initialize Smooch in your app
 
-After following the steps above, your app is setup for working with the Smooch SDK. Before your code can invoke its functionality, you'll have to initialize the library using your app's token.
+After following the steps above, your app is setup for working with the Smooch SDK. Before your code can invoke its functionality, you'll have to initialize the library using your app's ID. This ID uniquely identifies your app and links it to the Smooch backend that does the heavy lifting necessary to bridge the gap between you and your users.
 
-This token is free and uniquely identifies your app and links it to the Smooch backend that does the heavy lifting necessary to bridge the gap between you and your users.
+You can find your ID by [logging into Smooch](https://app.smooch.io) and copying it from the settings page as shown below.
 
-You can find your token by [logging into Smooch](https://app.smooch.io) and copying it from the settings page as shown below.
+![App ID on Overview Page](/images/appid.png)
 
-![App Token on Overview Page](/images/apptoken.png)
-
-Once you've located your token, use the code below to initialize Smooch.
+Once you've located your ID, use the code below to initialize Smooch.
 
 Add the following line of code to your `onCreate` method on your [Application](http://developer.android.com/reference/android/app/Application.html) class:
 
 ```java
-Smooch.init(this, "YOUR_APP_TOKEN");
+Smooch.init(this, new Settings("YOUR_APP_ID"), new SmoochCallback() {
+    @Override
+    public void run(Response response) {
+        // Your code after init is complete
+    }
+});
 ```
 <aside class="notice">
-    Make sure to replace `YOUR_APP_TOKEN` with your app token.
+    Make sure to replace <code>YOUR_APP_ID</code> with your app ID.
 </aside>
 
 If you don't have an `Application` class, we recommend that you create one to make sure Smooch is always initialized properly. If you don't have one, you can copy the following and save it to your application package.
@@ -77,7 +80,12 @@ public class YourApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Smooch.init(this, "YOUR_APP_TOKEN");
+        Smooch.init(this, new Settings("YOUR_APP_ID"), new SmoochCallback() {
+            @Override
+            public void run(Response response) {
+                // Your code after init is complete
+            }
+        }
     }
 }
 ```
@@ -92,7 +100,7 @@ You also need to **declare** your newly created `Application` class in the `<app
 ```
 
 <aside class="notice">
-    Remember to replace `your.package`, `YourApplication`, `YOUR_APP_TOKEN` by the appropriate names and your app token.
+    Remember to replace <code>your.package</code>, <code>YourApplication</code>, <code>YOUR_APP_ID</code> by the appropriate names and your app ID.
 </aside>
 
 #### Displaying the Smooch User Interface
@@ -109,8 +117,8 @@ You should also take the time to [configure the push notifications setup](/guide
 
 ### Replacing the Smooch FileProvider
 <aside class="notice">
-    If you do not have a `FileProvider` entry in your `AndroidManifest.xml` file, you can safely ignore this section.
-    These steps will fix the `Manifest merger failed : Attribute provider#android.support.v4.content.FileProvider@authorities` compile error
+    If you do not have a <code>FileProvider</code> entry in your <code>AndroidManifest.xml</code> file, you can safely ignore this section.
+    These steps will fix the <code>Manifest merger failed : Attribute provider#android.support.v4.content.FileProvider@authorities</code> compile error
 </aside>
 
 
@@ -127,9 +135,9 @@ In order to replace the Smooch FileProvider with your own, please do the followi
 3. When initializing Smooch, call `settings.setFileProviderAuthorities(authoritiesString);` on the settings object.
 
 ```java
-Settings settings = new Settings(appToken);
+Settings settings = new Settings(appId);
 settings.setFileProviderAuthorities(authoritiesString);
-Smooch.init(this, settings);
+Smooch.init(this, settings, myInitCallback);
 ```
 
 ## Configuring push notifications
@@ -173,7 +181,7 @@ Following these steps will enable cloud messaging for your app and create a serv
     ```
 
 <aside class="notice">
-Note: If your app has its own token registration, you need to trigger Smooch push notifications by calling the `triggerSmoochNotification` method on <a href="http://docs.smooch.io/api/android/io/smooch/core/GcmService.html">`FcmService`</a> class.</aside>
+Note: If your app has its own token registration, you need to trigger Smooch push notifications by calling the <code>triggerSmoochNotification</code> method on <a href="http://docs.smooch.io/api/android/io/smooch/core/FcmService.html"><code>FcmService</code></a> class.</aside>
 
 ### Step 4. Test it out!
 

@@ -8,6 +8,10 @@ layout: two-column
 
 This guide details a few solutions to replace Whispers by bringing this functionality to your own server. Code examples given are for the iOS SDK but could be easily ported to the Android SDK and Web Messenger.
 
+<aside class="warning">
+Whispers and whisper replacement flows are no longer supported as of iOS 6.0.0, Android 5.0.0, and Web 4.0.0. The use cases described below are not supported with the latest versions of the SDKs.
+</aside>
+
 ## Whispers using "Send on event"
 
 To replace "Send on event" whispers, you can change your SDK usage to instead call your own backend which in turn will call the Smooch API to send a message.

@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { OverlayTrigger, Popover } from 'react-bootstrap';
+import hat from 'hat';
 
 import Row from './Row';
 import Cell from './Cell';
@@ -45,6 +47,16 @@ export default class CapabilityRow extends Component {
         return directionCell;
     }
 
+    generateInformationOverlay(information) {
+        if (!information) {
+            return null;
+        }
+
+        return <Popover id={ hat() }>
+                   { information }
+               </Popover>;
+    }
+
     generateCells() {
         const {capability} = this.props;
         const capabilityDetails = CAPABILITIES[capability];
@@ -53,26 +65,81 @@ export default class CapabilityRow extends Component {
             const support = channel.capabilities[capability];
 
             let cell;
+            const sendPopover = this.generateInformationOverlay(support.sendInformation);
+            const receivePopover = this.generateInformationOverlay(support.receiveInformation);
+            const infoPopover = this.generateInformationOverlay(support.information);
             if (capabilityDetails.send && capabilityDetails.receive) {
+                const topPart = sendPopover ?
+                    <OverlayTrigger rootClose
+                                    trigger='click'
+                                    placement='top'
+                                    overlay={ sendPopover }
+                                    className='top-part'>
+                        { getSupportIndicator(support.send, true) }
+                    </OverlayTrigger> :
+                    <div className='top-part'>
+                        { getSupportIndicator(support.send) }
+                    </div>;
+
+                const bottomPart = receivePopover ?
+                    <OverlayTrigger rootClose
+                                    trigger='click'
+                                    placement='top'
+                                    overlay={ receivePopover }
+                                    className='bottom-part'>
+                        { getSupportIndicator(support.receive, true) }
+                    </OverlayTrigger> :
+                    <div className='bottom-part'>
+                        { getSupportIndicator(support.receive) }
+                    </div>;
+
                 cell = <Cell key={ i }
                              divided
                              isContent>
-                           <div className='top-part'>
-                               { getSupportIndicator(support.send) }
-                           </div>
-                           <div className='bottom-part'>
-                               { getSupportIndicator(support.receive) }
-                           </div>
+                           { topPart }
+                           { bottomPart }
                        </Cell>;
             } else if (capabilityDetails.send) {
+                const content = sendPopover ?
+                    <OverlayTrigger rootClose
+                                    trigger='click'
+                                    placement='top'
+                                    overlay={ sendPopover }>
+                        { getSupportIndicator(support.send, true) }
+                    </OverlayTrigger> :
+                    getSupportIndicator(support.send);
+
                 cell = <Cell key={ i }
                              isContent>
-                           { getSupportIndicator(support.send) }
+                           { content }
                        </Cell>;
             } else if (capabilityDetails.receive) {
+                const content = receivePopover ?
+                    <OverlayTrigger rootClose
+                                    trigger='click'
+                                    placement='top'
+                                    overlay={ receivePopover }
+                                    className='bottom-part'>
+                        { getSupportIndicator(support.receive, true) }
+                    </OverlayTrigger> :
+                    getSupportIndicator(support.receive);
+
                 cell = <Cell key={ i }
                              isContent>
-                           { getSupportIndicator(support.receive) }
+                           { content }
+                       </Cell>;
+            } else if (support.level) {
+                const content = infoPopover ?
+                    <OverlayTrigger rootClose
+                                    trigger='click'
+                                    placement='top'
+                                    overlay={ infoPopover }>
+                        { getSupportIndicator(support.level, true) }
+                    </OverlayTrigger> :
+                    getSupportIndicator(support.level);
+                cell = <Cell key={ i }
+                             isContent>
+                           { content }
                        </Cell>;
             } else {
                 cell = <Cell key={ i }
@@ -103,7 +170,7 @@ export default class CapabilityRow extends Component {
                            { capabilityDetails.link ?
                                  <Link to={ capabilityDetails.link }
                                        target={ capabilityDetails.link.startsWith('/') ? undefined : '_blank' }>
-                                     { capabilityDetails.name }
+                                 { capabilityDetails.name }
                                  </Link> :
                                  capabilityDetails.name }
                        </Cell>

@@ -40,6 +40,10 @@
             display: flex;
             flex-direction: row;
 
+            img {
+                cursor: default;
+            }
+
             &.legend {
                 border-top: 1px solid @sk-purple;
                 border-bottom: 1px solid @sk-purple;
@@ -128,6 +132,12 @@
                 font-size: 13px;
                 color: #9fa6ac;
                 vertical-align: top;
+
+                &.has-info {
+                    .support-icon {
+                        cursor: help;
+                    }
+                }
             }
         }
 

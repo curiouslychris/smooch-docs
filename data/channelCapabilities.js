@@ -1,3 +1,26 @@
+import React from 'react';
+// Leave React here for JSX support in send/receive information
+
+/*
+    Note about channel capabilities
+
+    If a capability has send/receive, you can pass information that will appear as a popover using `sendInformation` and `receiveInformation`.
+    If a capability has just a generic support level, you can make it an object and pass `level` for the support level and `information`
+    for the popover content.
+
+    {
+        send: SUPPORT_LEVEL.FULL,
+        receive: SUPPORT_LEVEL.FULL,
+        sendInformation: 'Some info in text',
+        receiveInformation: <div>Some info in JSX</div>
+    }
+
+    {
+        level: SUPPORT_LEVEL.FULL,
+        information: 'Some info text'
+    }
+*/
+
 export const SUPPORT_LEVEL = {
     FULL: 'full',
     PARTIAL: 'partial',
@@ -595,7 +618,10 @@ const channelData = {
             conversationStart: {
                 receive: SUPPORT_LEVEL.FULL
             },
-            webMessengerLinking: SUPPORT_LEVEL.PARTIAL,
+            webMessengerLinking: {
+                level: SUPPORT_LEVEL.PARTIAL,
+                information: 'Users can scan a code to start following your LINE account, but the conversation is not linked with the one on Web Messenger.'
+            },
             location: {
                 send: SUPPORT_LEVEL.NONE,
                 receive: SUPPORT_LEVEL.FULL

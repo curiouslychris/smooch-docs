@@ -42,22 +42,34 @@ To issue JWTs:
 
     Objective-C:
     ```objective_c
-    [Smooch login:yourUserId jwt:yourJwt];
+    [Smooch login:@"user-id" jwt:@"jwt" completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
+        // Your code after login is complete
+    }];
     ```
 
     Swift:
     ```swift
-    Smooch.login(yourUserId, jwt:yourJwt)
+    Smooch.login("user-id", jwt:"jwt") { ( error:Error? , userInfo:[AnyHashable : Any]?) in
+        // Your code after login is complete
+    }
     ```
 
     JavaScript:
     ```javascript
-    Smooch.login(yourUserId, yourJwt);
+    Smooch.login("user-id", "jwt")
+        .then(function() {
+            // Your code after login is complete
+        });
     ```
 
     Java:
     ```java
-    Smooch.login(yourUserId, yourJwt);
+    Smooch.login("user-id", "jwt", new SmoochCallback() {
+        @Override
+        public void run(Response response) {
+            // Your code after login is complete
+        }
+    });
     ```
 
 <aside class="warning">

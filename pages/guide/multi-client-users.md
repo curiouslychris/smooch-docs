@@ -42,7 +42,12 @@ Smooch.login("user-id", "jwt")
 
 Java:
 ```java
-Smooch.login("user-id", "jwt");
+Smooch.login("user-id", "jwt", new SmoochCallback() {
+    @Override
+    public void run(Response response) {
+        // Your code after login is complete
+    }
+});
 ```
 
 <aside class="notice">
@@ -89,5 +94,10 @@ Smooch.logout()
 
 Java:
 ```java
-Smooch.logout();
+Smooch.logout(new SmoochCallback() {
+    @Override
+    public void run(Response response) {
+        // Handle logout result
+    }
+});
 ```

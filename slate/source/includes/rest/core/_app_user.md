@@ -308,7 +308,52 @@ curl https https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/deb92
 
 Retrieves all of the app user's channel entity IDs.
 
+## Get App User Business System IDs
 
+> Request:
+
+```shell
+curl https https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/deb920657bbc3adc3fec7963/businesssystems \
+    -H 'authorization: Bearer your-account-jwt'
+```
+
+```js
+smooch.appUsers.getBusinessSystems('5963c0d619a30a2e00de36b8', 'deb920657bbc3adc3fec7963').then((response) => {
+    //Async code
+});
+```
+
+> Response:
+
+```
+200 OK
+```
+```json
+{
+    "bizSystems": [
+        {
+            "type": "slack",
+            "channelId": "C872AE91B"
+        },
+        {
+            "type": "zendesk",
+            "ticketId": "9999"
+        },
+        {
+            "type": "hipchat",
+            "roomId": 1337
+        },
+        {
+            "type": "helpscout",
+            "conversationId": "123456"
+        }
+    ]
+}
+```
+
+<api>`GET /v1/apps/{appId}/appusers/{smoochId|userId}/businesssystems`</api>
+
+Retrieves all of the app user's business system IDs.
 
 ## Link App User To Channel
 

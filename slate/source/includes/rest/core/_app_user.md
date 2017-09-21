@@ -281,7 +281,9 @@ curl https https://api.smooch.io/v1/apps/5963c0d619a30a2e00de36b8/appusers/deb92
 ```
 
 ```js
-// This endpoint is not currently wrapped in a JavaScript lib
+smooch.appUsers.getChannels('5963c0d619a30a2e00de36b8', 'deb920657bbc3adc3fec7963').then((response) => {
+    //Async code
+});
 ```
 
 > Response:

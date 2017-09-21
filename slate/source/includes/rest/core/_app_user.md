@@ -332,7 +332,7 @@ smooch.appUsers.getBusinessSystems('5963c0d619a30a2e00de36b8', 'deb920657bbc3adc
 ```
 ```json
 {
-    "bizSystems": [
+    "businessSystems": [
         {
             "type": "slack",
             "channelId": "C872AE91B"

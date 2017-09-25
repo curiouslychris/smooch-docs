@@ -355,7 +355,15 @@ smooch.appUsers.getBusinessSystems('5963c0d619a30a2e00de36b8', 'deb920657bbc3adc
 
 <api>`GET /v1/apps/{appId}/appusers/{smoochId|userId}/businesssystems`</api>
 
-Retrieves all of the app user's business system IDs.
+Retrieves all the [business systems](https://app.smooch.io/integrations/categories/business-systems) an appUser's conversation is connected to.
+#### Business system response properties
+
+| **Channel Type**   | **Id Name**                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| slack              | **channelId**<br/>A string representing the Slack channel id.               |
+| zendesk            | **ticketId**<br/>A string representing a Zendesk ticket id.                 |
+| hipchat            | **roomId**<br/>An integer representing the Hipchat room id.                 |
+| helpscout          | **conversationId**<br/>A string representing the Helpscout conversation id. |
 
 ## Link App User To Channel
 
